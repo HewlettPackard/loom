@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Implementation-Title: loom-server
+Implementation-Version: 1.0-SNAPSHOT (6597e957)
+Archiver-Version: Plexus Archiver
+Built-By: jenkins
+Specification-Vendor: Loom, SCL, HP Labs Bristol
+Specification-Title: loom-server
+Implementation-Vendor-Id: loom
+Created-By: Apache Maven
+Build-Jdk: 1.8.0_05
+Specification-Version: 1.0-SNAPSHOT
+Implementation-Vendor: Loom, SCL, HP Labs Bristol
+

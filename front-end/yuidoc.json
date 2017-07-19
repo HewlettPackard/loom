@@ -1,0 +1,10 @@
+{
+  "name": "weaver",
+  "version": "3.0.0",
+  "options": {
+    "paths": ["lib/weft/js", "lib/weaver-lib/js"],
+    "outdir": "docs/js",
+    "tabtospace": 2,
+    "linkNatives": true
+  }
+}

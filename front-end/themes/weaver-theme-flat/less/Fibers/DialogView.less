@@ -1,0 +1,54 @@
+.mas-dialog {
+  background-color: fade(@mas-almost-black, 90);
+  color: @hp-light-grey;
+}
+
+.mas-dialog--title {
+  font-variant: small-caps;
+  text-transform: lowercase;
+
+  font-size: 18px;
+  line-height: 1;
+
+  &:first-letter {
+    text-transform: capitalize;
+  }
+}
+
+.mas-dialog--loading {
+  .fa();
+  content: @fa-var-spinner;
+}
+
+.mas-dialog--close {
+  .mas-button();
+}
+
+.mas-dialog--cancel {
+  .mas-cancel();
+}
+
+.mas-dialog--submit {
+  .mas-button();
+}
+
+.mas-dialog--response {
+  border-left: solid 2px;
+  padding-left: 5px;
+}
+
+.mas-dialog--success {
+  color: @hp-green;
+}
+
+.mas-dialog--error {
+  color: @mas-red;
+}
+
+.mas-dialogControl {
+  overflow: auto;
+}
+
+.mas-dialogControl--extended {
+  max-height: none;
+}

@@ -1,0 +1,124 @@
+.mas-toolbar {
+  background: @mas-color-toolbarBackground;
+  color: @mas-color-toolbar;
+  line-height: 26px;
+
+  .mas-menu:not(.is-collapsed) .mas-menu--toggle {
+
+    background: @UIHighlight;
+  }
+}
+
+.mas-toolbar--notification {
+  order: -3;
+}
+
+.mas-aboutMenu {
+  order: -2;
+}
+
+.mas-connectionStatus {
+  order: -2;
+}
+
+.mas-filter {
+  padding-left: 10px;
+  order: -1;
+  font-weight: 600;
+}
+
+.mas-filterElement {
+  font-weight: normal;
+
+  &::after {
+    .fa();
+    content: @fa-var-angle-right;
+    margin-left: 8px;
+  }
+
+  &:last-child::after {
+    display: none;
+  }
+}
+
+.mas-filter--cancel {
+  color: @hp-darker-grey;
+  font-size: 0.8em;
+  padding: 0 8px;
+  line-height: inherit;
+}
+
+.mas-branding {
+  font-weight: 600;
+  padding-right: 10px;
+
+  // Compensate for the logo having some transparent padding
+  margin-left: -10px;
+}
+
+.mas-branding--logo {
+  path {
+    fill: @mas-color-toolbar;
+  }
+}
+
+.mas-providerSelectionMenu .mas-provider,
+.mas-providerSelectionMenu .mas-provider.is-loggedIn {
+  border-bottom-color: @mas-color-selectionSeparator;
+}
+
+.mas-toolbarMenus .mas-menu--toggle {
+  padding: 0 10px;
+  font-weight: 600;
+}
+
+.mas-toolbarMenus .mas-propertySelector--properties {
+  max-height: ~"calc(100vh - 50px - 40px)";
+  overflow-y: auto;
+}
+
+.mas-aboutMenu {
+  .mas-menu-expandsRight();
+}
+
+.mas-about {
+  background-color: white;
+  border-bottom: solid 5px @UIHighlight;
+
+  dt {
+    font-weight: 600;
+  }
+}
+
+.mas-about--warn {
+  color: hsl(0, 1, 0.8);
+}
+
+.mas-about--adapter {
+  border-bottom: solid 1px hsla(0, 0%, 0%, .1);
+  line-height: 2;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.mas-logout {
+
+  padding: 0;
+  padding-left: 22px;
+  max-width: @unit * 1px;
+
+  // Create mixin: icon-only(@icon-name)
+  // Here, for example: .icon-only("sign-out")?
+  white-space: nowrap;
+  overflow: hidden;
+
+  &::before {
+    display: inline-block;
+    width: @unit * 1px;
+    .fa();
+    content: @fa-var-sign-out;
+    text-align: center;
+  }
+}

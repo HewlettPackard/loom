@@ -1,0 +1,22 @@
+{{! Markers representation }}
+{{! ---------------------- }}
+<g id="{{idGroup}}" class="{{classGroup}}">
+  {{#models}}
+  <g id="{{id}}" class="{{classes}} mas-mapMarker do-not-translate-touch-events">
+    {{! -- default model -- }}
+    <use id="layer-scene" xlink:href="#{{idRef}}" style="stroke-width: {{marker.stroke}}px" transform="{{scene.transform}}" handler="trigger-select-on-click"/>
+    {{! -- added state -- }}
+    {{#hasBeenAdded}}
+    <g mask="url(#{{hatch.idMask}})">
+      <use id="layer-scene" xlink:href="#{{idRef}}"  transform="{{scene.transform}}"  class="mas-isIgnoringPointerEvents mas-HatchEffect do-not-translate-touch-events"/>
+    </g>
+    {{/hasBeenAdded}}
+    {{! -- alert/updated state  -- }}
+    {{#hasAlertOrHasBeenUpdated}}
+    <g id="layer-scene" transform="{{scene.transform}}">
+      <use xlink:href="#{{idRef}}" style="stroke-width: {{inset.stroke}}px" mask="url(#{{inset.idMask}})" class="mas-isIgnoringPointerEvents mas-InsetEffect do-not-translate-touch-events"/>
+    </g>
+    {{/hasAlertOrHasBeenUpdated}}
+  </g>
+  {{/models}}
+</g>

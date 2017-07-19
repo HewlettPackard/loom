@@ -1,0 +1,44 @@
+// Thread settings menu
+//
+// Offers options to control the display of the thread
+// 
+// Markup:
+// <div class="mas-threadSettingsMenu">
+//   <div class="mas-menu--content">
+//     <div class="mas-threadSettingsMenu--item" style="border: dotted 1px;">Item #1</div>
+//     <div class="mas-threadSettingsMenu--item" style="border: dotted 1px;">Item #2</div> 
+//   </div>
+// </div>
+//
+// Styleguide 4.2.3
+
+.mas-threadSettingsMenu {
+
+  text-align: right;
+
+  &.is-collapsed {
+    display: none;
+  }
+
+  .mas-menu--content {
+    display: inline-table;
+    text-align: left;
+    z-index: 200;
+  }
+}
+
+.mas-threadSettingsMenu--item {
+  display: table-cell;
+
+  line-height: 40px;
+
+  border-left: solid 1px hsla(0, 0%, 0%, 0.1);
+
+  &:first-child {
+    border-left: none;
+  }
+
+  .mas-menu--toggle {
+    line-height: 40px;
+  }
+}

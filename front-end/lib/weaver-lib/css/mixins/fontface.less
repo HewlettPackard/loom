@@ -1,0 +1,10 @@
+.font-face (@fontname, @fontfile) {
+    @font-face {
+        font-family: @fontname;
+        src: url('../fonts/@{fontfile}.eot');
+        src: url('../fonts/@{fontfile}.eot?#iefix') format('embedded-opentype'),
+             url('../fonts/@{fontfile}.woff') format('woff'),
+             url('../fonts/@{fontfile}.ttf') format('truetype'),
+             url('../fonts/@{fontfile}.svg#@{fontfile}') format('svg');
+    }
+}

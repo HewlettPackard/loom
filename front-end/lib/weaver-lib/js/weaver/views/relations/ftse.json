@@ -1,0 +1,1 @@
+{"nodes":[{"data":{"id":"fn-quote","label":"FnQuote"}},{"data":{"id":"fn-market","label":"FnMarket"}},{"data":{"id":"provider-item","label":"ProviderItem","shape":"box","style":"dotted"}}],"edges":[{"data":{"color":{"color":"blue"},"label":"","arrows":"to","source":"fn-market","target":"fn-quote"}}]}

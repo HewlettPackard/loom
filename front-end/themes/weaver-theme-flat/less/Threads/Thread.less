@@ -1,0 +1,81 @@
+.mas-thread {
+  border-bottom: solid 1px @mas-color-headerBackground;
+  border-top: solid 1px @mas-color-headerBackground;
+}
+
+.mas-thread--header {
+  background: @mas-color-headerBackground;
+  color: @mas-color-header;
+}
+
+.mas-thread--legend {
+  background: @hp-dark-grey;
+  width: 25px;
+  color: @hp-light-grey;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+}
+
+.mas-providerLegend--provider {
+  flex: 1 1 0%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid fade(@hp-light-grey, 37);
+  align-items: center;
+}
+
+.mas-providerLegend--provider:first-child {
+  border-top: none;
+}
+
+.mas-thread--queryEditor:not(.is-collapsed)::before,
+.mas-thread--settingsMenu::before {
+  content: '';
+  display: block;
+  .mas-thread--header();
+  // Thread header defines things using flexbox
+  width: @threadViewHeaderWidth;
+  max-width: @threadViewHeaderMaxWidth;
+}
+
+.mas-thread--queryEditor::before {
+  flex: 0 0 auto;
+}
+
+.mas-thread--settingsMenu::before {
+  float: left;
+  height: 40px;
+}
+
+.mas-threadView:not(.mas-threadView-nested):first-child .mas-thread{
+  border-top-width: 2px;
+}
+
+.mas-threadView:not(.mas-threadView-nested):last-child .mas-thread{
+  border-bottom-width: 2px;
+}
+
+.mas-thread--settingsToggle {
+  align-self: stretch;
+  color: @mas-color-settingsToggle;
+  background-color: @hpe-silver;
+  min-height: 60px;
+  font-size: 24px;
+  width: 34px;
+  &.is-selected {
+    background-color: @hpe-green;
+    color: white;
+  }
+  &:not(.is-selected):hover {
+    background-color: @hpe-darkgray;
+  }
+}
+
+.mas-thread-minimised {
+  .mas-fiberOverview {
+    min-height: 0;
+  }
+}

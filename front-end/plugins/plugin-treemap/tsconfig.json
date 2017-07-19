@@ -1,0 +1,41 @@
+{
+    "version": "1.4.1",
+    "compilerOptions": {
+        "outDir": "js",
+        "target": "es5",
+        "module": "amd",
+        "declaration": false,
+        "noImplicitAny": false,
+        "removeComments": true,
+        "noLib": false
+    },
+    "compileOnSave": false,
+    "filesGlob": [
+        "./ts/**/*.ts",
+        "!./node_modules/**/*.ts",
+        "../deps/**/*.ts"
+    ],
+    "files": [
+        "./ts/main.ts",
+        "./ts/weaver-treemap/layout/Builder.ts",
+        "./ts/weaver-treemap/layout/FibreBuilder.ts",
+        "./ts/weaver-treemap/layout/FibreConfig.ts",
+        "./ts/weaver-treemap/layout/Rect.ts",
+        "./ts/weaver-treemap/layout/treemap.ts",
+        "./ts/weaver-treemap/layout/unit.ts",
+        "./ts/weaver-treemap/models/ProxyThread.ts",
+        "./ts/weaver-treemap/models/TreeThread.ts",
+        "./ts/weaver-treemap/views/DepthLevelView.ts",
+        "./ts/weaver-treemap/views/FibreView.ts",
+        "./ts/weaver-treemap/views/ThreadTreeMapView.ts",
+        "./ts/weaver-treemap/views/TreeMapView.ts",
+        "../deps/backbone.d.ts",
+        "../deps/jquery.d.ts",
+        "../deps/jquery.sortElement.d.ts",
+        "../deps/lodash.d.ts",
+        "../deps/plugins.d.ts",
+        "../deps/require.d.ts",
+        "../deps/weaver.d.ts",
+        "../deps/weft.d.ts"
+    ]
+}

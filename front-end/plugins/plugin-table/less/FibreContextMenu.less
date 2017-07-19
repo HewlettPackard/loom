@@ -1,0 +1,54 @@
+
+
+.mas-table-contextMenu {
+    display: none;
+    position: absolute;
+    // One more than the query editor
+    z-index: 26;
+}
+
+.mas-table-contextMenu.mas-display-block:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-width: 7px;
+    border-style: solid;
+    top: 7px;
+    right: -14px;
+}
+
+.mas-last-row .mas-table-contextMenu.mas-display-block:after {
+    top: initial;
+    bottom: 7px;
+}
+
+.mas-table-contextMenu--actions .mas-action {
+    color: white;
+}
+
+.mas-display-block.mas-table-contextMenu {
+    display: flex;
+    flex-direction: column;
+    //left: -147px; // width + 5 (padding table row) + 2 (border)
+    right: 32px;
+    top: -15px;
+    min-width: 140px;
+}
+
+.mas-last-row .mas-table-contextMenu.mas-display-block {
+    flex-direction: column-reverse;
+    bottom: -15px;
+    top: initial;
+}
+
+.mas-table-contextMenu--actions {
+    padding: 10px;
+}
+
+.mas-table-contextMenu--title {
+    padding-left: 15px;
+    line-height: 30px;
+    font-size: 1em;
+    color: white;
+}

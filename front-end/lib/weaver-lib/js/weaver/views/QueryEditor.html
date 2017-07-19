@@ -1,0 +1,20 @@
+<div class="mas-queryEditor">
+  <p class="mas-queryEditor--shownWhenLoading mas-queryEditorLoadingMessage">
+    Loading operations
+    <i class="mas-queryEditorLoadingMessage--spinner fa fa-spin fa-circle-o-notch"></i>
+  </p>
+  <button class="mas-queryEditor--hiddenWhenLoading mas-menu--content mas-queryEditor--cancelButton fa fa-times-circle" data-action="toggleEdition"></button>
+  <ul class="mas-queryEditor--hiddenWhenLoading mas-menu--content mas-queryEditor--operationPipeline mas-operationPipeline">
+  </ul>
+  <label class="mas-includeExcludedItemsToggle mas-action mas-queryEditor--hiddenWhenLoading mas-menu--content mas-queryEditor--includeExcludedItemsToggle">
+    <input data-name="includeExcludedItems" type="checkbox" class="mas-includeExcludedItemsToggle--checkbox"/>
+    <i class="fa fa-filter"></i>
+    <i class="fa fa-eye mas-includeExcludedItemsToggle--eye mas-includeExcludedItemsToggle--hideWhenUnchecked"></i>
+    <i class="fa fa-eye-slash mas-includeExcludedItemsToggle--eye mas-includeExcludedItemsToggle--hideWhenChecked"></i>
+  </label>
+  <div class="mas-queryEditor--hiddenWhenLoading mas-menu--content mas-queryEditor--addOperation mas-menu-expandsDown mas-menu-rightAligned is-collapsed">
+    <button class="mas-menu--toggle fa fa-plus-circle"></button>
+    <div class="mas-menu--content"></div>
+  </div>
+  <button class="mas-queryEditor--hiddenWhenLoading mas-menu--content mas-queryEditor--updateButton fa fa-check-circle" data-action="updateQuery"></button>
+</div>

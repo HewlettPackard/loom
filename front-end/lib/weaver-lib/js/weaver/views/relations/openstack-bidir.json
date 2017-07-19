@@ -1,0 +1,248 @@
+{
+    "nodes": [{
+        "data": {
+            "id": "os-instance",
+            "name": "OsInstance",
+            "description": "A long string that would give more details about what the instance is. Could make the client allow HTML there."
+        }
+    }, {
+        "data": {
+            "id": "os-subnet",
+            "name": "OsSubnet"
+        }
+    }, {
+        "data": {
+            "id": "os-workload",
+            "name": "OsWorkload"
+        }
+    }, {
+        "data": {
+            "id": "os-image",
+            "name": "OsImage"
+        }
+    }, {
+        "data": {
+            "id": "os-volume",
+            "name": "OsVolume"
+        }
+    }, {
+        "data": {
+            "id": "os-region",
+            "name": "OsRegion",
+            "style": "dotted"
+        }
+    }, {
+        "data": {
+            "id": "os-project",
+            "name": "OsProject",
+
+            "style": "dotted"
+        }
+    }, {
+        "data": {
+            "id": "os-network",
+            "name": "OsNetwork"
+        }
+    }, {
+        "data": {
+            "id": "os-account",
+            "name": "OsAccount"
+        }
+    }, {
+        "data": {
+            "id": "os-container",
+            "name": "OsContainer"
+        }
+    }, {
+        "data": {
+            "id": "os-object",
+            "name": "OsObject"
+        }
+    }],
+    "edges": [{
+        "data": {
+            "source": "os-subnet",
+            "target": "os-instance"
+        }
+    }, {
+        "data": {
+            "color": {
+                "color": "blue"
+            },
+
+            "source": "os-workload",
+            "target": "os-instance"
+        }
+    }, {
+        "data": {
+            "color": {
+                "color": "blue"
+            },
+
+            "source": "os-image",
+            "target": "os-instance"
+        }
+    }, {
+        "data": {
+            "color": {
+                "color": "blue"
+            },
+
+            "source": "os-volume",
+            "target": "os-instance"
+        }
+    }, {
+        "data": {
+            "color": {
+                "color": "blue"
+            },
+
+            "source": "os-region",
+            "target": "os-instance"
+        }
+    }, {
+        "data": {
+            "color": {
+                "color": "blue"
+            },
+
+            "source": "os-project",
+            "target": "os-instance"
+        }
+    }, {
+        "data": {
+            "color": {
+                "color": "blue"
+            },
+
+            "source": "os-subnet",
+            "target": "os-region"
+        }
+    }, {
+        "data": {
+            "color": {
+                "color": "blue"
+            },
+
+            "source": "os-project",
+            "target": "os-region"
+        }
+    }, {
+        "data": {
+            "color": {
+                "color": "blue"
+            },
+
+            "source": "os-network",
+            "target": "os-region"
+        }
+    }, {
+        "data": {
+            "color": {
+                "color": "blue"
+            },
+
+            "source": "os-image",
+            "target": "os-region"
+        }
+    }, {
+        "data": {
+            "color": {
+                "color": "blue"
+            },
+
+            "source": "os-volume",
+            "target": "os-region"
+        }
+    }, {
+        "data": {
+            "color": {
+                "color": "blue"
+            },
+
+            "source": "os-subnet",
+            "target": "os-network"
+        }
+    }, {
+        "data": {
+            "color": {
+                "color": "blue"
+            },
+
+            "source": "os-project",
+            "target": "os-network"
+        }
+    }, {
+        "data": {
+            "color": {
+                "color": "blue"
+            },
+
+            "source": "os-subnet",
+            "target": "os-project"
+        }
+    }, {
+        "data": {
+            "color": {
+                "color": "blue"
+            },
+
+            "source": "os-image",
+            "target": "os-project"
+        }
+    }, {
+        "data": {
+            "color": {
+                "color": "blue"
+            },
+
+            "source": "os-volume",
+            "target": "os-project"
+        }
+    }, {
+        "data": {
+            "color": {
+                "color": "blue"
+            },
+
+            "source": "os-project",
+            "target": "os-account"
+        }
+    }, {
+        "data": {
+            "color": {
+                "color": "blue"
+            },
+
+            "source": "os-container",
+            "target": "os-account"
+        }
+    }, {
+        "data": {
+            "color": {
+                "color": "blue"
+            },
+
+            "source": "os-region",
+            "target": "os-account"
+        }
+    }, {
+        "data": {
+            "color": {
+                "color": "blue"
+            },
+
+            "source": "os-container",
+            "target": "os-object"
+        }
+    }, {
+        "data": {
+            "color": {
+                "color": "blue"
+            },
+
+            "source": "os-region",
+            "target": "os-container"
+        }
+    }]
+}

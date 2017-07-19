@@ -1,0 +1,63 @@
+// Operation dialogs
+//
+// Default display of an dialog
+//
+// Markup:
+// <div class="mas-dialog">
+//   <form class='mas-form'>
+//     <div class="mas-dialog--title"></div>
+//     <div class="mas-dialog--content">
+//       <div class="mas-dialog--body"></div>
+//       <div class="mas-dialog--controls"></div>
+//       <div class="mas-dialog--error"></div>
+//     </div>
+//     <div class="mas-dialog--buttons">
+//       <button class="mas-dialog--cancel">Cancel</button>
+//       <button class="mas-dialog--submit">Submit</button>
+//     </div>
+//   </form>
+//   <div class="mas-dialog--loading">loading...</div>
+// </div>
+//
+// Styleguide 3.7
+
+.mas-dialog{
+
+  // Necessary for the dialog to cover the properties
+  // Should probably be part of a .mas-elementDetails--dialog class, though
+  position: relative;
+  padding: (@unit / 4 * 1px) (@unit / 4 * 1px) 0;
+
+}
+
+.mas-dialog--title {
+  padding-top: 10px;
+}
+
+.mas-dialog--controls{
+ padding: (@unit / 4 * 1px) 0;
+}
+
+.mas-dialog--body{
+  padding: (@unit / 8 * 1px) 0;
+}
+
+.mas-dialog--buttons{
+  text-align: right;
+  padding: 10px 0;
+}
+
+.mas-dialog--loading{
+  position: absolute;
+  top : 5px;
+  right: 5px;
+}
+
+.mas-dialog--response{
+  position: absolute;
+  top :60px;
+}
+
+.mas-form {
+  height: 100%;
+}

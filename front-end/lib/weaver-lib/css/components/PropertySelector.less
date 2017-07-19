@@ -1,0 +1,44 @@
+// Property selector
+//
+// Markup:
+// <article class="mas-propertySelector">
+//   <h1 class="mas-propertySelector--title">Metrics</h1>
+//   <ul class="mas-propertySelector--properties">
+//     <li class="mas-propertySelector--property mas-property mas-property-selected">CPU load</li>
+//     <li class="mas-propertySelector--property mas-property">Memory used</li>
+//     <li class="mas-propertySelector--property mas-property">Swap size</li>
+//   </ul>
+// </article>
+//
+// Styleguide 1.5
+.mas-propertySelector--title{
+
+  display: block;
+  padding: 0 @unit * 1.25px 0 @unit * 0.25px;
+  white-space: nowrap;
+}
+
+// Used to make it easy to reorder properties
+// using flexbox order
+.mas-flexboxContainer {
+  overflow: auto;
+  max-height: @unit * 3px;
+  min-width: @unit * 5px;
+}
+
+.mas-propertySelector--property {
+
+  padding: 0 @unit * 1px 0 @unit * 0.25px; // Ensures there's a bit of space for the
+                                           // property to breathe on the right
+  min-width: 10em;
+  line-height: @unit * 1px;
+  min-height: @unit * 1px;
+
+  cursor: pointer;
+
+  white-space: nowrap;
+}
+
+.mas-property-selected {
+  order: -1;
+}

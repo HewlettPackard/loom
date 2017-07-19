@@ -1,0 +1,20 @@
+.mas-relationTypeMenu {
+
+  .mas-menu-expandsUp();
+  .mas-menu-rightAligned();
+
+  .mas-menu--toggle {
+    &::before {
+      .fa();
+      content: @fa-var-share-alt;
+      margin-right: 10px;
+    }
+  }
+}
+
+.mas-relationType.is-highlighted {
+
+  background-color: @hp-light-grey;
+  color: @hp-darker-grey;
+  transition: background-color .1s;
+}

@@ -1,0 +1,8 @@
+providerType=file
+providerId=file
+authEndpoint=http://16.25.166.21:5000/v2.0
+providerName=File
+collectThreads=1
+schedulingInterval=2000
+fileRoot=.
+adapterClass=com.hp.hpl.loom.adapter.file.FileSystemAdapterNotReal

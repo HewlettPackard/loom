@@ -1,0 +1,13 @@
+.stripes(@foreground: black;
+         @background: transparent; 
+         @foreground-size: 1px; 
+         @background-size: @foreground-size; 
+         @angle: 45deg) {
+
+  @offset: 0px;
+  background-image+: repeating-linear-gradient(@angle, 
+                                               @foreground @offset, 
+                                               @foreground @offset + @foreground-size, 
+                                               @background @offset + @foreground-size, 
+                                               @background @offset + @foreground-size + @background-size);
+}

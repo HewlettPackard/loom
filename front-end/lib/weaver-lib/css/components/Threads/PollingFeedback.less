@@ -1,0 +1,44 @@
+// Polling feedback
+//
+// Markup:
+// <div class="mas-pollingFeedback {{modifier_class}}"></div>
+//
+// .mas-pollingFeedback-failed - When polling failed for the Thread
+//
+// Styleguide 6.2
+.mas-pollingFeedback {
+  color: rgba(0,0,0,.2);
+}
+
+.mas-pollingFeedback:before {
+  content: '•';
+
+  display: block;
+  line-height: .75em;
+  width: .75em;
+
+  text-align: center;
+  font-size: 16px;
+}
+
+.mas-pollingFeedback-failed {
+  color: rgba(255,0,0, 1);
+}
+
+.mas-pollingFeedback-polling {
+  -webkit-animation: pollingBlink .75s infinite;
+  -webkit-animation-direction: alternate ;
+
+  animation: pollingBlink .75s infinite;
+  animation-direction: alternate;
+}
+
+@-webkit-keyframes pollingBlink {
+  from {color: #1dc25c;}
+  to {color: rgba(0,0,0,.2);}
+}
+
+@keyframes pollingBlink {
+  from {color: #1dc25c;}
+  to {color: rgba(0,0,0,.2);}
+}

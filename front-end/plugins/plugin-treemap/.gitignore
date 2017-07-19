@@ -1,0 +1,3 @@
+.tscache
+js/**/*.js.map
+js/**/*.d.ts

@@ -1,0 +1,83 @@
+// ThreadViewHeader
+//
+// Markup:
+// <div class="mas-threadHeader">
+//     <div class="mas-threadHeader--info">
+//         <h1 class="mas-threadHeader--title"><span class="mas-titleInContext--title">Instances</span></h1>
+//         <div class="mas-threadSummary mas-threadSummary-noAlerts">
+//             <div class="mas-threadSummary--numberOfItems">48 items</div>
+//             <div class="mas-threadSummary--numberOfAlerts">0</div>
+//         </div>
+//         <div class="mas-threadHeader--pollingFeedback mas-pollingFeedback"></div>
+//     </div>
+//     <button class="mas-threadHeader--action mas-action-toggleQuery"></button>
+//     <button class="mas-threadHeader--action mas-action-maximiseThread"></button>
+//     <ul class="mas-threadMetrics mas-threadHeader--metrics"></ul>
+// </div>
+//
+// Styleguide 4.2.1
+
+@actionsWidth: 150px;
+@actionsOverlapWidth: 40px;
+
+.mas-threadHeader {
+
+  position: relative;
+  // Leaves enough space for the actions to be displayed, whatever the content
+  min-height: @unit * 1.5px;
+}
+
+.mas-threadHeader--title {
+  .mas-titleInContext();
+
+  .mas-titleInContext--title,
+  .mas-titleInContext--context,
+  .mas-titleInContext--separator {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  .mas-titleInContext--title:not(:only-child) {
+    max-width: 75%;
+  }
+}
+
+.mas-threadHeader--info {
+
+  padding: 0 50px 14px 14px;
+
+  min-height: @unit * 1.5px;
+
+  overflow: hidden;
+  white-space: nowrap;
+
+  // Will make any element inside truncate its content
+  // so it doesn't overflow
+  text-overflow: ellipsis;
+
+  .mas-pollingFeedback {
+    position: absolute;
+    top: -1px;
+    left: -6px;
+    z-index: 30;
+  }
+}
+
+.mas-threadHeader--action {
+  position: absolute;
+  right: -10px;
+  top: 18px;
+}
+
+// Ideally we'd use flexbox and space-between
+// to position the metrics at the bottom but
+// Chrome has some trouble with it, so
+// absolute position and JS computation of some
+// padding it is :(
+.mas-threadHeader--metrics {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top: 90px;
+}

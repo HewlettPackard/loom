@@ -1,0 +1,12 @@
+<g id="inset-effect">
+  {{#groups}}
+  {{#models}}
+    {{#hasAlertOrHasBeenUpdated}}
+      <mask id="{{inset.idMask}}" maskUnits="userSpaceOnUse" class="mas-mapCountryMask"
+        style="stroke-width: {{inset.strokeMask}}px;">
+        <use xlink:href="#{{idRef}}" />
+      </mask>
+    {{/hasAlertOrHasBeenUpdated}}
+  {{/models}}
+  {{/groups}}
+</g>

@@ -1,0 +1,66 @@
+
+
+/////////////////////////////
+// Offscreen changes/alert //
+/////////////////////////////
+
+//    background-image:  url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNCIgaGVpZ2h0PSIxNCI+PHBhdGggZD0iTS0yIDE2TDE2IC0yWk0xNiAxMkwxMiAxNlpNLTIgMkwyIC0yIiBzdHJva2U9ImhzbCgxOTQsIDg0JSwgMzQlKSIgc3Ryb2tlLXdpZHRoPSI1Ij48L3BhdGg+Cjwvc3ZnPg=="),url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPgo8bGluZWFyR3JhZGllbnQgaWQ9ImciIHgyPSIxIiB5Mj0iMSI+CjxzdG9wIHN0b3AtY29sb3I9IiNGMTkiPjwvc3RvcD4KPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMENGIj48L3N0b3A+CjwvbGluZWFyR3JhZGllbnQ+CjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9ImhzbCgxOTUsIDc3JSwgNTIlKSI+PC9yZWN0Pgo8L3N2Zz4=");
+//    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiI+PHBhdGggZD0iTS00IDIwTDIwIC00Wk0yMCAxMkwxMiAyMFpNLTQgNEw0IC00IiBzdHJva2U9ImhzbCgyOSwgODElLCA0OSUpIiBzdHJva2Utd2lkdGg9IjUuNSI+PC9wYXRoPgo8L3N2Zz4="),url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPgo8bGluZWFyR3JhZGllbnQgaWQ9ImciIHgyPSIxIiB5Mj0iMSI+CjxzdG9wIHN0b3AtY29sb3I9IiNGMTkiPjwvc3RvcD4KPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMENGIj48L3N0b3A+CjwvbGluZWFyR3JhZGllbnQ+CjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9ImhzbCgzOCwgODUlLCA1MiUpIj48L3JlY3Q+Cjwvc3ZnPg==");
+    
+.mas-offscreenContainer {
+  display: flex;
+}
+
+.mas-offscreenContainer-vertical {
+  min-height: 12px;
+}
+
+.mas-offscreenContainer-horizontal {
+  min-width: 12px;
+}
+
+.mas-offscreenContainer.is-related.mas-is-visibility-hidden {
+  visibility: visible;
+}
+
+.mas-offscreen-vertical-added {
+  margin-top: 1px;
+  margin-bottom: 1px;
+}
+
+.mas-offscreen-horizontal-added {
+  margin-right: 1px;
+  margin-left: 1px;
+}
+
+.mas-isFlex {
+  display: flex;
+  justify-content: space-around;
+}
+
+.mas-mapFlex-top {
+  flex-direction: row;
+  width: 100%;
+  top: 0px;
+}
+.mas-mapFlex-left {
+  flex-direction: column;
+  height: 100%;
+  left: 0px;
+}
+.mas-mapFlex-right {
+  flex-direction: column;
+  height: 100%;
+  right: 0px;
+}
+.mas-mapFlex-bottom {
+  flex-direction: row;
+  width: 100%;
+  bottom: 0px;
+}
+.mas-mapFlexOverlay {
+  width: 100%;
+  height: 100%;
+  left: 0px;
+  top: 0px;
+}

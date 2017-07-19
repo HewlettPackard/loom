@@ -1,0 +1,36 @@
+/////////////////////////
+// Map Effects applied //
+/////////////////////////
+
+.mas-InsetEffect .mas-isOfInterest,
+.mas-isOfInterest .mas-InsetEffect {
+  stroke: @mas-color-regular-el-lighter;
+  fill : none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.mas-InsetEffect .mas-isOfInterest:not(.mas-alertNotification-0),
+.mas-isOfInterest:not(.mas-alertNotification-0) .mas-InsetEffect {
+  stroke: @mas-color-alert-el;
+}
+
+.mas-InsetEffect .mas-isOfInterest.is-related,
+.mas-isOfInterest.is-related .mas-InsetEffect {
+  stroke: @mas-color-related-el-lighter;
+}
+
+.mas-InsetEffect .mas-isOfInterest.is-related:not(.mas-alertNotification-0),
+.mas-isOfInterest.is-related:not(.mas-alertNotification-0) .mas-InsetEffect {
+  stroke: @mas-color-alert-el;
+}
+
+.mas-HatchEffect .mas-isOfInterest,
+.mas-isOfInterest .mas-HatchEffect {
+  fill: @mas-color-regular-el-darker;
+}
+
+.mas-HatchEffect .mas-isOfInterest.is-related,
+.mas-isOfInterest.is-related .mas-HatchEffect {
+  fill: @mas-color-related-el-darker;
+}

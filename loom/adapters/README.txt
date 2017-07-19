@@ -1,0 +1,1 @@
+Optional Adapters that must be installed into Loom's nominated adapter folder to load.

@@ -1,0 +1,4 @@
+{
+  "theme": "theme/css/theme.css",
+  "plugins": ["map", "table", "treemap"]
+}

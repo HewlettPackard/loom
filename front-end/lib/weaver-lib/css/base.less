@@ -1,0 +1,247 @@
+// Base styles
+//
+// Styles for the base elements that are used as foundation for the other components
+//
+// Styleguide 1.0
+
+@-ms-viewport {
+  // Configure IE10 viewport properly when in "snap mode" on Windows 8
+  // Might need to add some JS for Windows 8 phones:
+  // http://css-tricks.com/snippets/javascript/fix-ie-10-on-windows-phone-8-viewport/
+  width: device-width;
+}
+
+* {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  // Prevents double-tap zooming in IE10, which removes delay on 'click' events
+  -ms-touch-action: pan-y;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+
+  height: 100%;
+  width: 100%;
+
+  font-family: sans-serif;
+
+  // Prevents unnecessary horizontal scrollbar when drag'n'drop happens
+  // overflow-x: hidden;
+  // Prevents glitch in firefox
+  // overflow-y: hidden;
+  overflow: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-size: 1em;
+  font-weight: normal;
+}
+
+ul, ol, p {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style-type: none;
+}
+
+dl, dd {
+  margin: 0;
+}
+
+label, a, button {
+  cursor: pointer;
+}
+
+button {
+
+  background: transparent;
+  color: inherit;
+  line-height: normal;
+  border: none;
+  padding: 0;
+  margin: 0;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+// By default, select, input and textarea have a white background,
+// but inherit the text color in some browsers, which could make
+// the text illegible in some situations
+select, input, textarea {
+  color: black;
+}
+
+// Messages
+//
+// Presentational classes that can be used to style messages
+//
+// Markup:
+// <p class="mas-error">Uh oh, something went wrong!</p>
+// <p class="mas-warning">Watch out!</p>
+// <p class="mas-success">Tadam!</p>
+// <p class="mas-info">FYI, all is good!</p>
+//
+// Styleguide 1.1
+
+// Buttons
+//
+// Sets of buttons
+//
+// Markup:
+// <p>Standard buttons:</p>
+// <button class="mas-button">Click me!</button>
+// <a class="mas-button">Link camouflage!</a>
+// <p>Cancel buttons:</p>
+// <button class="mas-cancel">Abort!</button>
+// <a class="mas-cancel">Link to abort!</a>
+//
+// Styleguide 1.2
+
+// Form elements
+//
+// Styleguide 1.3
+
+// Text inputs
+//
+// Markup:
+// <input class="mas-input" placeholder="input" />
+//
+// Styleguide 1.3.1
+
+// Labeled inputs
+//
+// Markup:
+// <label class="mas-labeledInput-top">
+//   <span class="mas-formLabel">Username</span>
+//   <input name="username" data-name="username" class="mas-input" autocomplete="off" type="text">
+// </label>
+//
+// Styleguide 1.3.2
+
+// Radio
+//
+// Markup:
+// <label class="mas-fancyRadio">
+//     <input value="softReboot" class="mas-fancyRadio--input" name="power" required="" type="radio">
+//     <div class="mas-fancyRadio--radio">Soft Reboot</div>
+// </label>
+//
+// Styleguide 1.3.4
+
+// TODO: Styles for checkbox, select (incl. opt), textareas, fieldset & legends
+
+// Title in context
+//
+// Displays a title in different parts that will shrink in different
+// proportions, shrinking first the context, then the title
+//
+// Markup:
+// <div class="mas-titleInContext" style="max-width: 80px;">
+//   <div class="mas-titleInContext--context">Context</div>
+//   <div class="mas-titleInContext--separator">: </div>
+//   <div class="mas-titleInContext--title">Title</div>
+// </div>
+// <div class="mas-titleInContext" style="max-width: 60px;">
+//   <div class="mas-titleInContext--context">Context</div>
+//   <div class="mas-titleInContext--separator">: </div>
+//   <div class="mas-titleInContext--title">Title</div>
+// </div>
+// <div class="mas-titleInContext" style="max-width: 45px;">
+//   <div class="mas-titleInContext--context">Context</div>
+//   <div class="mas-titleInContext--separator">: </div>
+//   <div class="mas-titleInContext--title">Title</div>
+// </div>
+//
+// Styleguide 1.4
+.mas-titleInContext {
+  display: flex;
+}
+
+.mas-titleInContext--context {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  // We don't want it to expand, but we want it to shrink
+  flex: 0 1 auto;
+}
+
+.mas-titleInContext--separator {
+  // We don't want the separator to collapse
+  flex: 0 0 auto;
+}
+
+.mas-titleInContext--title {
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  &:not(:only-child) {
+    max-width: 50%;
+    flex: 0 0 auto;
+  }
+}
+
+.mas-isHidden{
+ display: none;
+}
+
+.mas-isInvisible{
+  // This used to be opacity: 0. However, it would
+  // produce a weird behavior when a form is hidden
+  // after being validated as things such as browser
+  // autocompletion wouldn't disappear.
+  // opacity:0;
+  visibility: hidden;
+}
+
+.mas-animationClone {
+  position: absolute;
+  top: 0;
+  visibility: hidden;
+}
+
+.mas {
+
+  height: 100%;
+  overflow: hidden;
+
+  user-select: none;
+}
+
+// Lists
+//
+// Markup:
+// <ul class="mas-list {{modifier_class}}">
+//   <li class="mas-listItem">Standard item</li>
+//   <li class="mas-listItem">
+//      Item with content<br/>
+//      On multiple lines<br/>
+//   </li>
+//   <li class="mas-listItem is-highlighted">Highlighted item</li>
+//   <li class="mas-listItem is-highlighted">
+//      Highlighted item<br/>
+//      On multiple lines
+//   </li>
+//   <li class="mas-listItem">
+//     <span class="mas-listItemHeader">1</span>
+//     Item with header
+//   </li>
+//   <li class="mas-listItem is-highlighted">
+//     <span class="mas-listItemHeader">2</span>
+//     Highlighted item with header
+//   </li>
+// </ul>
+//
+// .mas-list-light - Light theme
+// .mas-list-dark - Dark theme
+//
+// Styleguide 1.6

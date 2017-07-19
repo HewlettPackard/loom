@@ -1,0 +1,9 @@
+node_modules
+bower_components
+dist
+reports
+*.log
+*.tag
+*.releaseBackup
+*.next
+release.properties

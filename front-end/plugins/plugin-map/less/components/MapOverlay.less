@@ -1,0 +1,102 @@
+
+
+////////////////////
+// Map Indicators //
+////////////////////
+
+@notactive: rgba(255, 255, 255, 0);
+@active:hsl(207, 15%, 40%);
+@overlay-text-shadow: 0px 0px 0px #C7CDD1, 0px 0px 3px #FFF, 0px 0px 20px #666;
+
+.mas-mapIndicators {
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+    display:flex;
+}
+
+.mas-mapZoomIndicator {
+    width:20px;
+    height:40px;
+    position:relative;
+    color: @notactive;
+    text-shadow: @overlay-text-shadow;
+}
+
+.mas-mapZoomIndicator .fa-search {
+    font-size: 20px;
+    position:relative;
+    left:0px;
+    top:0px;
+    color: hsl(207, 15%, 40%);
+}
+.mas-mapZoomIndicator .fa-plus {
+    font-size: 10px;
+    position:absolute;
+    left:0px;
+    top:22px;
+
+    &.mas-isActive {
+      color: @active;
+    }
+}
+.mas-mapZoomIndicator .fa-minus {
+    font-size: 10px;
+    position:absolute;
+    left:10px;
+    top:22px;
+
+    &.mas-isActive {
+      color: @active;
+    }
+}
+
+.mas-mapPanIndicator {
+    width: 30px;
+    height: 31px;
+    margin-left: 10px;
+    font-size: 12px;
+    position:relative;
+    color: @notactive;
+    text-shadow: @overlay-text-shadow;
+}
+
+.mas-mapPanIndicator .fa-arrow-up {
+    position:absolute;
+    left: 9px;
+    top:0px;
+
+    &.mas-isActive {
+      color: @active;
+    }
+}
+
+.mas-mapPanIndicator .fa-arrow-down {
+    position:absolute;
+    left: 9px;
+    bottom:0px;
+
+    &.mas-isActive {
+      color: @active;
+    }
+}
+
+.mas-mapPanIndicator .fa-arrow-left {
+    position:absolute;
+    left:0px;
+    top: 9px;
+
+    &.mas-isActive {
+      color: @active;
+    }
+}
+
+.mas-mapPanIndicator .fa-arrow-right {
+    position:absolute;
+    left: 19px;
+    top: 9px;
+
+    &.mas-isActive {
+      color: @active;
+    }
+}

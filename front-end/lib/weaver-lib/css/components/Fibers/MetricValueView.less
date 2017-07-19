@@ -1,0 +1,57 @@
+// Metrics
+//
+// The Metrics of an element get displayed as a bar graph,
+// possibly of multiple values when displaying the history
+// of the metric. The latest value of the metric gets
+// overlaid on top of the graph.
+//
+// When no data is available for the metric, a placeholder gets displayed.
+//
+// Markup:
+// <div class="mas-metricValue" style="min-height: 30px;">
+//     <div class="mas-graph mas-metricValue--graph">
+//         <div class="mas-graphBar" style="background-size: 100% 37%;"></div>
+//     </div>
+//     <div class="mas-metricValue--label">37 %</div>
+// </div>
+// <div class="mas-metricValue" style="min-height: 30px;">
+//     <div class="mas-graph mas-metricValue--graph" style="padding-left: 70%;">
+//         <div class="mas-graphBar" style="background-size: 100% 36.005043%;"></div>
+//         <div class="mas-graphBar" style="background-size: 100% 62.286644%;"></div>
+//         <div class="mas-graphBar" style="background-size: 100% 74.10126%;"></div>
+//     </div>
+//     <div class="mas-metricValue--label">74.10 %</div>
+// </div>
+// <div class="mas-metricValue mas-metricValue-noValue" style="min-height: 30px;">
+//     <div class="mas-graph mas-metricValue--graph">
+//         <div class="mas-graphBar" style="background-size: 100% 0%;"></div>
+//     </div>
+//     <div class="mas-metricValue--label">???</div>
+// </div>
+//
+// Styleguide 3.6
+.mas-metricValue {
+
+  // One additional px because of the border in the header
+  @marginTop: 9px;
+  @marginBottom: 8px;
+  @height: (@unit - @marginTop - @marginBottom);
+
+  display: flex;
+  flex: 0 0 @height;
+  margin: @marginTop 0 @marginBottom;
+
+  position: relative;
+
+  .mas-graph {
+    height: @height;
+    width: 10px;
+  }
+}
+
+.mas-metricValue--label {
+
+  position: absolute;
+  bottom: 0;
+  left: 50px;
+}

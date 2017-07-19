@@ -1,0 +1,39 @@
+.mas-threadPositionControl {
+  text-align: center;
+  line-height: auto;
+
+  background-color: @mas-color-threadPositionControlBackground;
+  color: @mas-color-threadPositionControl;
+
+  cursor: pointer;
+}
+
+.mas-threadPositionControl::before,
+.mas-threadPositionControl--up::before,
+.mas-threadPositionControl--down::before {
+  .fa();
+
+  // .fa() resets transform :/
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.mas-threadPositionControl::before {
+  content: @fa-var-sort;
+}
+
+.mas-threadPositionControl--up::before {
+  content: @fa-var-caret-up;
+}
+
+.mas-threadPositionControl--down::before {
+  content: @fa-var-caret-down;
+}
+
+.mas-threadView:first-child .mas-threadPositionControl--up,
+.mas-threadView:last-child .mas-threadPositionControl--down,
+.mas-threadView:only-child .mas-threadPositionControl {
+
+  // Color, not opacity, so it plays well with how each
+  // states are hidden
+  color: mix(@mas-color-threadPositionControl, @mas-color-threadPositionControlBackground, 10);
+}

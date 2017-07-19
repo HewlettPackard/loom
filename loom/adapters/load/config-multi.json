@@ -1,0 +1,64 @@
+[
+    {
+        "users": [
+            "test_stand"
+        ],
+        "config": [
+            {
+                "name": "A",
+                "count": 1
+            },
+            {
+                "name": "B",
+                "count": 1
+            },
+            {
+                "name": "C",
+                "count": 1
+            }
+        ]
+    },
+    {
+        "users": [
+"test_multi_1","test_multi_2","test_multi_3","test_multi_4","test_multi_5","test_multi_6","test_multi_7","test_multi_8","test_multi_9","test_multi_10","test_multi_11","test_multi_12","test_multi_13","test_multi_14","test_multi_15","test_multi_16","test_multi_17","test_multi_18","test_multi_19","test_multi_20"
+        ],
+        "config": [
+            {
+                "name": "A",
+                "count": 1,
+                "relationships": [
+                    {
+                        "name": "A-B-Test",
+               		"unique": true,
+                        "percent": [
+                            {
+				"vertex": "2",
+                                "percentage": "100"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "B",
+                "count": 2,
+                "relationships": [
+                    {
+                        "name": "B-C-Test",
+			"unique": true,
+                        "percent": [
+                            {
+				"vertex": "2",
+                                "percentage": "100"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "C",
+                "count": 4
+            }
+        ]
+    }
+]

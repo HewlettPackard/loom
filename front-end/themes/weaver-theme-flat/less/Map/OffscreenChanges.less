@@ -1,0 +1,70 @@
+@import "~dye/less/mixins/stripes.less";
+
+.mas-offscreenContainer {
+  background-color: @mas-color-regularFiber;
+  border: 1px solid @mas-color-regularFiber;
+}
+
+.mas-offscreenContainer.is-related {
+  background-color: @mas-color-relatedFiber;
+  border: 1px solid @mas-color-relatedFiber;
+}
+
+.mas-offscreenContainer-direction(@direction) {
+  opacity: 0.75;
+  flex-direction: @direction;
+}
+
+.mas-offscreenContainer-vertical {
+  width: 20px;
+  .mas-offscreenContainer-direction(column);
+}
+
+.mas-offscreenContainer-horizontal {
+  height: 20px;
+  .mas-offscreenContainer-direction(row);
+}
+
+// Definitions
+@rel: @mas-color-related-el;
+@rel-lighter: @mas-color-related-el-lighter;
+@rel-darker: @mas-color-related-el-darker;
+@reg: @mas-color-regular-el;
+@reg-lighter: @mas-color-regular-el-lighter;
+@reg-darker: @mas-color-regular-el-darker;
+
+.generate-offscreen(@name) {
+  
+  // Generation
+  .mas-offscreen-@{name} {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
+  }
+  .mas-offscreen-@{name}-added {
+    .stripes(@reg, @hp-light-grey);
+  }
+  .is-related .mas-offscreen-@{name}-added {
+    .stripes(@rel, @hp-light-grey);
+  }
+  .mas-offscreen-@{name}-updated {
+    box-shadow: inset 0 -3px 0 0 @reg, inset -3px 0 0 @reg, inset 3px 0 0 @reg, inset 0 -6px 0 0 @reg-lighter;
+    background-color: @reg;
+  }
+  .is-related .mas-offscreen-@{name}-updated {
+    box-shadow: inset 0 -3px 0 0 @rel, inset -3px 0 0 @rel, inset 3px 0 0 @rel, inset 0 -6px 0 0 @rel-lighter;
+    background-color: @rel;
+  }
+  .mas-offscreen-@{name}-alert {
+    background-color: @mas-color-alert-el;
+    box-shadow: inset 0 0 6px @reg-darker;
+  }
+  .is-related .mas-offscreen-@{name}-alert {
+    box-shadow: inset 0 0 6px @rel-darker;
+  }
+}
+
+
+
+.generate-offscreen(vertical);
+.generate-offscreen(horizontal);

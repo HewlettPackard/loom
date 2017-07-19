@@ -1,0 +1,30 @@
+{{! Countries representation }}
+{{! ------------------------ }}
+<g id="{{idGroup}}">
+  {{! --- default model --- }}
+  <g id="layer-scene" transform="{{scene.transform}}">
+    {{#models}}
+      <use id="rv2-{{idRef}}" xlink:href="#{{idRef}}" class="{{classes}} mas-mapCountry" handler="trigger-select-on-click">
+        <title>{{title}}</title>
+      </use>
+    {{/models}}
+  </g>
+  {{! --- added state --- }}
+  <g mask="url(#{{hatch.idMask}})" class="mas-isIgnoringPointerEvents mas-HatchEffect">
+    <g id="layer-scene" transform="{{scene.transform}}">
+    {{#models}}
+      {{#hasBeenAdded}}
+      <use id="r-{{idRef}}" xlink:href="#{{idRef}}" class="{{classes}} mas-mapCountry"/>
+      {{/hasBeenAdded}}
+    {{/models}}
+    </g>
+  </g>
+  {{! --- alert/updated state --- }}
+  <g id="layer-scene" transform="{{scene.transform}}" class="mas-isIgnoringPointerEvents mas-InsetEffect">
+    {{#models}}
+      {{#hasAlertOrHasBeenUpdated}}
+      <use id="r-{{idRef}}" xlink:href="#{{idRef}}" class="{{classes}}" style="stroke-width: {{inset.stroke}}px" mask="url(#{{inset.idMask}})"/>
+      {{/hasAlertOrHasBeenUpdated}}
+    {{/models}}
+  </g>
+</g>

@@ -1,0 +1,38 @@
+.mas-threadList {
+  padding: 20px;
+}
+
+.mas-tapestryScreen.is-locked {
+
+  .mas-threadList::after {
+    display: block;
+    content: "";
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background: none repeat scroll 0% 0% hsl(210, 10%, 20%);
+    z-index: 10;
+    animation-name: locked-fade-in;
+    animation-duration: 0.75s;
+    animation-fill-mode: both;
+  }
+
+  .mas-toolbar--notification {
+    display: none;
+  }
+
+  .mas-providerSelectionMenu .mas-menu--toggle {
+    pointer-events: none;
+  }
+}
+
+@keyframes locked-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.75;
+  }
+}

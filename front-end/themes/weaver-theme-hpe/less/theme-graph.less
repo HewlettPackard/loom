@@ -1,0 +1,65 @@
+@import "colors.less";
+
+.mas-graphLabel() {
+  font-family: Metric, arial, sans-serif;
+  font-size: 10;
+  text-outline-width: 2;
+  text-outline-color: @hpe-dark-background;
+  text-valign: bottom;
+  color: @mas-lightGrey;
+}
+
+.mas-itemType {
+  content: data(name);
+  .mas-graphLabel();
+  width: 1em;
+  height: 1em;
+  z-index: 20;
+  border-width: 2;
+  border-color: @hpe-green;
+  background-color: @hpe-dark-background;
+}
+.mas-providerType {
+
+  border-width: 1;
+  border-color: @hpe-bronze;
+  border-style: dashed;
+  background-opacity: 0;
+  content: data(id);
+  font-family: Metric, arial, sans-serif;
+  font-size: 10;
+  text-valign: bottom;
+  text-halign: center;
+  text-background-color: @hpe-bronze;
+  text-background-opacity: 1;
+  color: @hpe-dark-background;
+}
+.mas-itemType-displayed {
+
+  background-color: @hpe-green;
+}
+.mas-itemType-root {
+
+  border-width: 4;
+  border-style: double;
+}
+.mas-relation {
+
+  width: 2;
+  line-color: @hpe-bronze;
+}
+.mas-relation-traversed {
+
+  width: 3;
+  line-color: @mas-lightGrey;
+  z-index: 10
+}
+.mas-relation-stitched {
+
+  line-style: dashed;
+}
+
+.mas-relation-labelled {
+  .mas-graphLabel();
+  content: data(name);
+}

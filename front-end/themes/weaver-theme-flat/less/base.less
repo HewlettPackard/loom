@@ -1,0 +1,354 @@
+// HTML ELEMENTS
+h1 {
+  font-weight: normal;
+}
+
+a, a:visited {
+  color: @hp-orange;
+}
+
+a:hover, a:visited:hover {
+  color: @hp-orange-75;
+  text-decoration: none;
+}
+
+.mas {
+  font-family: Exo2MediumCondensed, sans-serif;
+
+  background: @mas-color-weaverBackground;
+  color: @mas-color-weaver;
+}
+
+@import "~dye/less/mixins/foldedCorner.less";
+
+.mas-icon-clone {
+
+  &::before {
+    content: @fa-var-columns;
+    .fa-rotate-270();
+  }
+}
+
+// LISTS
+@mas-listItem-leftPadding: 40px;
+.mas-listItem {
+
+  position: relative;
+  padding: 8px 10px 7px @mas-listItem-leftPadding;
+  border-bottom: solid 1px;
+
+  transition: background-color 0.3s;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  // Sometimes padding is handled by the content of the list
+  // so there's a specific class to remove all padding
+  // appart from the one to leave space for the header
+  .mas-list-noPadding & {
+
+    padding: 0 0 0 30px;
+  }
+}
+
+.mas-listItemHeader {
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30px;
+
+  line-height: 40px;
+  text-align: center;
+}
+
+.mas-list-light {
+
+  @border-color: mix(fade(@hp-darker-grey, 33), @hp-light-grey);
+
+  background: white;
+  color: @hp-darker-grey;
+  background-image: linear-gradient(to right, @hp-medium-grey 30px, transparent 0px);
+
+  .mas-listItem {
+    border-color: @border-color;
+
+    &.is-highlighted {
+      background: @hp-blue-15;
+      color: @hp-blue;
+      background-image: linear-gradient(to right, @hp-blue-40 30px, transparent 0px);
+    }
+  }
+}
+
+.mas-list-dark {
+
+  @border-color: mix(@hp-medium-grey, @hp-darker-grey, 30);
+
+  background-color: @hp-darker-grey;
+  background-image: linear-gradient(to right, @hp-dark-grey 30px, transparent 0px);
+  color: @hp-light-grey;
+
+  .mas-listItem {
+    border-color: @border-color;
+
+    &.is-highlighted {
+      background: @hp-light-grey;
+      color: @hp-darker-grey;
+      background-image: linear-gradient(to right, @hp-blue-40 30px, transparent 0px);
+      border-bottom-color: mix(fade(@hp-darker-grey, 33), @hp-light-grey);
+
+      .mas-listItemHeader {
+        color: @mas-dark-blue;
+      }
+    }
+  }
+}
+
+// BUTTONS
+.mas-button {
+
+  position: relative;
+  background: @hp-blue-65;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  line-height: 20px;
+
+  font-size: 15px;
+  font-variant: small-caps;
+
+
+  &:after {
+    @size: 8px;
+    .foldedCorner(@size);
+    .foldedCornerColor(transparent, @hp-blue);
+    border-width: 0 @size @size 0;
+    left: auto;
+    right: 0;
+  }
+}
+
+.mas-button-leftIcon {
+
+  padding: 0 10px 0 0;
+
+  &::before {
+    .fa();
+    width: 30px;
+    text-align: center;
+  }
+}
+
+.mas-cancel,
+.mas-cancel:visited {
+
+  color: inherit;
+
+  font-size: 15px;
+  font-variant: small-caps;
+}
+
+// MESSAGES
+.mas-error {
+  color: @mas-red;
+  white-space: normal;
+  text-transform: none;
+}
+
+.mas-info {
+  color: @hp-blue;
+  background: @hp-blue-40;
+}
+.mas-warning {
+  color: @yellow;
+  white-space: normal;
+  text-transform: none;
+}
+
+// FORM
+.mas-input {
+  color: @mas-almost-black;
+  background: white;
+  border: none;
+  border-radius: 1px;
+  border-bottom: @hp-medium-grey 2px solid;
+  padding: 5px;
+  line-height: 18px;
+}
+
+.mas-labeledInput-left {
+
+  display: flex;
+  line-height: 1.9;
+  margin-bottom: 10px;
+
+  .mas-input {
+    flex: 1;
+    margin-left: 10px;
+  }
+}
+
+.mas-labeledInput-top {
+
+  display: block;
+  margin-bottom: 10px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  .mas-input {
+    display: block;
+    width: 100%;
+  }
+}
+
+.mas-clearableInput {
+
+  display: flex;
+
+  .mas-clearableInput--input {
+
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .mas-clearableInput--clear {
+
+    border-radius: 1px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    background: @hp-medium-grey;
+    border-bottom: @hp-medium-grey 2px solid;
+    color: @hp-light-grey;
+    padding: 3px 8px 0;
+
+    &:active {
+      background: white;
+      color: @hp-light-grey;
+    }
+  }
+}
+
+.mas-formLabel {
+
+  font-variant: small-caps;
+  font-size: 15px;
+}
+
+.mas-fancyCheckBox--input {
+  display: none;
+}
+
+.square(@size: 12px) {
+
+  content: '';
+
+  display: block;
+  box-sizing: border-box;
+  height:@size;
+  width: @size;
+
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  margin-top: -@size/2;
+  margin-left: -@size/2;
+
+  border-radius: 10%;
+}
+
+.mas-fancyCheckBox--check {
+
+  position: relative;
+  padding-left: 30px;
+
+
+  &:before {
+
+    .square(18px);
+
+    background: white;
+    border:solid 2px @mas-almost-black;
+  }
+}
+
+.mas-fancyCheckBox--input:checked + .mas-fancyCheckBox--check {
+  &:after {
+    content: "\2713";
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
+    font-size: 15px;
+    color: @mas-almost-black;
+    text-align: center;
+    line-height: 15px;
+
+    position: absolute;
+    top: 30%;
+    left: 10px
+
+  }
+}
+
+.mas-fancyRadio {
+
+  display: block;
+  line-height: 30px;
+  background: white;
+  color: @mas-almost-black;
+  font-variant: normal;
+  font-size: 13px;
+  border-bottom: solid 2px @mas-almost-black;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.mas-fancyRadio--input {
+  display: none;
+}
+
+.circle(@size: 12px) {
+
+  content: '';
+
+  display: block;
+  box-sizing: border-box;
+  height:@size;
+  width: @size;
+
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  margin-top: -@size/2;
+  margin-left: -@size/2;
+
+  border-radius: 100%;
+}
+
+.mas-fancyRadio--radio {
+  position: relative;
+  padding-left: @unit * 1px;
+
+  &:before {
+    .circle(18px);
+    background: white;
+    border:solid @mas-radioOrCheckboxOutlineWidth @mas-color-radioOrCheckboxOutline;
+  }
+}
+
+.mas-fancyRadio--input:checked + .mas-fancyRadio--radio {
+  &:before {
+    border:solid @mas-radioOrCheckboxOutlineWidth @mas-color-radioOrCheckboxOutlineCheck;
+  }
+  &:after {
+    .circle(8px);
+    background: @mas-color-radioOrCheckboxCheck;
+  }
+}
+
+@import "BarGraph.less";
+@import "Menu.less";
+@import "PropertySelector.less";

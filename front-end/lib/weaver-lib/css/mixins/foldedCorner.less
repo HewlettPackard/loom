@@ -1,0 +1,22 @@
+.foldedCorner(@size: 10px) {
+
+  content: '';
+  display: block;
+  width: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  border-width:0 0 @size @size;
+  border-style:solid;
+}
+
+.foldedCornerColor(@color: @darkBlue, @background: transparent) {
+
+  border-color: @color @background;
+}
+
+.foldedCornerGlow(@color: @lightBlue) {
+
+  box-shadow: 2px 2px 0 0 @color;
+}

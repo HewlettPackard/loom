@@ -1,0 +1,193 @@
+@media only screen and (max-width: 480px) {
+
+  .mas-threadView {
+
+    &::after {
+      width: ~"calc(100% - 116px)";
+      max-width: none;
+      padding-bottom: 0;
+    }
+  }
+
+  .mas-thread--queryEditor,
+  .mas-action-toggleQuery,
+  .mas-thread--settingsMenu,
+  .mas-thread--settingsToggle
+  {
+    display:none;
+  }
+
+  .mas-threadView-metric {
+    display: none;
+  }
+
+  .mas-threadView-nested {
+
+    &::before {
+      background: #C3C9CC;
+      //display: none;
+    }
+
+    &::after {
+      width: ~"calc(100% - 100px)";
+      height: 2px;
+    }
+
+    .mas-threadHeader--title {
+      font-size: 14px;
+    }
+  }
+
+  .mas-thread--header, .mas-thread--elements {
+      width: auto;
+      max-width: none;
+      overflow: visible;
+      flex: 1;
+  }
+
+  .mas-toolbar--notification {
+    display: none;
+  }
+
+  .mas-providerSelectionMenu {
+    display: none;
+  }
+
+  .mas-thread--elements {
+    display: none;
+  }
+
+  .mas-threadHeader--actions {
+      display: none;
+  }
+
+  .mas-threadHeader--title {
+      padding: 5px 0;
+  }
+
+  .mas-threadHeader--info {
+      min-height: 0;
+  }
+
+  .mas-pollingFeedback {
+    display: none;
+  }
+
+  .mas-threadHeader--info {
+
+    padding-bottom: 0;
+
+    &::after {
+      display: none;
+    }
+  }
+
+  .mas-threadSummary {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: #CED5D9;
+    padding: 10px;
+    width: 100px;
+  }
+
+  .mas-threadSummary--numberOfItems {
+    width: 100%;
+    background: hsl(195, 69%, 52%);
+    color: #fff;
+    text-align: right;
+    line-height: 20px;
+    padding: 10px 5px 0;
+    font-weight: 600;
+  }
+
+  .mas-threadSummary-noAlerts {
+
+    .mas-threadSummary--numberOfAlerts {
+      display: none;
+    }
+  }
+
+  .mas-threadSummary--numberOfAlerts {
+    display: block;
+    display:block;
+    position: absolute;
+    min-width: 16px;
+    top: 6px;
+    right: 7px;
+    background: #db110e;
+    border-radius: 1px;
+    line-height: 1;
+    padding: 2px 4px 3px;
+    color: white;
+    text-align: center;
+  }
+
+  .mas-threadHeader--title {
+    line-height: 40px;
+  }
+
+  .mas-groupingInfo, mas-sortingInfo {
+    display: none;
+  }
+
+  .mas-threadHeader-showingPropertySelector .mas-threadHeader--propertySelector {
+    display: none;
+  }
+
+  .mas-threadHeader--action {
+    display: none;
+  }
+
+
+  .mas-patternSelectorToggle {
+    display: none;
+  }
+
+  .mas-search {
+    display: none;
+  }
+
+  .mas-thread--fibers {
+    display: none!important;
+  }
+
+  .mas-filter {
+    // Collapses the filter but still make it appear in the layout
+    visibility: hidden;
+    flex: 1 0 0;
+  }
+
+  .mas-providerSelectionMenu,
+  .mas-patternSelectionMenu,
+  .mas-relationTypeMenu {
+    display: none;
+  }
+
+  .mas-providerSelectionMenu--lockedWarning {
+    position:relative;
+    transform: none;
+    width: auto;
+  }
+
+  .mas-sideMenuLayout--menu {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    top: 0;
+    width: 50%;
+    min-width: 250px;
+
+    transition: width 0.3s;
+    
+    // Only show the menu when locked
+    .mas-tapestryScreen:not(.is-locked) &{
+      width: 0;
+      min-width: 0;
+    }
+  }
+
+  .mas-threadSummary-pending .mas-threadSummary--numberOfItems {
+    animation: none;
+  }
+}

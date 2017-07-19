@@ -1,0 +1,86 @@
+.mas-mapSvg {
+  display: block;
+  pointer-events: all;
+  touch-action: none;
+}
+
+.mas-mapContainer {
+  // width: 75%;
+  overflow: hidden;
+  position: relative;
+  flex-grow: 0;
+  flex-shrink: 0;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.247), 0px 0px 0px 0px transparent, 0px 0px 0px 0px transparent;
+}
+
+.mas-mapView {
+  position:relative;
+  display: flex;
+  justify-content: center;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  flex-grow: 1;
+}
+
+.mas-elements.mas-mapSpecific {
+  overflow: visible;
+}
+
+.mas-isOverlay {
+  position: absolute;
+}
+
+.mas-isIgnoringPointerEvents {
+  pointer-events:none;
+}
+
+.mas-mapGraticule {
+  fill: none;
+  stroke: #777;
+  stroke-opacity: .5;
+  stroke-width: .5px;
+}
+
+.mas-mapTooltip {
+  display: block;
+  opacity: 0;
+  position: fixed;
+  //z-index: 10;
+  transition: opacity 1s;
+  pointer-events:none;
+}
+
+// .mas-mapOutsideOverlayView {
+//   width: 10px;
+//   height: 10px;
+//   background-color: @blue;
+// }
+
+// .mas-mapOutsideOverlay-added {
+
+// }
+
+// .mas-mapOutsideOverlay-updated {
+  
+// }
+
+// .mas-mapAlertNotification {
+//   visibility: hidden;
+// }
+// .mas-mapAlertNotification:not(.mas-alertLevel-0) {
+//   fill: @red;
+//   visibility: visible;
+// }
+
+// .mas-mapOutsideOverlayView:not(.mas-alertLevel-0)::before {
+//   content: '';
+//   display: block;
+//   width: 5px;
+//   height: 5px;
+//   background-color: @red;
+//   position: relative;
+//   left: -1px;
+//   top: -1px;
+// }

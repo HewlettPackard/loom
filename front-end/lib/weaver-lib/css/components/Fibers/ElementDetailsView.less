@@ -1,0 +1,129 @@
+// Element details
+//
+// Once an element is selected, its overview gets replaced by the details of its properties
+//
+// Markup:
+// <div class="mas-elementDetails mas-elementDetails-noAlert mas-element--content" style="max-width: 220px; margin-bottom: 10px;">
+//     <div class="mas-elementDetails--header">
+//         <div class="mas-elementDetails--title">
+//             <p>Short title</p>
+//         </div>
+//         <div class="mas-elementDetails--actions mas-elementActions">
+//             <button title="power" class="mas-action fa icon-cycle mas-action-showDialog"></button>
+//             <button title="Display" class="mas-action fa fa-level-down mas-action--view"></button>
+//             <button title="Add to filter" class="mas-action fa fa-bookmark mas-action--filter"></button>
+//         </div>
+//     </div>
+//     <div class="mas-elementDetails--body">
+//         <div class="mas-alertDetails mas-alertDetails-noCount">
+//             <div class="mas-alertDetails--count">0</div>
+//             <div class="mas-alertDetails--level">0</div>
+//             <div class="mas-alertDetails--description">???</div>
+//         </div>
+//         <dl class="mas-elementDetails--properties">
+//             <dt class="mas-elementDetails--propertyName">First item</dt>
+//             <dd class="mas-elementDetails--propertyValue mas-data--property-minIndex">0</dd>
+//             <dt class="mas-elementDetails--propertyName">Last item</dt>
+//             <dd class="mas-elementDetails--propertyValue mas-data--property-maxIndex">23</dd>
+//             <dt class="mas-elementDetails--propertyName">Number of items</dt>
+//             <dd class="mas-elementDetails--propertyValue mas-data--property-numberOfItems">24</dd>
+//             <dt class="mas-elementDetails--propertyName">Deleted items</dt>
+//             <dd class="mas-elementDetails--propertyValue mas-data--property-deletedCount">0</dd>
+//         </dl>
+//         <div>
+//         </div>
+//     </div>
+// </div>
+// <div class="mas-elementDetails mas-elementDetails-noAlert mas-element--content" style="max-width: 220px;">
+//     <div class="mas-elementDetails--header">
+//         <div class="mas-elementDetails--title">
+//             <p>Longer title, I mean really long title, really, really long title</p>
+//         </div>
+//         <div class="mas-elementDetails--actions mas-elementActions">
+//             <button title="power" class="mas-action fa icon-cycle mas-action-showDialog"></button>
+//             <button title="Display" class="mas-action fa fa-level-down mas-action--view"></button>
+//             <button title="Add to filter" class="mas-action fa fa-bookmark mas-action--filter"></button>
+//         </div>
+//     </div>
+//     <div class="mas-elementDetails--body">
+//         <div class="mas-alertDetails mas-alertDetails-noCount">
+//             <div class="mas-alertDetails--count">0</div>
+//             <div class="mas-alertDetails--level">0</div>
+//             <div class="mas-alertDetails--description">???</div>
+//         </div>
+//         <dl class="mas-elementDetails--properties">
+//             <dt class="mas-elementDetails--propertyName">First item</dt>
+//             <dd class="mas-elementDetails--propertyValue mas-data--property-minIndex">0</dd>
+//             <dt class="mas-elementDetails--propertyName">Last item</dt>
+//             <dd class="mas-elementDetails--propertyValue mas-data--property-maxIndex">23</dd>
+//             <dt class="mas-elementDetails--propertyName">Number of items</dt>
+//             <dd class="mas-elementDetails--propertyValue mas-data--property-numberOfItems">24</dd>
+//             <dt class="mas-elementDetails--propertyName">Deleted items</dt>
+//             <dd class="mas-elementDetails--propertyValue mas-data--property-deletedCount">0</dd>
+//         </dl>
+//         <div>
+//         </div>
+//     </div>
+// </div>
+//
+// Styleguide 3.4
+.mas-elementDetails-noAlert {
+  .mas-alertDetails {
+    display: none;
+  }
+}
+.mas-elementDetails--header {
+  position: relative;
+  overflow: hidden;
+  line-height: @unit * 1px;
+  min-height: @unit * 1px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.mas-elementDetails--title {
+  padding: 0 10px;
+  flex: 1 0 auto;
+}
+
+.mas-elementDetails--actions {
+  text-align: right;
+  flex: 1 0 auto;
+  max-width: 100%; // Without this, wrapping doesn't happen on IE
+}
+
+.mas-elementDetails--scrolling {
+  -webkit-animation: labelScroll 8s linear;
+  -webkit-animation-delay: 0.5s;
+  animation: labelScroll 8s linear;
+  animation-delay: 0.5s;
+}
+@-webkit-keyframes labelScroll {
+  0% {
+    margin-left: 0%;
+  }
+  99% {
+    margin-left: -100%;
+  }
+  100% {
+    margin-left: 0%;
+  }
+}
+@keyframes labelScroll {
+  0% {
+    margin-left: 0%;
+  }
+  99% {
+    margin-left: -100%;
+  }
+  100% {
+    margin-left: 0%;
+  }
+}
+
+.mas-elementDetails--properties {
+  min-height: (@unit /2 * 1px);
+  //max-height: (3 * @unit * 1px);
+  overflow: auto;
+  overflow-x: hidden;
+}

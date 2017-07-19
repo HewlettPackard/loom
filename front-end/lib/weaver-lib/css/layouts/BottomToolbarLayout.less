@@ -1,0 +1,44 @@
+// Bottom toolbar layout
+//
+// Markup:
+// <div class=".mas-bottomToolbarLayout" style="height: 200px;">
+//   <div class="mas-bottomToolbarLayout--content" style="border: dotted 1px;">Content</div>
+//   <div class="mas-bottomToolbarLayout--toolbar" style="border: dotted 1px;">Toolbar</div>
+// </div>
+//
+// Styleguide 2.2
+
+.mas-bottomToolbarLayout {
+  position: relative;
+}
+
+.mas-bottomToolbarLayout--content {
+
+  overflow: auto;
+  overflow-x: hidden;
+
+  // Create a stacking context
+  transform: rotate(0);
+
+  height: ~"calc(100% - (@{unit} * 1.25px))";
+
+  // Vertically centered content would look nicer
+  // but makes the scrollbar buggy in Firefox :(
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: center;
+}
+
+.has-notification {
+
+  .mas-bottomToolbarLayout--content {
+    height: ~"calc(100% - ( 2 * (@{unit} * 1.6px)))";
+  }
+}
+
+.mas-bottomToolbarLayout--toolbar {
+  bottom: 0;
+  width: 100%;
+  height: @unit * 1.25px;
+}
+

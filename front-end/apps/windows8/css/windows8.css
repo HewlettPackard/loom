@@ -1,0 +1,9 @@
+.mas-configurationEditor:not(.has-error) .mas-configurationEditor--error {
+  display: none;
+}
+
+.mas-configurationEditor--submit {
+
+  margin-top: 10px;
+  float: right;
+}

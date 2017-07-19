@@ -1,0 +1,9 @@
+<g id="hatch-effect">
+  <pattern id="{{hatch.id}}" patternTransform="{{scene.translate}} rotate(45)" patternUnits="userSpaceOnUse" height="8" width="8">
+    <rect width="4" height="8" fill="white"></rect>
+  </pattern>
+  <mask id="{{hatch.idMask}}">
+    <rect x="0" y="0" width="2000" height="2000" fill="url(#{{hatch.id}})">
+    </rect>
+  </mask>
+</g>

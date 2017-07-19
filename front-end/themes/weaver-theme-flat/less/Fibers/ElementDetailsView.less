@@ -1,0 +1,96 @@
+.mas-elementDetails-color(@color) {
+
+  .mas-elementDetails {
+    border: solid 2px @color;
+    background-color: @mas-color-elementDetailsBackground;
+  }
+
+  .mas-elementDetails--header {
+    background: @color;
+
+    .mas-action {
+
+      &:active {
+        background: tint(@mas-color-relatedFiber, 15);
+      }
+
+      &[disabled] {
+        color: tint(@mas-color-relatedFiber, 85);
+      }
+    }
+  }
+
+
+}
+
+.mas-elementDetails--header {
+
+  .mas-action {
+    font-size: 18px;
+    transition: background-color .2s;
+  }
+}
+
+.mas-elementDetails--properties {
+
+  // -1px to prevent bottom borders from merging
+  //max-height: 3 * @unit * 1px - 1px;
+}
+
+
+
+.mas-fiberAttributeName {
+  font-size: 16px;
+  line-height: 1.2;
+  padding: 3px 16px 0;
+}
+
+.mas-fiberAttributeValue {
+  font-size: 14px;
+  line-height: 1.2;
+  padding: 0 16px 5px;
+}
+
+.mas-fiberAttributeValue {
+  user-select: text;
+}
+
+.mas-elementDetails--urlList {
+  line-height: 30px;
+  column-count: 3;
+}
+
+.mas-elementDetails--urlList li {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mas-action--filter {
+  .is-partOfFilter & {
+    color: @mas-color-fiberActiveAction;
+  }
+}
+
+.mas-action--view {
+  .is-displayed & {
+    color: @mas-color-fiberActiveAction;
+  }
+}
+
+.mas-elementDetails-color(@mas-color-relatedFiber);
+.mas-elementDetails--header {
+  color: @mas-color-elementDetailsHeader;
+}
+
+.is-highlightingRelationships {
+
+  .mas-elementDetails {
+    border-color: @mas-color-highlightedFiber;
+  }
+
+  .mas-elementDetails--header {
+    color: @mas-color-highlightedElementDetailsHeader;
+    background-color: @mas-color-highlightedFiber;
+  }
+}

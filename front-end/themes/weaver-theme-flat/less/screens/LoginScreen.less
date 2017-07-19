@@ -1,0 +1,57 @@
+.mas-loginScreen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.mas-loginScreen--form {
+
+  width: 25%;
+  min-width: 240px;
+  max-width: 22em;
+
+  padding: @unit * 0.5px;
+
+  flex-shrink: 0;
+
+  .mas-labeledInput-left:first-of-type {
+    margin-bottom: @unit * 0.25px;
+  }
+
+  .mas-providerLoginForm--submit {
+    float: right;
+    margin-top: @unit * 0.25px;
+  }
+}
+
+.mas-loginScreen--title {
+
+  margin-bottom: 10px;
+  margin-top: 0;
+}
+
+.mas-loginScreen--hpLabs {
+
+  @size: 15em;
+  @width: @size;
+  @height: @size * 160 / 400;
+  height: @height;
+  width: @width;
+
+  margin-top: @unit * 0.5px;
+
+  path {
+    fill: @hp-medium-grey;
+  }
+}
+
+.mas-loginScreen--branding {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+
+  .mas-branding--name {
+    display: none;
+  }
+}

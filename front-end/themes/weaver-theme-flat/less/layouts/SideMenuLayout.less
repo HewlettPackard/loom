@@ -1,0 +1,675 @@
+.mas-sideMenuLayout--menu {
+  position: relative;
+  z-index: 25;
+  background: white;
+  flex: 0;
+  display: flex;
+
+  input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset !important;
+  }
+
+  // Container for all of our menu structure
+  .mas-sideMenuTabbedView {
+    display:  flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  // Main tabs for Fiber|Thread|Tapestry
+  .mas-sideMenuHeaderTabs {
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    flex-basis: @side-menu-header-tabs-height;
+    height: @side-menu-header-tabs-height;
+    max-height: @side-menu-header-tabs-height;
+
+    li {
+      flex-grow: 1;
+      flex-basis: 33%;
+      background: @mas-main-tabs-bg-color;
+      padding: 5px;
+      height: @side-menu-header-tabs-height;
+      margin: 0;
+      line-height: ~"calc(@{side-menu-header-tabs-height} - 5px)";
+      text-align: center;
+      color: @mas-main-tabs-text-color;
+      font-size: 16px;
+      &.is-selected {
+        background-color: @mas-main-tabs-bg-color-selected;
+        color: @mas-main-tabs-text-color-selected;
+      }
+      &:hover {
+        color: @hpe-black;
+      }
+    }
+  }
+
+  // This container contains a panel for each tab, tabs must retain state whilst hidden
+  .mas-sideMenuTabbed--tabs-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  // The three tabs panels which are hidden/displayed depending on the tab
+  .mas-fiberTabPanel,
+  .mas-threadTabPanel,
+  .mas-tapestryTabPanel
+  {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  // Displays the Instance / Thread information within a tab
+  .mas-sideMenuSelectedInfoView
+  {
+    height: @unit * 3px;
+    max-height: @unit * 3px;
+    min-height: @unit * 3px;
+    flex-basis: @unit * 3px;
+    padding-top: @unit * 1px;
+    padding-left: @unit * 0.5px;
+    color: @hpe-black;
+
+    .mas-sideMenuSelectedInfoView--title {
+      font-weight: 600;
+      font-size: 18px;
+    }
+
+    .mas-sideMenuSelectedInfoView--detail {
+      font-size: 16px;
+    }
+  }
+
+  // Secondary side menu container for a tab
+  .mas-sideMenuSecondaryMenu {
+    height: @unit * 1px;
+    max-height: @unit * 1px;
+    min-height: @unit * 1px;
+    flex-basis: @unit * 1px;
+    margin: 0 0 20px 0;
+    padding: 0 18px;
+    border-bottom: 1px solid @mas-mediumGrey;
+    cursor: pointer;
+  }
+
+  // This is the actual container for a tabs content, it can contain many panels, which must retain state when hidden
+  .mas-sideMenuTabPanel
+  {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  // code to hide panels when not selected
+  .mas-sideMenuTabbed--tabs-panel {
+    .mas-fiberTabPanel:not(.is-selected) {
+      display: none;
+    }
+    .mas-threadTabPanel:not(.is-selected) {
+      display: none;
+    }
+    .mas-tapestryTabPanel:not(.is-selected) {
+      display: none;
+    }
+  }
+
+  // All content panels that contain information should stretch to fit the available space
+  .mas-sideMenuContentPanel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  // Some content panels actually contain more than one screen, so they should be stretchy too
+  .mas-fiberActionControllerPanel--list,
+  .mas-threadActionControllerPanel--list,
+  .mas-threadConfigurationControllerPanel--list,
+  .mas-fiberActionListPanel,
+  .mas-threadActionListPanel,
+  .mas-fiberActionControllerPanel--action,
+  .mas-threadActionControllerPanel--action,
+  .mas-threadConfigurationControllerPanel--configuration,
+  .mas-fiberActionPanel,
+  .mas-threadActionPanel
+  {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  // hiding and showing panels should be done like so, its not possible to use jquery.hide().show() becuase it converts
+  // to display:block;
+  .hideFlex {
+    display:none;
+  }
+
+  .mas-fiberActionControllerPanel--list {
+    flex-basis: 100%;
+  }
+
+
+  // Enable a scrollable box where required
+  .mas-scrollable {
+    overflow: auto;
+    overflow-x: hidden;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+  }
+
+  // All tab containers list views must act the same.
+  // design change! no longer fixed height, lets make them work properly with stretchy data and multiple rows..
+  .mas-sideMenuContentPanel > ul {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    &.mas-fiberOverviewPanel--properties {
+      display: block;
+    }
+  }
+
+
+  .is-locked & {
+    box-shadow: -3px 0 3px fade(@mas-black, 33);
+  }
+
+  .mas-fiberActionListPanel li,
+  .mas-threadActionListPanel li,
+  .mas-threadConfigurationListPanel li,
+  .mas-threadOverviewPanel li
+  {
+    line-height: @unit * 1px;
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .mas-threadOverviewPanel li {
+    justify-content: flex-start;
+    cursor: pointer;
+
+  }
+
+  .mas-threadConfiguration--metric::before {
+    content: "";
+    width: 7px;
+    height: 8px;
+    flex-basis: 7px;
+    margin: auto 14px auto 1px;
+    padding: 0;
+    border: 6px solid white;
+    align-self: flex-start;
+    outline: 2px solid @hpe-charcoal;
+    background-color: white;
+  }
+
+  .mas-threadConfiguration--metric.mas-property-selected::before {
+    content: "";
+    width: 7px;
+    height: 8px;
+    flex-basis: 7px;
+    margin: auto 14px auto 1px;
+    padding: 0;
+    border: 6px solid white;
+    align-self: flex-start;
+    outline: 2px solid @hpe-green;
+    background-color: @hpe-green;
+  }
+
+  .mas-threadConfiguration--metric.mas-property-selected,
+  .mas-threadConfiguration--quicksort.mas-property-selected {
+    background-color: white;
+  }
+
+  .mas-sortView.mas-threadConfiguration--quicksort.mas-property-selected::after {
+    color: @hpe-green;
+  }
+
+  .mas-dialog-single-button {
+    margin-bottom: 0 !important;
+  }
+
+  .mas-fiberActionPanel,
+  .mas-threadActionPanel,
+  .mas-threadOverviewPanel
+  {
+    color: @hpe-black;
+
+    .mas-fiberActionPanel--title,
+    .mas-threadActionPanel--title,
+    .mas-propertySelector--title,
+    .mas-threadActionPanel--controls
+    {
+      height: @unit * 0.5px;
+      line-height: @unit * 0.5px;
+      flex-basis: @unit * 0.5px;
+      margin-top: @unit * 0.5px;
+      padding-left: @unit * 0.5px;
+      padding-right: @unit * 0.5px;
+      font-weight: 600;
+      font-size: 18px;
+    }
+
+    .mas-fiberActionPanel--description,
+    .mas-threadActionPanel--description
+    {
+      margin-bottom: @unit * 0.25px;
+      margin-top: @unit * 0.25px;
+      padding-left: @unit * 0.5px;
+      padding-right: @unit * 0.5px;
+    }
+
+    .mas-form {
+      height: auto;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .mas-fiberActionPanel--controls,
+    .mas-threadActionPanel--controls
+    {
+      flex: 1;
+
+      label.mas-fancyRadio {
+        padding: 0;
+        padding-left: 14px;
+        height: @unit * 1.5px;
+        line-height: @unit * 1.5px;
+        border-bottom: 1px solid @hpe-gray;
+
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+
+      .mas-fancyRadio--radio {
+        font-size: 16px;
+        color: @hpe-black;
+      }
+    }
+
+    .mas-fiberActionPanel--buttons,
+    .mas-threadActionPanel--buttons
+    {
+      display: flex;
+      flex-direction: column;
+      align-self: flex-end;
+      padding: @unit * 0.5px;
+      width: 100%;
+    }
+
+    .mas-threadActionPanel--buttons
+    {
+      button {
+        margin-bottom: 0;
+
+        &[type="submit"] {
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+
+  .mas-threadOverviewPanel {
+    .mas-propertySelector--properties {
+      margin-top: 20px;
+    }
+  }
+
+  .mas-fiber-action,
+  .mas-thread-configuration {
+    color: @hpe-black;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  // this can be used for generic settings across all secondary tabs menus in the side bar
+  /** secondary tabs menu for fiber, could be made more generic for re-use across different sections*/
+  .mas-secondaryTabs {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    -ms-box-orient: horizontal;
+    display: flex;
+    flex-wrap: nowrap;
+    li {
+      background: inherit;
+      padding: 5px;
+      width: 100%;
+      height: @unit * 1px;
+      margin: 0;
+      line-height: @unit * 0.5px;
+      text-align: center;
+      color: @hpe-charcoal;
+      font-size: 16px;
+      cursor: pointer;
+
+      &.is-selected {
+        color: @hpe-green;
+        border-bottom: 2px solid @hpe-green;
+      }
+      &:not(.is-selected):hover {
+        color: @hpe-black;
+      }
+    }
+  }
+
+
+  .mas-secondaryTabs--buttons {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+    padding: @unit * 0.5px;
+    width: 100%;
+    font-size: 18px;
+    font-weight: 600;
+
+    button[type="submit"] {
+      display: block;
+      width: 100%;
+      background-color: @hpe-green;
+      border: 2px solid @hpe-green;
+      color: @hpe-white;
+      height: @unit * 1px;
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 0;
+    }
+
+
+    .mas-button-primary {
+      display: block;
+      width: 100%;
+      background-color: @hpe-green;
+      border: 2px solid @hpe-green;
+      color: @hpe-white;
+      height: @unit * 1px;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+
+
+    .mas-button-secondary,
+    .mas-action--secondaryButtonStyle {
+      display: block;
+      width: 100%;
+      background-color: @hpe-white;
+      border: 2px solid @hpe-charcoal;
+      color: @hpe-black;
+      height: @unit * 1px;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+
+
+    .mas-dialog--back,
+    .mas-action--cloneThread {
+      margin-bottom: 10px;
+    }
+
+    .mas-dialog--clear-all,
+    .mas-action--cloneThread {
+      margin-bottom: 10px;
+    }
+  }
+
+
+  .mas-noFiberSelectedPanel,
+  .mas-noFiberAlertPanel,
+  .mas-noThreadSelectedPanel
+  {
+    padding: 20px 0 0 18px;
+  }
+
+  .mas-sideMenuListItemName {
+    font-weight: 600;
+    font-size: 18px;
+  }
+  .mas-sideMenuListItemValue {
+    font-size: 16px;
+    font-weight: 400;
+
+    &.mas-hasEllipsesExpanded {
+      white-space: normal;
+      text-overflow: inherit;
+    }
+  }
+
+  .mas-sideMenuListItem {
+    font-weight: 400;
+    font-size: 16px;
+  }
+
+  .mas-fiberActionIcon,
+  .mas-threadConfigurationIcon {
+    align-self: flex-end;
+    width: 30px;
+    height: 16px;
+    flex-basis: 16px;
+    background: url(../images/arrow.svg);
+    background-position: top;
+    background-repeat: no-repeat;
+    margin: auto 0;
+    transform: rotate(0.75turn);
+  }
+
+  // now for the tapestry patterns list code
+  .mas-patternList--list {
+    li {
+      display: inline-flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 0 20px;
+
+      &:first-of-type {
+        margin: 0;
+      }
+
+      .mas-toggle-switch {
+        border: 3px solid gray;
+        width: 32px;
+        height: 32px;
+        margin: 0;
+        border-radius: 20px;
+        top: -2px;
+        position: relative;
+        background-color: white;
+        left: -2px;
+      }
+
+      .mas-toggle {
+        align-self: flex-end;
+        flex-basis: 52px;
+        min-width: 52px;
+        max-width: 52px;
+        height: 28px;
+        line-height: 40px;
+        border: 0;
+        background-color: silver;
+        border-radius: 20px;
+        margin: auto 1px;
+        cursor: pointer;
+
+        &.mas-toggle-enabled {
+          background-color: @hpe-green;
+          cursor: default;
+
+          .mas-toggle-switch {
+            border: 3px solid @hpe-green;
+            left: 20px;
+          }
+        }
+      }
+    }
+  }
+
+  ul.mas-providerList--list {
+    display: block;
+    .mas-sideMenuListItem {
+      padding: 0;
+    }
+
+    li {
+      display: block;
+
+      .mas-providerLogoutForm--pingText {
+        cursor: default;
+      }
+      //min-height: 74px;
+
+      &:first-of-type {
+        margin: 0;
+      }
+
+      .mas-itemForm {
+        display: block;
+        width: 100%;
+      }
+
+      .hideFlex {
+        display:none;
+      }
+
+      .mas-item {
+        display: block;
+
+        //.mas-itemProvider {
+        display: inline-flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+
+        .mas-provider--connected {
+          flex-basis: 10px;
+          width: 10px;
+          height: 10px;
+          margin: auto 18px;
+          background-color: silver;
+          border-radius: 10px;
+        }
+
+        .mas-provider--name {
+          flex: 1;
+        }
+
+        .mas-action-toggleProvider {
+          flex-basis: 16px;
+          width: 18px;
+          height: 10px;
+          margin: auto 0;
+          margin-right: 18px;
+          background: url('../images/arrow.svg');
+          background-position: top;
+          background-repeat: no-repeat;
+
+          &.is-showingProviderForm {
+            background-position: bottom;
+            transform: rotate(0.5turn);
+          }
+        }
+        //}
+      }
+
+      &.is-loggedIn {
+        .mas-provider--connected {
+          background-color: @hpe-green;
+        }
+        .mas-action-toggleProvider {
+          //background-color: @hpe-green;
+        }
+      }
+
+      &.is-locked {
+        .mas-provider--connected {
+          background-color: @hpe-status-red;
+        }
+      }
+    }
+    .mas-providerLoginForm {
+      padding: 12px 18px;
+
+      .mas-providerLoginForm--buttons {
+        display: block;
+        width: 100%;
+
+        button {
+          display: block;
+          width: 100%;
+          background-color: @hpe-green;
+          border: 2px solid @hpe-green;
+          color: @hpe-white;
+          height: @unit * 1px;
+          font-size: 18px;
+          font-weight: 600;
+        }
+      }
+    }
+
+    .mas-providerLogoutForm--ping {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 18px;
+      border-top: 1px solid @mas-mediumGrey;
+      font-weight: 400;
+      .mas-action-highlightProvider {
+        width: 20px;
+        height: 20px;
+        margin-top: 6px;
+
+        svg {
+          fill: @hpe-gray;
+        }
+
+        &.has-highlight svg {
+          //stroke: black;
+          fill: @hpe-green;
+        }
+      }
+    }
+
+    .mas-providerLogoutForm--buttons {
+      display: block;
+      padding-top: 0px;
+      padding-right: 20px;
+      padding-bottom: 18px;
+      padding-left: 20px;
+      width: 100%;
+
+      button {
+        display: block;
+        width: 100%;
+        background-color: @hpe-green;
+        border: 2px solid @hpe-green;
+        color: @hpe-white;
+        height: @unit * 1px;
+        font-size: 18px;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .is-locked .mas-sideMenuLayout--menu {
+  }
+}
+
+.mas-button-primary:hover {
+  outline: 2px solid @hpe-green;
+}
+
+.mas-button-secondary:hover {
+  outline: 2px solid @hpe-charcoal;
+}
+

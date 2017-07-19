@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+  <title>Plugins automated tests</title>
+  <link rel="stylesheet" href="../bower_components/mocha/mocha.css">
+  <script src="../bower_components/mocha/mocha.js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+    }
+
+    .mocha {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mocha h1 {
+      text-indent: 1em;
+    }
+
+    a, a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <section class="mocha">
+    <a href=""><h1>Automated tests</h1></a>
+    <div id="mocha"></div>
+  </section>
+
+  <script src="../bower_components/requirejs/require.js"></script>
+    <script>
+    require(['require-config'], function (configuration) {
+
+      require.config(configuration);
+      require(['test/main.js']);
+    });
+  </script>
+  <script src="../bower_components/blanket/dist/mocha/blanket_mocha.min.js" data-cover-only="//plugin-map/"></script>
+  <script>
+    if (window.PHANTOMJS) {
+
+        blanket.options("reporter", "../node_modules/grunt-blanket-mocha/support/grunt-reporter.js");
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+.mas-metricValue-noValue {
+
+  .mas-metricValue--graph {
+    background: @hp-medium-grey;
+  }
+
+  .mas-metricValue--label {
+    color: @hp-darker-grey;
+  }
+}
+
+.mas-metricValue--label {
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  top: 0;
+
+  padding: 0 0 0 5px;
+
+  font-size: 14px;
+  // Not sure why it is not 28px that allows the centering
+  line-height: 30px;
+
+  color: @mas-color-barGraphValue;
+  background-color: @hp-light-grey;
+
+  border: solid 1px @mas-color-barGraphBackground;
+  border-left: none;
+
+  // Fix the width so all the labels use the same amount
+  // of space on the graph. Could be reduced with some truncating
+  //min-width: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+}

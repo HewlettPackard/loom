@@ -1,0 +1,39 @@
+/*******************************************************************************
+ * (c) Copyright 2017 Hewlett Packard Enterprise Development LP Licensed under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except in compliance with the License. You
+ * may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ *******************************************************************************/
+package com.hp.hpl.loom.openstack.keystonev3;
+
+import com.hp.hpl.loom.openstack.OpenstackApi;
+import com.hp.hpl.loom.openstack.keystonev3.model.JsonRoles;
+
+/**
+ * The keystone Roles implementation.
+ */
+
+public class KeystoneRoles extends KeystoneBase<JsonRoles> {
+    /**
+     * An implementation of the Keystone Roles API.
+     *
+     * @param openstackApp the openstackApi for looking up tokens
+     */
+    public KeystoneRoles(final OpenstackApi openstackApp) {
+        super(openstackApp);
+    }
+
+    @Override
+    protected String getUriSuffix() {
+        return "role";
+    }
+
+    @Override
+    protected Class<JsonRoles> getTypeClass() {
+        return JsonRoles.class;
+    }
+}

@@ -1,0 +1,15 @@
+@side-menu-header-tabs-height: @unit * 1.5px;
+@side-menu-info-block-height: @unit * 3px;
+@side-menu-panel-tabs-height: @unit * 1px;
+@side-menu-panel-action-button-height: @unit * 2px;
+@side-menu-panel-secondary-tabs-height: @unit * 1.5px;
+
+@side-menu-panel-content-height: ~"calc(100% -
+  (@{side-menu-header-tabs-height} + @{side-menu-info-block-height} + @{side-menu-panel-tabs-height} + @{side-menu-panel-secondary-tabs-height} + 1px)
+)";
+
+@fiber-action-panel-controls-height: ~"calc(100% -
+  (@{side-menu-panel-action-button-height} + @{side-menu-panel-action-button-height})
+)";
+
+

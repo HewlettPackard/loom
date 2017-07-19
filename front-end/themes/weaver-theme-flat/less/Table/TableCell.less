@@ -1,0 +1,133 @@
+
+@cell-has-changed: rgb(178, 178, 178);
+
+//////////////////
+// Fiber State  //
+//////////////////
+
+.mas-fiberState {
+  .mas-fiberOverviewBlock();
+
+  .mas-table-row:not(.mas-alertNotification-0) > & {
+      background-color: @mas-red;
+  }
+
+  .is-aggregation > & {
+    .mas-aggregationOverviewBlock();
+  }
+
+  .is-aggregation.is-related > & {
+    .mas-aggregationOverviewBlock(@mas-color-relatedFiber);
+  }
+
+  .is-aggregation.is-displayed > & {
+    .mas-aggregationOverviewBlock(@mas-color-regularFiber, @hp-medium-grey);
+  }
+
+  .is-aggregation.is-related.is-displayed > & {
+    .mas-aggregationOverviewBlock(@mas-color-relatedFiber, @hp-medium-grey);
+  }
+
+  .is-aggregation.is-highlighted > & {
+    .mas-aggregationOverviewBlock(@mas-color-highlightedFiber);
+  }
+
+  .is-aggregation.is-highlighted.is-displayed > & {
+    .mas-aggregationOverviewBlock(@mas-color-highlightedFiber, @hp-medium-grey);
+  }
+
+  .is-fromHighlightedProvider > &::after {
+    content: '';
+    display: block;
+    border: solid 4px;
+    border-radius: 4px;
+    border-color: @hp-light-grey;
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+  }
+
+  .is-related > & {
+    .mas-fiberOverviewBlock(@mas-color-relatedFiber);
+  }
+
+  .is-related.is-highlighted > & {
+    .mas-fiberOverviewBlock(@mas-color-highlightedFiber);
+  }
+
+  .mas-element-added > & {
+    .mas-addedBackground(@mas-color-regularFiber);
+  }
+
+  .mas-element-added:not(.mas-alertNotification-0) > & {
+    .mas-addedBackground( @mas-red);
+  }
+
+  .mas-element-added.is-related > & {
+    .mas-addedBackground(@mas-color-relatedFiber);
+  }
+
+  .mas-element-added.is-highlighted > & {
+    .mas-addedBackground(@mas-color-highlightedFiber);
+  }
+
+  .mas-element-added.mas-element-updated.is-highlighted > & {
+    .mas-updatedBackground();
+    .mas-addedBackground(@mas-color-highlightedFiber);
+  }
+}
+
+//////////////////
+// Generic cell //
+//////////////////
+
+.mas-table-cell.mas-has-changed,
+.mas-table-cell.mas-has-changed.is-collapsed {
+    color: darken(@cell-has-changed, 50%);//rgb(103, 168, 65);
+    box-shadow: inset 0 0 0px 1px @cell-has-changed;
+    background-image: linear-gradient(
+        to top,
+        transparent 1px,
+        @cell-has-changed 1px,
+        @cell-has-changed 3px,
+        transparent 3px);
+    animation-duration: 3s;
+    animation-name: cellHasChanged;
+}
+
+.mas-table-cell.is-collapsed {
+    background-color: fade(@hp-dark-grey, 20%);
+}
+
+.nested.mas-collapse-action {
+    .fa();
+    display: flex;
+    justify-content: center;
+    &:before {
+        content: "\f061";
+        flex: 0 0 auto;
+    }
+    &:after {
+        content: "\f060";
+        flex: 0 0 auto;
+    }
+    .is-collapsed &:before {
+        content: "\f060";
+        flex: 0 0 auto;
+    }
+    .is-collapsed &:after {
+        content: "\f061";
+        flex: 0 0 auto;
+    }
+}
+
+@keyframes cellHasChanged {
+  from {
+    background-color: @cell-has-changed;//@mas-color-headerBackground;
+  }
+
+  to {
+    background-color: transparent;
+  }
+}

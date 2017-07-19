@@ -1,0 +1,76 @@
+@mas-connectionStatus-width: 10px;
+@mas-connectionStatus-XBorderSize: 2px;
+
+.mas-connectionStatus {
+  border: solid @mas-connectionStatus-XBorderSize @mas-color-toolbarBackground;
+  border-top-width: 4px;
+  border-bottom-width: 4px;
+  width: @mas-connectionStatus-width;
+
+  min-height: @unit * 1px;
+
+  background: @hp-light-grey;
+}
+
+.mas-connectionStatus-ok {
+  background: @hp-green-75;
+}
+
+.mas-connectionStatus-unstable {
+  background: @hp-orange-75;
+}
+
+.mas-connectionStatus-down {
+  background: @mas-red;
+}
+
+@mas-connectionStatus-messageArrowXOffset: 10px;
+@mas-connectionStatus-messageArrowSize: 6px;
+
+.mas-connectionStatus--message {
+
+  color: @mas-red;
+  background-color: tint(@mas-red, 75%);
+  left: @mas-connectionStatus-width/2 - @mas-connectionStatus-messageArrowXOffset - @mas-connectionStatus-messageArrowSize - @mas-connectionStatus-XBorderSize;
+  top: -2 * @mas-connectionStatus-messageArrowSize/2 - 2px; // -2px to make it float above the indicator
+
+  &::after {
+    content:"";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-width: @mas-connectionStatus-messageArrowSize;
+    border-style: solid;
+    border-color: tint(@mas-red, 75%) transparent transparent transparent;
+    bottom : -2 * @mas-connectionStatus-messageArrowSize;
+    left: @mas-connectionStatus-messageArrowXOffset;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+
+  .mas-connectionStatus-down::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-width: 6px;
+    border-style: solid;
+    border-color: hsl(357, 85%, 89%) hsla(0, 0%, 0%, 0) hsla(0, 0%, 0%, 0) hsla(0, 0%, 0%, 0);
+    top: -4px;
+    left: -3px;
+  }
+
+  .mas-connectionStatus--message {
+
+    position: fixed;
+    bottom: 40px;
+    top: auto;
+    left: 0;
+    transform: none;
+
+    &::after {
+      display: none;
+    }
+  }
+}

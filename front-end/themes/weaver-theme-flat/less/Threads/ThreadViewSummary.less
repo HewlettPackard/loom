@@ -1,0 +1,15 @@
+.mas-threadSummary-pending {
+
+  .mas-threadSummary--numberOfItems {
+    animation: mas-threadSummary-pending-pulse 1s alternate infinite;
+  }
+}
+
+@keyframes mas-threadSummary-pending-pulse {
+  from {
+    color: @mas-color-threadSummaryPendingPulseInitial;
+  }
+  to {
+    color: @mas-color-threadSummaryPendingPulseFinal;
+  }
+}

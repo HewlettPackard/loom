@@ -1,0 +1,59 @@
+.mas-sideMenuLayout {
+  display: flex;
+}
+
+.mas-sideMenuLayout-withOverlay{
+
+  &::after {
+    content: '';
+    position: absolute;
+    display: block;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: black;
+    opacity: 0.3;
+  }
+
+  .mas-sideMenuLayout--menu {
+    position: absolute;
+    top: 5%;
+    bottom: 5%;
+    left: 5%;
+    right: 5%;
+    z-index: 25;
+  }
+}
+
+.mas-sideMenuLayout.has-hiddenMenu>.mas-sideMenuLayout--menu {
+  flex-basis: 0;
+}
+
+.mas-sideMenuLayout--content {
+  max-height: 100%;
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+.mas-sideMenuLayout--menu {
+  max-height: 100%;
+  overflow: hidden;
+}
+
+.mas-sideMenuLayout--content {
+  flex: 1;
+}
+
+.mas-sideMenuLayout--menu {
+  flex: 0;
+  flex-basis: 200px;
+  max-height: 100%;
+
+  // Control which side the menu stands
+  order: 1;
+
+  .mas-sideMenuLayout-menuBefore & {
+    order: -1;
+  }
+}

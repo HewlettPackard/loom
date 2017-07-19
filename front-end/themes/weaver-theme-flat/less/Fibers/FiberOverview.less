@@ -1,0 +1,106 @@
+.mas-fiberOverview {
+  min-height: 60px;
+}
+
+.mas-fiberOverview--label {
+  padding-left: 5px;
+  font-size: 14px;
+  line-height: 20px;
+
+  &::before {
+    content: '';
+    display: block;
+
+    position: absolute;
+    top: 50%;
+    bottom: 0;
+    left: 0;
+    width: 2px;
+
+    background-color: @mas-color-regularFiber;
+  }
+}
+
+.mas-fiberOverviewBlock(@color: @mas-color-regularFiber, @important: false) when (@important = true) {
+  background-color: @color !important;
+  box-shadow: inset 0 0 0 2px @color !important;
+}
+
+.mas-fiberOverviewBlock(@color: @mas-color-regularFiber, @important: false) when not (@important = true) {
+  background-color: @color;
+  box-shadow: inset 0 0 0 2px @color;
+}
+
+.mas-aggregationOverviewBlock(@color: @mas-color-regularFiber, @innerColor: @mas-color-threadBackground, @important: false) when (@important = true) {
+  background-color: @color !important;
+  box-shadow: inset 0 0 0 2px @color,
+  inset 0 0 0 4px @innerColor,
+  inset 0 0 0 6px @color !important;
+}
+
+.mas-aggregationOverviewBlock(@color: @mas-color-regularFiber, @innerColor: @mas-color-threadBackground, @important: false) when not (@important = true) {
+  background-color: @color;
+  box-shadow: inset 0 0 0 2px @color,
+  inset 0 0 0 4px @innerColor,
+  inset 0 0 0 6px @color;
+}
+
+.mas-fiberOverview--block {
+  .mas-fiberOverviewBlock();
+
+  .is-aggregation & {
+    .mas-aggregationOverviewBlock();
+  }
+
+  .is-aggregation.is-related & {
+    .mas-aggregationOverviewBlock(@mas-color-relatedFiber, @mas-color-threadBackground, true);
+  }
+
+  .is-aggregation.is-furtherRelated & {
+    .mas-aggregationOverviewBlock(@mas-color-furtherRelatedFiber, @mas-color-threadBackground);
+  }
+
+  .is-aggregation.is-displayed & {
+    .mas-aggregationOverviewBlock(@mas-color-regularFiber, @mas-color-displayedFiberBackground);
+  }
+
+  .is-aggregation.is-related.is-displayed & {
+    .mas-aggregationOverviewBlock(@mas-color-relatedFiber, @mas-color-displayedFiberBackground, true);
+  }
+
+  .is-aggregation.is-furtherRelated.is-displayed & {
+    .mas-aggregationOverviewBlock(@mas-color-furtherRelatedFiber, @mas-color-displayedFiberBackground);
+  }
+}
+
+// Relationship highlight
+.mas-fiberOverview--label {
+
+  .is-related.is-highlighted &::before {
+    background-color: @mas-color-highlightedFiber !important;
+  }
+}
+
+.mas-fiberOverview--block {
+
+  .is-related.is-highlighted & {
+    .mas-fiberOverviewBlock(@mas-color-highlightedFiber, true);
+  }
+
+  .is-aggregation.is-related.is-highlighted & {
+    .mas-aggregationOverviewBlock(@mas-color-highlightedFiber, @mas-color-threadBackground, true);
+  }
+
+  .is-aggregation.is-related.is-highlighted.is-displayed & {
+    .mas-aggregationOverviewBlock(@mas-color-highlightedFiber, @mas-color-displayedFiberBackground, true);
+  }
+
+  .mas-element-added.is-related.is-highlighted & {
+    .mas-addedBackground(@mas-color-highlightedFiber, true);
+  }
+
+  .mas-element-added.mas-element-updated.is-related.is-highlighted & {
+    .mas-updatedBackground();
+    .mas-addedBackground(@mas-color-highlightedFiber, true);
+  }
+}

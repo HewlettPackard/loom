@@ -1,0 +1,24 @@
+{
+  "name":"weaver-map",
+  "jsRoot":"js/weaver-map",
+  "configuration": {
+    "paths": {
+      "mustache": "bower_components/mustache/mustache",
+      "lodash.extensions":  "bower_components/weaver/js/weaver/utils/lodash.extensions",
+      "json":  "bower_components/requirejs-plugins/src/json",
+      "d3":  "bower_components/d3/index",
+      "cartogram":  "bower_components/cartogram/cartogram-d3",
+      "cartogram-standalone":  "bower_components/cartogram/cartogram-standalone",
+      "task":  "bower_components/plugins/plugin-map/js/weaver-map/taskutils/taskPlugin",
+      "assert":  "bower_components/weaver/js/weaver/utils/assert"
+    },
+    "shim": {
+      "cartogram": {
+        "deps": ["d3", "q", "setImmediate"]
+      }
+    }
+  },
+  "main": "js/main.js",
+  "less": "less/style.less",
+  "test": true
+}

@@ -1,0 +1,89 @@
+// Provider menu
+//
+// This menu lets user login with the different providers
+// available on the Loom server
+//
+// .has-lockedProviders - If some of the providers are locked
+//
+// Markup:
+// <div class="mas-providerSelectionMenu mas-toolbarMenus mas-menu {{modifier_class}}" style="margin-left: 30em; margin-top: 400px; display: inline-block;">
+//     <button class="mas-menu--toggle">Providers</button>
+//     <div class="mas-menu--content">
+//         <h1 class="mas-propertySelector--title">Available providers</h1>
+//         <p class="mas-providerSelectionMenu--lockedWarning mas-lockedWarning">
+//             Your session for some of the Providers you had authenticate with has expired. You need to authenticate again.
+//         </p>
+//        <ul class="mas-propertySelector--properties">
+//          <li class="mas-propertySelector--property mas-provider mas-provider-c7">File</li>
+//          <li class="mas-propertySelector--property mas-provider mas-provider-c8 is-loggedIn is-locked">Keystone Identity Service
+//          <form class="mas-providerLoginForm" method="post">
+//            <p class="mas-details"></p>
+//            <p class="mas-error"></p>
+//            <label class="mas-labeledInput-top">
+//              <span class="mas-formLabel">Username</span>
+//              <input name="username" data-name="username" class="mas-input" autocomplete="off" type="text">
+//            </label>
+//            <label class="mas-labeledInput-top">
+//              <span class="mas-formLabel">Password</span>
+//              <input name="password" data-name="password" class="mas-input" autocomplete="off" type="password">
+//            </label>
+//            <div class="mas-providerLoginForm--buttons">
+//              <button class="mas-providerLoginForm--logout mas-error mas-cancel" type="reset">Logout</button>
+//              <button type="reset" class="mas-cancel mas-providerLoginForm--cancel">Cancel</button>
+//              <button class="mas-button mas-providerLoginForm--submit">Login</button>
+//            </div>
+//           </form>
+//          </li>
+//          <li class="mas-propertySelector--property mas-provider mas-provider-c9 is-loggedIn">Private</li>
+//          <li class="mas-propertySelector--property mas-provider mas-provider-c10">Public</li>
+//        </ul>
+//     </div>
+// </div>
+//
+// Styleguide 12.4
+.mas-providerList:not(.has-lockedProviders) {
+  .mas-providerSelectionMenu--lockedWarning {
+    display: none;
+  }
+}
+
+// Provider
+//
+// The renders a provider and allows users to sign in/sign out,
+// as well as highlight fibers that are coming from this provider
+//
+// Markup:
+//
+//
+// Styleguide 12.4.1
+.mas-provider {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+  padding-right: 0;
+
+  .mas-providerLoginForm {
+    width: 100%;
+  }
+}
+
+.mas-provider--name {
+  flex: 1 1 0%;
+}
+
+// Locked warning
+//
+// Warning message letting users know they've been locked out
+// of one or many providers
+//
+// Markup:
+// <p class="mas-lockedWarning" style="position: relative;">
+//   Your session for some of the Providers you had authenticate with has expired. You need to authenticate again.
+// </p>
+//
+// Styleguide 12.4.2
+.mas-providerSelectionMenu--lockedWarning {
+
+  position: relative;
+  margin: 0 0 0 5px;
+}

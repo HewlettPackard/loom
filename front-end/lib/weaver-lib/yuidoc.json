@@ -1,0 +1,10 @@
+{
+  "name": "weaver",
+  "version": "3.0.0",
+  "options": {
+    "paths": "js",
+    "outdir": "docs/js",
+    "tabtospace": 2,
+    "linkNatives": true
+  }
+}

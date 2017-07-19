@@ -1,0 +1,64 @@
+.mas-element {
+
+  display: flex;
+  flex-direction: column;
+
+  cursor: pointer;
+
+  // Prepare for animation
+  position: relative;
+  left: 0;
+
+  &:not(.is-selected) {
+
+    .mas-metricValue--label {
+      display: none;
+    }
+  }
+
+  .mas-fiberOverview {
+    flex: 1;
+  }
+
+  // Creates a stacking context for the background
+  -webkit-transform: rotate(0);
+  transform: rotate(0);
+
+  transition: flex .3s .1s;
+
+  // Makes flex sizing "absolute" so the width is not dependent on the content
+  flex-basis: 0;
+}
+
+.mas-element-noLabel {
+
+  .mas-fiberOverview--label {
+    visibility: hidden;
+  }
+}
+
+// Selected state
+.mas-element.is-selected {
+  flex-basis: 0;
+  transition-delay: 0;
+
+  .mas-fiberOverview {
+    //display: none;
+  }
+
+  .mas-element--tooltip {
+    visibility: hidden;
+  }
+
+  .mas-elementOverview {
+    display: none;
+  }
+
+  .mas-element--label {
+    display: none;
+  }
+
+  .mas-element--alertNotification {
+    display: none;
+  }
+}

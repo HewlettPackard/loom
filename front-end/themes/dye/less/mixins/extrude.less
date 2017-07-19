@@ -1,0 +1,31 @@
+.extrude(@size, @color) {
+  perspective: 600px;
+  perspective-origin: 200% 200%;
+  transform: translateZ(@size);
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+  }
+
+  &::before {
+    top: 0;
+    right: 0;
+    width: @size;
+    background: shade(@color, 25);
+    transform-origin: 100% 0;
+    transform: translateZ(0) rotateY(-90deg);
+  }
+
+  &::after {
+
+    height: @size;
+    left: 0;
+    right: 0;
+    background: shade(@color, 50);
+    transform-origin: 0 100%;
+    transform: rotateX(90deg);
+  }
+}

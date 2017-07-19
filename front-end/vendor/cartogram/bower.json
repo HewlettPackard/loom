@@ -1,0 +1,16 @@
+{
+  "name": "cartogram",
+  "version": "1.0.0",
+  "authors": [
+    "Shawn Allen <shawn.allen@hush.com>"
+  ],
+  "description": "Cartogram extention for d3",
+  "main": "cartogram.js",
+  "keywords": [
+    "d3",
+    "cartogram",
+    "maps"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/shawnbot/d3-cartogram"
+}

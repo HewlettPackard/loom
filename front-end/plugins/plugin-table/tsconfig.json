@@ -1,0 +1,44 @@
+{
+    "version": "1.4.1",
+    "compilerOptions": {
+        "outDir": "js",
+        "target": "es5",
+        "module": "amd",
+        "declaration": false,
+        "noImplicitAny": false,
+        "removeComments": true,
+        "noLib": false,
+        "noEmitOnError": false
+    },
+    "compileOnSave": false,
+    "filesGlob": [
+        "./ts/**/*.ts",
+        "!./node_modules/**/*.ts",
+        "../deps/**/*.ts"
+    ],
+    "files": [
+        "./ts/main.ts",
+        "./ts/weaver-table/controller/CollapseController.ts",
+        "./ts/weaver-table/controller/SelectorController.ts",
+        "./ts/weaver-table/controller/SortController.ts",
+        "./ts/weaver-table/controller/TableHeaderListener.ts",
+        "./ts/weaver-table/controller/TableHeaderSortListener.ts",
+        "./ts/weaver-table/layout/ATableBuilder.ts",
+        "./ts/weaver-table/layout/Builder.ts",
+        "./ts/weaver-table/layout/FibreBuilder.ts",
+        "./ts/weaver-table/layout/table_header.ts",
+        "./ts/weaver-table/util/row_css.ts",
+        "./ts/weaver-table/views/FibreContextMenu.ts",
+        "./ts/weaver-table/views/FibreView.ts",
+        "./ts/weaver-table/views/TableView.ts",
+        "./ts/weaver-table/views/ThreadTableView.ts",
+        "../deps/backbone.d.ts",
+        "../deps/jquery.d.ts",
+        "../deps/jquery.sortElement.d.ts",
+        "../deps/lodash.d.ts",
+        "../deps/plugins.d.ts",
+        "../deps/require.d.ts",
+        "../deps/weaver.d.ts",
+        "../deps/weft.d.ts"
+    ]
+}

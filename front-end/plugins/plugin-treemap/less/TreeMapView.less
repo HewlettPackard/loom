@@ -1,0 +1,68 @@
+.mas-treemap-view {
+  position: relative;
+  margin: 8px 0px;
+}
+
+.mas-treemap-element,
+.mas-treemap-inside-element {
+  position: absolute;
+}
+
+.mas-treemap-fiber--block.mas-ignore-label {
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+}
+
+.mas-treemap-element {
+  cursor:pointer;
+
+  & .mas-fiberOverview--label {
+    text-overflow: ellipsis;
+    position: absolute;
+    overflow: hidden;
+  }
+
+  .mas-filter-on & {
+      opacity: 0.4;
+  }
+}
+
+.mas-filter-on .mas-treemap-element.is-partOfFilter,
+.mas-filter-on .mas-treemap-element.is-selected,
+.mas-filter-on .mas-treemap-element.is-matchingFilter {
+  opacity: 1;
+}
+
+.mas-treemap-element-padding {
+  left: 5px;
+  right: 5px;
+}
+
+.mas-treemap-inside-element {
+  .fa();
+  bottom: 5px;
+  top: 20px;
+}
+
+.is-displayed .mas-treemap-inside-element:before {
+    content: @fa-var-level-down;
+    top: ~"calc(50% - 10px)";
+    left: ~"calc(50% - 10px)";
+    display: block;
+    position: absolute;
+    width: 20px;
+    font-size: 18px;
+    height: 20px;
+}
+
+.mas-thread--fibers.mas-flex {
+    display: flex;
+    justify-content: center;
+
+    .mas-mapElementDetails {
+        margin-bottom: 12px;
+        margin-top: 13px;
+    }
+}

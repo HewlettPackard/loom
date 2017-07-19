@@ -1,0 +1,60 @@
+.mas-mapElementDetails.mas-element {
+  padding: 0;
+  margin: 0 5px;
+  flex: 1 1 auto;
+  max-width: 400px;
+}
+
+
+.mas-mapElementDetails.mas-element.is-displayed {
+
+  &::before {
+
+//    content: '';
+//    background: @nestedElementsBorder;
+//    position: absolute;
+    bottom: -12px;  // Cf margin-bottom of mas-mapView
+    left: 0px;
+    right: 0px;
+//    box-shadow: 4px 2px 1px -3px @shadowColor;
+
+    z-index: -1;
+  }
+
+  &::after {
+
+    bottom: -12px;
+  }
+}
+
+.mas-mapElementDetailsSubView {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+
+  .mas-elementDetails:not(.is-displayed) & {
+//    box-shadow: 3px 3px 1px -1px rgba(80, 90, 98, 0.45);
+  }
+
+  & .mas-elementDetails--header {
+    flex: 1 0 auto;
+  }
+
+  & .mas-elementDetails--body {
+      position: relative;
+      flex-grow: 100;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      overflow-x: hidden;
+  }
+}
+
+
+.mas-mapElementDetails--header {
+  display: flex;
+}
+
+.mas-mapElementDetails--actions {
+  display: flex;
+}

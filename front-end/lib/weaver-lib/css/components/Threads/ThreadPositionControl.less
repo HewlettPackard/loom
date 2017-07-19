@@ -1,0 +1,31 @@
+// ThreadPositionControl
+//
+// Lets users reorder threads
+//
+// .is-collapsed - When not activated by users
+//
+// Markup:
+// <div class="mas-threadPositionControl {{modifier_class}}">
+//   <div class="mas-threadPositionControl--up "></div>
+//   <div class="mas-threadPositionControl--down "></div>
+// </div>
+//
+// Styleguide 4.1.1
+
+.mas-threadPositionControl {
+  position: relative;
+
+  // As everything is positioned absolutely inside
+  // we need to set some height and width
+  min-width: 20px;
+  min-height: 40px;
+}
+
+.mas-threadPositionControl:not(.is-collapsed)::before {
+  display: none;
+}
+
+
+
+
+

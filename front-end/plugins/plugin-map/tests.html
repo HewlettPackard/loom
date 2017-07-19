@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+  <title>Plugins automated tests</title>
+  <link rel="stylesheet" href="../bower_components/mocha/mocha.css">
+  <script src="../bower_components/mocha/mocha.js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+    }
+
+    .mocha {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mocha h1 {
+      text-indent: 1em;
+    }
+
+    a, a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <section class="mocha">
+    <a href="?"><h1>Automated tests</h1></a>
+    <div id="mocha"></div>
+  </section>
+  <script src="../bower_components/requirejs/require.js"></script>
+    <script>
+    require.config({
+        paths: {
+            'bower_components': '../bower_components'
+        }
+    });
+    require(['require-config'], function (configuration) {
+
+      configuration.paths['bower_components'] = '../bower_components';
+      require.config(configuration);
+      require(['test/main.js']);
+    });
+  </script>
+</body>
+</html>

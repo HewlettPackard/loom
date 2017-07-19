@@ -1,0 +1,33 @@
+.mas-metricsMenu,
+.mas-sortingMenu,
+.mas-displayMenu,
+.mas-actionsMenu {
+
+  &:not(.is-collapsed) .mas-menu--toggle {
+    background-color: @UIHighlight;
+  }
+}
+
+.mas-sortingMenu .mas-menu--toggle::before {
+  content: @fa-var-exchange;
+}
+
+.mas-actionsMenu .mas-menu--toggle::before {
+  content: @fa-var-cogs;
+}
+
+.mas-metricsMenu .mas-menu--toggle::before {
+  content: @fa-var-bar-chart;
+}
+
+.mas-mapMenu .mas-menu--toggle::before {
+  content: @fa-var-globe;
+}
+
+.mas-mapMenu.is-active .mas-menu--toggle:not(:disabled) {
+  color: @UISelection;
+}
+
+.mas-action--minimiseThread::before {
+  content: @fa-var-compress;
+}

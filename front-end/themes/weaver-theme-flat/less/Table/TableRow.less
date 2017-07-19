@@ -1,0 +1,120 @@
+////////////////////////
+// Default background //
+////////////////////////
+
+tbody .mas-alertNotification-0.mas-table-row:nth-child(odd):not(.is-related):not(:hover) {
+    background-color: @mas-table-alternate-color;
+}
+
+
+/////////////
+// Related //
+/////////////
+
+tbody .mas-table-row.is-related {
+    background: @mas-color-relatedFiber;
+}
+
+tbody .mas-table-row.is-related:hover {
+    background: lighten(@mas-color-relatedFiber, 20%);
+}
+
+/////////////////
+// Highlighted //
+/////////////////
+
+tbody .mas-table-row.is-related.is-highlighted {
+    background: @mas-color-highlightedFiber;
+}
+
+tbody .mas-table-row.is-related.is-highlighted:hover {
+    background: @mas-color-highlightedFiber;
+}
+
+////////////
+// Alerts //
+////////////
+
+tbody .mas-table-row:not(.mas-alertNotification-0) {
+    background: tint(@mas-red, 75);
+    color: @mas-red;
+}
+
+tbody .mas-table-row.is-related:not(.mas-alertNotification-0) {
+    border: solid tint(@mas-red, 75) 1px;
+    color: @mas-red;
+}
+
+tbody .mas-table-row:hover {
+    background: @hp-medium-grey;
+}
+
+/////////////////////
+// Added / Removed //
+/////////////////////
+
+.mas-row-deleted {
+    animation-duration: 2.5s;
+    animation-name: rowHasBeenRemoved_opacity;
+
+    & .nested {
+        overflow: hidden;
+        animation-duration: 2.5s;
+        animation-name: rowHasBeenRemoved_height;
+    }
+
+    & .mas-table-cell {
+        padding: 0px;
+    }
+}
+
+.mas-row-added {
+    animation-duration: 3s;
+    animation-name: rowHasBeenAdded_opacity;
+
+    & .nested {
+        overflow: hidden;
+        animation-duration: 3s;
+        animation-name: rowHasBeenAdded_height;
+    }
+}
+
+@keyframes rowHasBeenRemoved_opacity {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes rowHasBeenRemoved_height {
+  from {
+    max-height: 60px;
+  }
+
+  to {
+    max-height: 0px;
+  }
+}
+
+@keyframes rowHasBeenAdded_opacity {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes rowHasBeenAdded_height {
+  from {
+    max-height: 0px;
+  }
+
+  to {
+    max-height: 60px;
+  }
+}

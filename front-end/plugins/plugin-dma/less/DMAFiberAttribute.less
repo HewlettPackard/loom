@@ -1,0 +1,22 @@
+@mas-dmaFiberAttribute-width: 20px;
+.mas-dmaFiberAttribute {
+
+  position: relative;
+  padding-left: @mas-dmaFiberAttribute-width;
+
+  &::after {
+    .fa();
+    content: @fa-var-check-circle;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: @mas-dmaFiberAttribute-width;
+    text-align: center;
+    transform: translateY(-50%);
+  }
+}
+
+.mas-dmaFiberAttribute-hasDiscrepancy::after {
+
+  content: @fa-var-exclamation-circle;
+}

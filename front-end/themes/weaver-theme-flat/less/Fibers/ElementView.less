@@ -1,0 +1,200 @@
+@import "~dye/less/mixins/stripes.less";
+
+@mas-element-horizontalPadding: (@unit / 8) * 1px;
+
+.mas-element {
+    // Use padding to space elements so their clickable area
+  // is big enough (it's already pretty small
+  // due to the amount of data on the screen)
+  padding: 0 @mas-element-horizontalPadding;
+}
+
+.is-fromHighlightedProvider {
+
+  .mas-fiberOverview--block::after,
+  .mas-treemap-fiber--block::after,
+  .mas-elementDetails--header::after {
+
+    content: '';
+    display: block;
+    border: solid 4px;
+    border-radius: 4px;
+    border-color: @hp-light-grey;
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+  }
+}
+
+@keyframes highlighting-pulse {
+  0% {
+    transform: translateY(3px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.is-related {
+
+  .mas-fiberOverview--label::before {
+    background-color: @mas-color-relatedFiber !important;
+  }
+
+  .mas-fiberOverview--block {
+    .mas-fiberOverviewBlock(@mas-color-relatedFiber, true);
+  }
+}
+
+.is-furtherRelated {
+
+  .mas-fiberOverview--label::before {
+    background-color: @mas-color-furtherRelatedFiber;
+  }
+
+  .mas-fiberOverview--block {
+    .mas-fiberOverviewBlock(@mas-color-furtherRelatedFiber);
+  }
+}
+
+.is-selected {
+
+  .mas-elementDetails {
+    margin: 10px -2px 8px;
+  }
+
+  .mas-metricValue {
+    margin: 6px -2px 6px;
+    flex: 0 0 28px;
+  }
+
+  .mas-graph {
+    height: 28px;
+  }
+
+  .mas-fiberOverview--block {
+    background-color: @hpe-green;
+  }
+}
+
+.mas-addedBackground(@color, @important: false) when (@important = true) {
+  .stripes(@color, @mas-color-threadBackground, true);
+}
+
+.mas-addedBackground(@color, @important: false) when not (@important = true) {
+  .stripes(@color, @mas-color-threadBackground, false);
+}
+
+.mas-element-added {
+  .mas-fiberOverview--block {
+    .mas-addedBackground(@mas-color-regularFiber);
+  }
+
+  &.is-related {
+    .mas-fiberOverview--block {
+      .stripes(@hpe-green, @hpe-white, false);
+    }
+  }
+
+  &.is-furtherRelated {
+    .mas-fiberOverview--block {
+      .mas-addedBackground(@mas-color-furtherRelatedFiber);
+    }
+  }
+}
+
+.mas-updatedBackground(@offset: 3px, @size: 2px) {
+
+  background-image+: linear-gradient(to top,
+  transparent @offset,
+  @mas-color-threadBackground @offset,
+  @mas-color-threadBackground @offset + @size,
+  transparent @offset + @size);
+}
+
+.mas-element-nestedStateChange,
+.mas-element-updated {
+  .mas-fiberOverview--block {
+
+    .mas-updatedBackground();
+  }
+
+  &.is-aggregation {
+    .mas-fiberOverview--block {
+      .mas-updatedBackground(6px);
+    }
+  }
+
+  &.is-related {
+    .mas-fiberOverview--block {
+      .mas-updatedBackground();
+    }
+  }
+
+  &.mas-element-added {
+    .mas-fiberOverview--block {
+
+      .mas-updatedBackground();
+      .mas-addedBackground(@mas-color-regularFiber);
+    }
+
+    &.is-related {
+      .mas-fiberOverview--block {
+
+        .mas-updatedBackground();
+        .mas-addedBackground(@mas-color-relatedFiber, true);
+      }
+    }
+
+    &.is-furtherRelated {
+      .mas-fiberOverview--block {
+
+        .mas-updatedBackground();
+        .mas-addedBackground(@mas-color-furtherRelatedFiber);
+      }
+    }
+  }
+}
+
+
+.mas-element.is-displayed {
+
+  &::before {
+
+    content: '';
+
+    z-index: -1;
+
+    background: @mas-color-displayedFiberBackground;
+
+    position:absolute;
+    bottom: 0;
+    left: @mas-element-horizontalPadding - 2;
+    right: @mas-element-horizontalPadding - 2;
+    top: 20px - 2;
+  }
+
+  &::after {
+
+    .fa();
+    content: @fa-var-caret-down;
+
+    color: @hp-darker-grey;
+
+    position:absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+
+    text-align: center;
+    font-size: 10px;
+    line-height: 10px;
+  }
+
+  &.is-selected::before {
+
+    top: 10px;
+  }
+}

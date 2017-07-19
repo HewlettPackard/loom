@@ -1,0 +1,10 @@
+{
+  "source": [
+    "lib/weaver-lib/css"
+  ],
+  "destination": "docs/css",
+  "css": [
+    "css/style.css",
+    "theme/css/theme.css"
+  ]
+}

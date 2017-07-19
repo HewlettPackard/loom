@@ -1,0 +1,7 @@
+# Implementation of the BaseAdapter
+com.hp.hpl.loom.adapter.os.deltas.DeltaAdapter
+com.hp.hpl.loom.adapter.os.discover.DiscoverAdapter
+com.hp.hpl.loom.adapter.os.fake.FakeAdapter
+com.hp.hpl.loom.adapter.os.real.RealAdapter
+com.hp.hpl.loom.adapter.os.swift.SwiftRealAdapter
+com.hp.hpl.loom.adapter.os.fake.reauth.SelfRevokingFakeAdapter

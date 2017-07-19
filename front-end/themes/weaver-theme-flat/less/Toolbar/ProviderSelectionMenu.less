@@ -1,0 +1,117 @@
+@import "~dye/less/mixins/menu.less";
+@import "~dye/less/mixins/messages.less";
+
+.mas-providerSelectionMenu {
+
+  .mas-menu-expandsUp();
+  .mas-menu-rightAligned();
+
+  .mas-menu--toggle{
+
+    padding: 0 10px;
+    font-weight: 600;
+
+    &::before {
+      .fa();
+      content: @fa-var-book;
+      margin-right: 10px;
+    }
+  }
+
+  .mas-propertySelector--properties {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.mas-provider {
+  cursor: pointer;
+}
+
+.mas-provider--name {
+  line-height: 40px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mas-provider--form {
+
+  // Needed in IE so the form doesn't overflow to the right
+  // when in the side menu
+  max-width: 170px;
+}
+
+.mas-provider .mas-providerLoginForm {
+  padding: 0;
+}
+
+.mas-provider:not(.is-loggedIn) .mas-provider--name{
+  padding-left: 10px;
+}
+
+.mas-provider.is-locked .mas-provider--name::after{
+  .fa();
+  content: "@{fa-var-lock}";
+  font-size: 12px;
+  margin-left: 0.5ex;
+}
+
+.mas-providerHighlightToggle {
+  width: 20px;
+  text-align: center;
+  .fa();
+  &::before {
+    content: @fa-var-lightbulb-o;
+  }
+
+  .mas-provider:not(.is-loggedIn) & {
+    display: none;
+  }
+
+  .mas-provider.is-highlighted & {
+    color: @hp-blue-65;
+  }
+}
+
+.mas-action-signInOrOut {
+
+  width: 30px;
+  height: 40px;
+  text-align: center;
+  .fa();
+  &::before {
+    content: @fa-var-sign-in;
+  }
+
+  .mas-provider.is-loggedIn:not(.is-locked) &::before {
+    content: @fa-var-sign-out;
+  }
+}
+
+.mas-provider.is-loggedIn {
+
+}
+
+.mas-lockedWarning {
+
+  .mas-warning();
+  background: @hp-darker-grey;
+  line-height: 20px;
+  padding: 1em;
+  padding-left: 4em;
+
+  &::before {
+    position: absolute;
+    top: 50%;
+    left: 0;
+
+    .fa();
+    content: @fa-var-warning;
+    font-size: 2em;
+    padding: .5em;
+
+    // After .fa() otherwise transform gets reset
+    transform: translate(0, -50%);
+  }
+}

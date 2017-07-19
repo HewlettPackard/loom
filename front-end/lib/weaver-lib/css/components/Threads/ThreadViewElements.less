@@ -1,0 +1,55 @@
+// ThreadViewElements
+//
+// Markup:
+// <div class="mas-elements {{modifier_class}}">
+//   <div class="mas-element" style="border: dotted 1px;">Element #1</div>
+//   <div class="mas-element" style="border: dotted 1px;">Element #2</div>
+//   <div class="mas-element" style="border: dotted 1px;">Element #3</div>
+//   <div class="mas-element" style="border: dotted 1px;">Element #4</div>
+//   <div class="mas-element" style="border: dotted 1px;">Element #5</div>
+// </div>
+//
+// Styleguide 4.2.2
+.mas-elements {
+
+  display: flex;
+
+  position: relative;
+
+  // Prevents labels with visibility: hidden going over the right edge of the screen
+  // to create a horizontal scrollbar
+  // we actually want our tooltips to show up outside of the screen, so letss ee if this affect it
+  //overflow: hidden;
+
+  &.has-removedElements {
+
+    padding-right: @unit;
+
+    .mas-elements--removedElements {
+      display: block;
+    }
+  }
+}
+
+.mas-elements-displayingClusters {
+
+  .mas-element--label {
+    overflow: visible;
+  }
+}
+
+.mas-elements--emptyMessage {
+  flex: 1;
+  margin: 10px 5px;
+}
+
+.mas-emptyMessage {
+  position: relative;
+}
+
+.mas-emptyMessage--message {
+  position: absolute;
+  right: 10px;
+  bottom: 5px;
+  margin: 0;
+}

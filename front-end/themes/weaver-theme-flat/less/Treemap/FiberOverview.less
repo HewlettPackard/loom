@@ -1,0 +1,100 @@
+
+.mas-treemap-fiber--block {
+  .mas-fiberOverviewBlock();
+
+  .is-aggregation > & {
+    .mas-aggregationOverviewBlock();
+  }
+
+  .is-aggregation.is-related > & {
+    .mas-aggregationOverviewBlock(@mas-color-relatedFiber);
+  }
+
+  .is-aggregation.is-displayed > & {
+    .mas-aggregationOverviewBlock(@mas-color-regularFiber, @hp-medium-grey);
+  }
+
+  .is-aggregation.is-related.is-displayed > & {
+    .mas-aggregationOverviewBlock(@mas-color-relatedFiber, @hp-medium-grey);
+  }
+
+  .is-aggregation.is-highlighted > & {
+    .mas-aggregationOverviewBlock(@mas-color-highlightedFiber);
+  }
+
+  .is-aggregation.is-highlighted.is-displayed > & {
+    .mas-aggregationOverviewBlock(@mas-color-highlightedFiber, @hp-medium-grey);
+  }
+
+  .is-fromHighlightedProvider > &::after {
+    content: '';
+    display: block;
+    border: solid 4px;
+    border-radius: 4px;
+    border-color: @hp-light-grey;
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+  }
+
+  .is-related > & {
+    .mas-fiberOverviewBlock(@mas-color-relatedFiber);
+  }
+
+  .is-related.is-highlighted > & {
+    .mas-fiberOverviewBlock(@mas-color-highlightedFiber);
+  }
+
+  .mas-element-added > & {
+    .mas-addedBackground(@mas-color-regularFiber);
+  }
+
+  .mas-element-added.is-related > & {
+    .mas-addedBackground(@mas-color-relatedFiber);
+  }
+
+  .mas-element-added.is-highlighted > & {
+    .mas-addedBackground(@mas-color-highlightedFiber);
+  }
+
+  .mas-element-added.mas-element-updated.is-highlighted > & {
+    .mas-updatedBackground();
+    .mas-addedBackground(@mas-color-highlightedFiber);
+  }
+}
+
+.mas-element-nestedStateChange,
+.mas-element-updated {
+  .mas-treemap-fiber--block {
+    .mas-updatedBackground();
+  }
+
+  &.is-aggregation {
+    .mas-treemap-fiber--block {
+      .mas-updatedBackground(6px);
+    }
+  }
+
+  &.is-related {
+    .mas-treemap-fiber--block {
+      .mas-updatedBackground();
+    }
+  }
+
+  &.mas-element-added {
+    .mas-treemap-fiber--block {
+
+      .mas-updatedBackground();
+      .mas-addedBackground(@mas-color-regularFiber);
+    }
+
+    &.is-related {
+      .mas-treemap-fiber--block {
+
+        .mas-updatedBackground();
+        .mas-addedBackground(@mas-color-relatedFiber);
+      }
+    }
+  }
+}

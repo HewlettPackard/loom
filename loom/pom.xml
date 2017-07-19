@@ -1,0 +1,569 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    (c) Copyright 2017 Hewlett Packard Enterprise Development LP Licensed under the Apache License,
+    Version 2.0 (the "License"); you may not use this file except in compliance with the License. You
+    may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
+   
+    Unless required by applicable law or agreed to in writing, software distributed under the License
+    is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+    or implied. See the License for the specific language governing permissions and limitations under
+    the License.
+ -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.hp.hpl.loom</groupId>
+		<artifactId>loom-parent</artifactId>
+		<version>3.11-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>loom</artifactId>
+	<packaging>pom</packaging>
+	<name>Parent project for Loom server</name>
+	<description>loom</description>
+	<url>https://github.com/HewlettPackard/loom</url>
+	<inceptionYear>2014</inceptionYear>
+	<organization>
+		<name>Loom, Hewlett Packard Labs, Bristol</name>
+	</organization>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java-source.version>1.8</java-source.version>
+		<java-target.version>1.8</java-target.version>
+
+		<jetty.version>9.3.6.v20151106</jetty.version>
+		<jetty.port>9099</jetty.port>
+		<jetty.stopPort>9199</jetty.stopPort>
+
+		<junit.version>4.11</junit.version>
+		<jacoco.version>0.7.2.201409121644</jacoco.version>
+		<spring.version>4.2.0.RELEASE</spring.version>
+		<spring-test.version>4.2.0.RELEASE</spring-test.version>
+		<spring-plugin-core.version>1.0.0.RELEASE</spring-plugin-core.version>
+
+		<skipUnitTests>false</skipUnitTests>
+
+		<maven-checkstyle-plugin.version>2.13</maven-checkstyle-plugin.version>
+		<maven-war-plugin.version>2.4</maven-war-plugin.version>
+		<maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
+		<maven-source-plugin.version>3.0.1</maven-source-plugin.version>
+		<maven-jar-plugin.version>2.4</maven-jar-plugin.version>
+		<maven-surefire-plugin.version>2.15</maven-surefire-plugin.version>
+		<maven-failsafe-plugin.version>2.12.4</maven-failsafe-plugin.version>
+		<maven-javadoc-plugin.version>2.9.1</maven-javadoc-plugin.version>
+		<guava.version>r03</guava.version>
+		<maven.build.timestamp.format>yyyyMMdd</maven.build.timestamp.format>
+		<checkstyle.config.location>${parent.basedir}/config/checkstyle.xml</checkstyle.config.location>
+	</properties>
+
+	<modules>
+		<module>loom-common</module>
+		<module>loom-adapter</module>
+		<module>loom-client</module>
+		<module>adapters</module>
+		<module>stitcher</module>
+		<module>loom-server</module>
+		<module>loom-openstack</module>
+	</modules>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-checkstyle-plugin</artifactId>
+					<version>${maven-checkstyle-plugin.version}</version>
+					<inherited>true</inherited>
+					<dependencies>
+						<dependency>
+							<groupId>com.puppycrawl.tools</groupId>
+							<artifactId>checkstyle</artifactId>
+							<version>6.1</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
+
+				<plugin>
+					<groupId>org.eclipse.jetty</groupId>
+					<artifactId>jetty-maven-plugin</artifactId>
+					<version>${jetty.version}</version>
+					<configuration>
+						<war>${project.basedir}/loom-server/target/loom.war</war>
+						<httpConnector>
+							<port>${jetty.port}</port>
+						</httpConnector>
+						<stopPort>${jetty.stopPort}</stopPort>
+						<stopKey>${project.artifactId}</stopKey>
+						<scanIntervalSeconds>10</scanIntervalSeconds>
+						<webApp>
+							<contextPath>/</contextPath>
+						</webApp>
+						<contextHandlers>
+							<contextHandler implementation="org.eclipse.jetty.maven.plugin.JettyWebAppContext">
+								<contextPath>/weaver</contextPath>
+								<resourceBase>${project.basedir}/../front-end/apps/web/dist</resourceBase>
+							</contextHandler>
+						</contextHandlers>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.apache.maven.plugins
+										</groupId>
+										<artifactId>
+											maven-dependency-plugin
+										</artifactId>
+										<versionRange>
+											[2.8,)
+										</versionRange>
+										<goals>
+											<goal>
+												copy-dependencies
+											</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.jacoco</groupId>
+										<artifactId>
+											jacoco-maven-plugin
+										</artifactId>
+										<versionRange>
+											[${jacoco-version},)
+										</versionRange>
+										<goals>
+											<goal>prepare-agent</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<configuration>
+						<source>1.8</source>
+						<target>1.8</target>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>${maven-javadoc-plugin.version}</version>
+					<configuration>
+						<failOnError>false</failOnError>
+						<aggregate>true</aggregate>
+					</configuration>
+				</plugin>
+
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>${maven-surefire-plugin.version}</version>
+
+					<executions>
+						<execution>
+							<id>default-test</id>
+							<phase>test</phase>
+							<goals>
+								<goal>test</goal>
+							</goals>
+							<configuration>
+								<!-- Sets the VM argument line used when unit tests are run. -->
+								<argLine>${surefireArgLine}</argLine>
+								<excludes>
+									<exclude>**/*IT.java</exclude>
+									<exclude>**/*FailureTest.java</exclude>
+								</excludes>
+								<!-- So we don't have to always specify -Ddeployment.properties -->
+								<systemPropertyVariables>
+									<deployment.properties>src/test/resources/deployment-test.properties</deployment.properties>
+								</systemPropertyVariables>
+								<skipTests>${skipUnitTests}</skipTests>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+
+				<plugin>
+					<groupId>pl.allegro</groupId>
+					<artifactId>grunt-maven-plugin</artifactId>
+					<version>1.5.0</version>
+					<configuration>
+						<!-- relative to src/main/webapp/, default: static -->
+
+
+						<!-- example options usage to get verbose output in logs -->
+						<gruntOptions>
+							<gruntOption>--verbose</gruntOption>
+						</gruntOptions>
+
+						<!-- example npm install env variable -->
+						<npmEnvironmentVar>
+
+						</npmEnvironmentVar>
+
+						<!-- example options usage to filter variables in given resource -->
+						<filteredResources>
+						</filteredResources>
+
+					</configuration>
+					<executions>
+						<execution>
+							<goals>
+								<goal>create-resources</goal>
+								<goal>bower</goal>
+								<goal>npm</goal>
+								<goal>grunt build</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+	</dependencies>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.jacoco</groupId>
+				<artifactId>org.jacoco.agent</artifactId>
+				<version>${jacoco.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.google.guava</groupId>
+				<artifactId>guava</artifactId>
+				<version>17.0</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.powermock</groupId>
+				<artifactId>powermock-module-junit4</artifactId>
+				<version>1.5.1</version>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.powermock</groupId>
+				<artifactId>powermock-api-mockito</artifactId>
+				<version>1.5.1</version>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>${jetty.version}</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.11</version>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>log4j</groupId>
+				<artifactId>log4j</artifactId>
+				<version>1.2.17</version>
+			</dependency>
+
+			<dependency>
+				<groupId>log4j</groupId>
+				<artifactId>apache-log4j-extras</artifactId>
+				<version>1.1</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-log4j12</artifactId>
+				<version>1.7.5</version>
+			</dependency>
+
+			<dependency>
+				<groupId>cglib</groupId>
+				<artifactId>cglib</artifactId>
+				<version>3.0</version>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>2.4</version>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-lang</groupId>
+				<artifactId>commons-lang</artifactId>
+				<version>2.6</version>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-configuration</groupId>
+				<artifactId>commons-configuration</artifactId>
+				<version>1.9</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.neo4j</groupId>
+				<artifactId>neo4j</artifactId>
+				<version>2.2.0-RC01</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-all</artifactId>
+				<version>1.9.5</version>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-annotations</artifactId>
+				<version>2.6.3</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-databind</artifactId>
+				<version>2.6.3</version>
+			</dependency>
+
+			<!-- Spring dependencies -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-core</artifactId>
+				<version>4.2.0.RELEASE</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>4.2.0.RELEASE</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context-support</artifactId>
+				<version>4.2.0.RELEASE</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-web</artifactId>
+				<version>4.2.0.RELEASE</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-webmvc</artifactId>
+				<version>4.2.0.RELEASE</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-test</artifactId>
+				<version>4.2.0.RELEASE</version>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.javassist</groupId>
+				<artifactId>javassist</artifactId>
+				<version>3.18.0-GA</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.jboss.logging</groupId>
+				<artifactId>jboss-logging</artifactId>
+				<version>3.1.3.GA</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-orm</artifactId>
+				<version>4.2.0.RELEASE</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.hamcrest</groupId>
+				<artifactId>hamcrest-all</artifactId>
+				<version>1.3</version>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>com.jayway.jsonpath</groupId>
+				<artifactId>json-path</artifactId>
+				<version>0.8.1</version>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>com.jayway.jsonpath</groupId>
+				<artifactId>json-path-assert</artifactId>
+				<version>0.8.1</version>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.httpcomponents</groupId>
+				<artifactId>httpcore</artifactId>
+				<version>4.4.4</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-math3</artifactId>
+				<version>3.3</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-collections4</artifactId>
+				<version>4.0</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jxr-plugin</artifactId>
+				<version>2.3</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>${maven-checkstyle-plugin.version}</version>
+				<inherited>true</inherited>
+			</plugin>
+		</plugins>
+	</reporting>
+
+	<profiles>
+		<profile>
+			<id>integration-tests</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-failsafe-plugin</artifactId>
+						<version>${maven-failsafe-plugin.version}</version>
+						<configuration>
+							<!-- Sets the VM argument line used when integration tests are run. -->
+							<argLine>${failsafeArgLine}</argLine>
+							<excludes>
+								<exclude>**/*Test.java</exclude>
+							</excludes>
+						</configuration>
+
+						<executions>
+							<execution>
+								<id>failsafe-integration-test</id>
+								<goals>
+									<goal>integration-test</goal>
+								</goals>
+								<configuration>
+									<!-- So we don't have to always specify -Ddeployment.properties -->
+									<systemPropertyVariables>
+										<deployment.properties>src/test/resources/deployment-it.properties</deployment.properties>
+									</systemPropertyVariables>
+									<includes>
+										<include>**/*IT.java</include>
+									</includes>
+									<excludes>
+										<exclude>**/*FailureTest.java</exclude>
+									</excludes>
+								</configuration>
+							</execution>
+							<!-- <execution> <id>failure-test</id> <goals> <goal>integration-test</goal> 
+								</goals> <configuration> <systemPropertyVariables> <deployment.properties>src/test/resources/deployment-test.properties</deployment.properties> 
+								</systemPropertyVariables> <includes> <include>**/*FailureTest.java</include> 
+								</includes> <excludes> <exclude>**/*IT.java</exclude> </excludes> </configuration> 
+								</execution> -->
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.jacoco</groupId>
+						<artifactId>jacoco-maven-plugin</artifactId>
+						<version>${jacoco.version}</version>
+						<executions>
+							<!-- The Executions required by unit tests are omitted. -->
+							<!-- Prepares the property pointing to the JaCoCo runtime agent which 
+								is passed as VM argument when Maven the Failsafe plugin is executed. -->
+							<execution>
+								<id>pre-integration-test</id>
+								<phase>pre-integration-test</phase>
+								<goals>
+									<goal>prepare-agent</goal>
+								</goals>
+								<configuration>
+									<!-- Sets the path to the file which contains the execution data. -->
+									<destFile>${project.build.directory}/coverage-reports/jacoco-it.exec</destFile>
+									<!-- Sets the name of the property containing the settings for JaCoCo 
+										runtime agent. -->
+									<propertyName>failsafeArgLine</propertyName>
+								</configuration>
+							</execution>
+							<!-- Ensures that the code coverage report for integration tests after 
+								integration tests have been run. -->
+							<execution>
+								<id>post-integration-test</id>
+								<phase>post-integration-test</phase>
+								<goals>
+									<goal>report</goal>
+								</goals>
+								<configuration>
+									<!-- Sets the path to the file which contains the execution data. -->
+									<dataFile>${project.build.directory}/coverage-reports/jacoco-it.exec</dataFile>
+									<!-- Sets the output directory for the code coverage report. -->
+									<outputDirectory>${project.reporting.outputDirectory}/jacoco-it</outputDirectory>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+</project>

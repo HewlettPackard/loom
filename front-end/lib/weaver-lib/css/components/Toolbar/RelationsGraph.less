@@ -1,0 +1,21 @@
+.mas-relationsGraph {
+  height: 100%;
+}
+
+.mas-relationsGraph--graphContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.mas-relationsGraph-loaded {
+  .mas-relationsGraph--hideWhenLoaded {
+    display: none;
+  }
+
+  .mas-relationsGraph:not(&) .mas-relationsGraph--onlyWhenLoaded {
+    display: none;
+  }
+}

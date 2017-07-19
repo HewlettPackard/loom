@@ -1,0 +1,298 @@
+// Threads
+//
+// Main view for the threads
+//
+// Styleguide 4.0
+
+// ThreadView
+//
+// .mas-threadView-nested - Specific styling for when showing a nested thread
+// .mas-threadView-beingUpdated  - Specific styling for when the Thread the view displays is being updated
+// .is-unavailable - Shows this Thread is unavailable
+//
+// Markup:
+// <li class="mas-threadView {{modifier_class}}">
+//   <div class="mas-threadView--positionControl mas-threadPositionControl fa fa-exchange is-collapsed">
+//     <div class="mas-threadPositionControl--up fa fa-arrow-up"></div>
+//     <div class="mas-threadPositionControl--down fa fa-arrow-down"></div>
+//   </div>
+//   <section class="mas-thread" style="text-align: center; outline: dotted 1px; min-height: 30px;">
+//     Thread (see below)
+//   </section>
+//   <ul class="mas-threadView--subthreads" style="text-align: center; outline: dotted 1px; min-height: 30px;">
+//     Optional nested ThreadView
+//   </ul>
+//   <div class="mas-veil">
+//     <p class="mas-veil--message">This data is no longer available because you logged out from the Provider offering it. Please log back in to that provider or <button class="mas-veil--action mas-action--close">close this Thread.</button></p>
+//   </div>
+// </li>
+//
+// Styleguide 4.1
+.mas-threadView {
+  clear: both;
+  position: relative;
+
+  // Hide the veil when main Thread is available
+  // and on nested Threads
+  &:not(.is-unavailable), &.mas-threadView-nested {
+
+    .mas-veil {
+      display: none;
+    }
+  }
+
+  .mas-veil {
+    position: absolute;
+    top:0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+
+    z-index: 20;
+  }
+}
+
+.mas-threadView--positionControl {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: @positionControlWidth;
+}
+
+// Leaves space for the reordering control
+.mas-threadView-main {
+  padding-left: @positionControlWidth;
+}
+
+.mas-veil {
+  position: relative;
+}
+
+.mas-veil--message {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+
+  margin: 0;
+}
+
+.mas-veil--action {
+  text-decoration: underline;
+}
+
+.mas-threadView-nested {
+
+  .mas-action--clone {
+    display: none;
+  }
+
+  .mas-threadPositionControl {
+
+    display: none;
+  }
+}
+
+// Thread
+//
+// Markup:
+// <section class="mas-thread">
+//   <div class="mas-thread--queryEditor mas-queryEditor">Query editor</div>
+//   <div class="mas-thread--contents">
+//     <div class="mas-thread--header">Header</div>
+//     <div class="mas-thread--fibers">Fibers</div>
+//     <button class="mas-thread--settingsToggle mas-action mas-action-toggleSettings fa fa-ellipsis-h"></button>
+//     <div class="mas-thread--removedElements">3</div>
+//     <div class="mas-thread--excludedItemsToggle">
+//       <i class="fa fa-filter"></i>
+//       <i class="fa fa-exclamation"></i>
+//     </div>
+//   </div>
+//   <div class="mas-thread--settingsMenu">
+//     Settings menu
+//   </div>
+// </div>
+// </section>
+//
+// Styleguide 4.2
+.mas-thread--contents {
+  position: relative;
+}
+
+.mas-thread--excludedItemsToggle {
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  text-align: center;
+
+  .mas-thread:not(.has-excludedItems) & {
+    display: none;
+  }
+}
+
+.mas-thread--queryMenu {
+  flex: 0 0 100%;
+}
+
+.mas-thread--header {
+
+  max-width: @threadViewHeaderMaxWidth;
+  width: @threadViewHeaderWidth;
+}
+
+.mas-thread--legend {
+
+  .mas-tapestryScreen.is-hidingLegends & {
+    display: none;
+  }
+}
+
+.mas-thread--contents {
+  display:flex;
+}
+
+.mas-thread--fibers {
+  flex: 1;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.mas-thread--excludedItemsToggle {
+  width: @unit * 1px;
+}
+
+.mas-thread--removedElements {
+
+  position: absolute;
+  bottom: 20px;
+  right: 0;
+  width: @unit * 1px;
+
+  text-align: center;
+
+  overflow: hidden;
+
+  .mas-thread:not(.has-removedElements) & {
+    display: none;
+  }
+}
+
+.mas-thread:not(.mas-thread-minimised) .mas-action-maximiseThread {
+  display: none;
+}
+
+.mas-thread-minimised {
+
+  // 1. Display button to maximise Thread again
+  .mas-action-maximiseThread {
+    display: block;
+  }
+
+  .mas-action-toggleQuery {
+    display:none;
+  }
+
+  // 2. Hide ElementDetails in favor of the more compact FiberOverview
+  .mas-elementDetails {
+    display: none;
+  }
+
+  .is-selected .mas-fiberOverview {
+    display: flex;
+  }
+
+  // 3. Adjust the display of the FiberOverview
+  .mas-fiberOverview--label {
+    display: none;
+  }
+
+  .mas-fiberOverview--block {
+    top: 10px;
+  }
+
+  // 4. Have header display minimal informations
+  .mas-groupingInfo, .mas-sortingInfo, .mas-filterInfo, .mas-threadSummary {
+    display: none;
+  }
+
+  .mas-thread--settingsMenu {
+    display: none;
+  }
+
+  .mas-thread--queryEditor {
+    display: none;
+  }
+
+  .mas-threadHeader {
+    min-height: 0;
+  }
+
+  .mas-threadHeader--info {
+    min-height: 0;
+    line-height: 22px;
+    padding-bottom: 9px;
+  }
+
+  .mas-headerActions {
+    display: none;
+  }
+
+  // 5. Tweak specific states of fibers
+  .mas-element.is-displayed {
+
+    &::before {
+      top: 10px;
+      margin-left: 2px;
+      margin-right: 2px;
+    }
+
+    &::after {
+      margin-bottom: -1px;
+    }
+  }
+
+  .mas-element.is-selected {
+
+    background-color: green;
+    .mas-fiberOverview--block {
+      margin-top: -2px;
+      margin-bottom: -2px;
+    }
+
+    .mas-metricValue {
+      margin: 8px 3px 5px;
+      flex: 0 0 27px;
+    }
+
+    &.is-displayed {
+
+      &::after {
+        margin-bottom: -2px;
+      }
+
+      .mas-elementDetails {
+        margin-top:0;
+      }
+
+      .mas-metricValue {
+        margin: 7px 3px 6px;
+      }
+    }
+
+    .mas-alertNotification {
+      top: 5px;
+      right: 1px;
+      display: block;
+    }
+
+    .mas-alertNotification-0 {
+      display: none;
+    }
+  }
+
+  .mas-emptyMessage--message {
+    bottom: 0;
+  }
+}

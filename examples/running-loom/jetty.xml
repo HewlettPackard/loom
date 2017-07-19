@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<!DOCTYPE Configure PUBLIC "-//Jetty//Configure//EN" "http://www.eclipse.org/jetty/configure_9_3.dtd">
+
+<!-- As per http://wiki.eclipse.org/Jetty/Howto/High_Load -->
+<Configure id="Server" class="org.eclipse.jetty.server.Server">
+	<Get name="ThreadPool">
+		<Set name="minThreads" type="int">10</Set>
+		<Set name="maxThreads" type="int">200</Set>
+		<Set name="detailedDump">false</Set>
+	</Get>
+	
+	<Set name="connectors">
+	    <Array type="org.eclipse.jetty.server.Connector">
+	        <Item>
+	            <New class="org.eclipse.jetty.server.ServerConnector">
+	                <Arg> <Ref refid="Server"/> </Arg>
+	                <Set name="port">9099</Set>
+	                <Set name="name">instance_9099</Set>
+	            </New>
+	        </Item>
+	    </Array>
+	</Set>
+	
+	<New id="context-weaver" class="org.eclipse.jetty.maven.plugin.JettyWebAppContext">
+	    <Set name="contextPath">/</Set>
+	    <Set name="war">wars/loom-server-3.11-SNAPSHOT.war</Set>
+	    <Set name="virtualHosts">
+	        <Array type="java.lang.String">
+	            <Item>@instance_9099</Item>
+	        </Array>
+	    </Set>
+	</New>
+	
+	<New id="context-loom" class="org.eclipse.jetty.maven.plugin.JettyWebAppContext">
+	    <Set name="contextPath">/weaver</Set>
+	    <Set name="war">target/weaver-3.11-SNAPSHOT.war</Set>
+	    <Set name="virtualHosts">
+	        <Array type="java.lang.String">
+	            <Item>@instance_9099</Item>
+	        </Array>
+	    </Set>
+	</New>
+	
+	<Set name="handler">
+	    <New class="org.eclipse.jetty.server.handler.ContextHandlerCollection">
+	        <Set name="handlers">
+	            <Array type="org.eclipse.jetty.server.Handler">
+	                <Item>
+	                    <Ref refid="context-weaver" />
+	                </Item>
+	                <Item>
+	                    <Ref refid="context-loom" />
+	                </Item>
+	                <Item>
+	                    <New class="org.eclipse.jetty.server.handler.DefaultHandler" />
+	                </Item>
+	            </Array>
+	        </Set>
+	    </New>
+</Set>
+	
+</Configure>

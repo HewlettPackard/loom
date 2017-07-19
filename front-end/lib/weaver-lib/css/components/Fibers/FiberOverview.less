@@ -1,0 +1,167 @@
+// FiberOverview
+//
+// The FiberOverview component displays an overview of a Fiber,
+// limiting the visible informations to its label only.
+//
+// .is-related                               - When the fiber is related to selected fiber
+// .is-related.is-highlighted                - When the fiber is related and its relation type is highlighted
+// .is-aggregation                           - When the fiber represents an aggregation
+// .is-related.is-aggregation                - When the fiber represents an aggregation related to selected fiber
+// .is-related.is-highlighted.is-aggregation - When the fiber represents an aggregation related to selected fiber and its relation type is highlighted
+//
+// Markup:
+// <div class="mas-element {{modifier_class}}">
+//  <div class="mas-fiberOverview" style="max-width: 10em;">
+//    <div class="mas-fiberOverview--label">
+//     <span class="mas-titleInContext--title">Short label</span>
+//    </div>
+//    <div class="mas-fiberOverview--block"></div>
+//    <div class="mas-fiberOverview--tooltip mas-tooltip mas-tooltip-bottomRightArrow">Short label</div>
+//    <div class="mas-fiberOverview--alert mas-alertNotification mas-alertNotification-0"></div>
+//  </div>
+// </div>
+//
+// Styleguide 3.1
+
+// Classes are actually set on the parent
+
+// Added and updated states
+//
+// Markup:
+// <div class="mas-element mas-element-added {{modifier_class}}">
+//  <div class="mas-fiberOverview" style="max-width: 10em;">
+//    <div class="mas-fiberOverview--label">
+//     <span class="mas-titleInContext--title">Added</span>
+//    </div>
+//    <div class="mas-fiberOverview--block"></div>
+//    <div class="mas-fiberOverview--tooltip mas-tooltip mas-tooltip-bottomRightArrow">Short label</div>
+//    <div class="mas-fiberOverview--alert mas-alertNotification mas-alertNotification-0"></div>
+//  </div>
+// </div>
+// <div class="mas-element mas-element-updated {{modifier_class}}">
+//  <div class="mas-fiberOverview" style="max-width: 10em;">
+//    <div class="mas-fiberOverview--label">
+//     <span class="mas-titleInContext--title">Updated</span>
+//    </div>
+//    <div class="mas-fiberOverview--block"></div>
+//    <div class="mas-fiberOverview--tooltip mas-tooltip mas-tooltip-bottomRightArrow">Short label</div>
+//    <div class="mas-fiberOverview--alert mas-alertNotification mas-alertNotification-0"></div>
+//  </div>
+// </div>
+// <div class="mas-element mas-element-added mas-element-updated {{modifier_class}}">
+//  <div class="mas-fiberOverview" style="max-width: 10em;">
+//    <div class="mas-fiberOverview--label">
+//     <span class="mas-titleInContext--title">Added & updated</span>
+//    </div>
+//    <div class="mas-fiberOverview--block"></div>
+//    <div class="mas-fiberOverview--tooltip mas-tooltip mas-tooltip-bottomRightArrow">Short label</div>
+//    <div class="mas-fiberOverview--alert mas-alertNotification mas-alertNotification-0"></div>
+//  </div>
+// </div>
+//
+// .is-related                               - When the fiber is related to selected fiber
+// .is-related.is-highlighted                - When the fiber is related and its relation type is highlighted
+// .is-aggregation                           - When the fiber represents an aggregation
+// .is-related.is-aggregation                - When the fiber represents an aggregation related to selected fiber
+// .is-related.is-highlighted.is-aggregation - When the fiber represents an aggregation related to selected fiber and its relation type is highlighted
+//
+// Styleguide 3.2
+
+// Classes are actually set on the parent
+
+// Other states
+//
+// Element states
+//
+// .has-hiddenOverflow  - Allows the label to overflow past the border of the FiberOverview
+// .has-visibleTooltip  - Allows the tooltip to be visible
+//
+// Markup:
+// <div class="mas-fiberOverview {{modifier_class}}" style="max-width: 10em;">
+//   <div class="mas-fiberOverview--label">
+//    <span class="mas-titleInContext--title">Short label</span>
+//   </div>
+//   <div class="mas-fiberOverview--block"></div>
+//   <div class="mas-fiberOverview--tooltip mas-tooltip mas-tooltip-bottomRightArrow">Short label</div>
+//   <div class="mas-fiberOverview--alert mas-alertNotification mas-alertNotification-5"></div>
+// </div>
+// <div class="mas-fiberOverview {{modifier_class}}" style="max-width: 10em;">
+//   <div class="mas-fiberOverview--label">
+//     <span class="mas-titleInContext--title">A longer label that would overflow</span>
+//   </div>
+//   <div class="mas-fiberOverview--block"></div>
+//   <div class="mas-fiberOverview--tooltip mas-tooltip mas-tooltip-bottomRightArrow">A longer label that would overflow</div>
+//   <div class="mas-fiberOverview--alert mas-alertNotification mas-alertNotification-5"></div>
+// </div>
+// <div class="mas-fiberOverview {{modifier_class}}" style="max-width: 10em; margin-bottom: 20px;">
+//   <div class="mas-fiberOverview--label">
+//     <span class="mas-titleInContext--context">Context of the title</span>
+//     <span class="mas-titleInContext--separator">&nbsp;—&nbsp;</span>
+//     <span class="mas-titleInContext--title">The title</span>
+//   </div>
+//   <div class="mas-fiberOverview--block"></div>
+//   <div class="mas-fiberOverview--tooltip mas-tooltip mas-tooltip-bottomRightArrow">A longer label that would overflow</div>
+//   <div class="mas-fiberOverview--alert mas-alertNotification mas-alertNotification-5"></div>
+// </div>
+//
+// Styleguide 3.3
+.mas-fiberOverview {
+
+  position: relative;
+
+  &.has-hiddenOverflow {
+
+    .mas-fiberOverview--label {
+
+      &:extend(.mas-titleInContext);
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  &:not(.has-visibleTooltip) {
+
+    .mas-fiberOverview--tooltip {
+      visibility: hidden;
+    }
+  }
+}
+
+// As Threads' headers are on the left, the tooltip
+// gets its right edge aligned with the center of this
+// fiber so there is no clipping issue
+.mas-fiberOverview--tooltip {
+  position: absolute;
+  bottom: 50%;
+  right: 50%;
+  white-space: nowrap;
+  max-width: @threadViewHeaderMaxWidth;
+}
+
+.mas-fiberOverview--label {
+
+  white-space: nowrap;
+  // This was previously position: relative
+  // causing a problem on the layout and flexbox calculations as the label
+  // would contribute to the minimum size of the fibre.
+  position: absolute;
+}
+
+.mas-fiberOverview--alert {
+  position: absolute;
+  top: 17px;
+  right: -2px;
+}
+
+// Rendering with background-clip wasn't satisfactory
+// so we're using an additional element there.
+// An SVG shape (including the tick before the label)
+// could be an option
+.mas-fiberOverview--block {
+
+  position: absolute;
+  top: 20px;
+  left: 0;
+  right: 0;
+  bottom: 8px;
+}

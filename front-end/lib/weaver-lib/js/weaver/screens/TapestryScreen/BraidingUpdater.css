@@ -1,0 +1,3 @@
+.mas-element {
+  min-width: {{noSelectionElementsWidth}}%;
+}

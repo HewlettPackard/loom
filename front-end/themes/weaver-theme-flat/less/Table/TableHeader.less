@@ -1,0 +1,38 @@
+.mas-table-header .mas-table-cell:not(.is-collapsed):hover {
+    background-color: @hp-medium-grey;
+    cursor: pointer;
+}
+
+.mas-table-header .mas-table-cell.is-collapsed {
+    background-color: @mas-color-table-collapsed;
+}
+
+.mas-table-row.mas-table-collapse-actions {
+    color: rgb(184, 187, 188);
+}
+
+.is-sorting-column.is-sorted-asc .mas-sorting-indicator {
+    .fa();
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    &::before {
+        content: @fa-var-sort-asc;
+        color: white;
+        position: absolute;
+        top: 4px;
+    }
+}
+
+.is-sorting-column.is-sorted-dsc .mas-sorting-indicator {
+    .fa();
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    &::before {
+        content: @fa-var-sort-desc;
+        color: white;
+        position: absolute;
+        top: -4px;
+    }
+}

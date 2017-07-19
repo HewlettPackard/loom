@@ -1,0 +1,27 @@
+.mas-table-contextMenu.mas-display-block:after {
+    border-color: transparent transparent transparent @mas-color-relatedFiber;
+
+    .is-highlighted & {
+      border-color: transparent transparent transparent @mas-color-highlightedFiber;
+    }
+}
+
+.mas-table-contextMenu--title {
+    background: @mas-color-relatedFiber;
+
+    .is-highlighted & {
+      background: @mas-color-highlightedFiber;
+    }
+}
+
+.mas-table-contextMenu {
+    background: @mas-color-arrowMenuBackgound;
+}
+
+.is-displayed .mas-table-contextMenu--actions .mas-action--view {
+    color: @UIHighlight;
+}
+
+.is-partOfFilter .mas-table-contextMenu--actions .mas-action--filter {
+    color: @UIHighlight;
+}

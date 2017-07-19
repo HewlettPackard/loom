@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
+  <Identity Name="96CD6093-8390-4d0a-90AC-902AD8E05F1B" Version="3.3.0.0" Publisher="CN=loom"/>
+  <Properties>
+    <DisplayName>Weaver (Win8.1)</DisplayName>
+    <PublisherDisplayName>HP</PublisherDisplayName>
+    <Logo>images\StoreLogo.png</Logo>
+  </Properties>
+  <Prerequisites>
+    <OSMinVersion>6.3.0</OSMinVersion>
+    <OSMaxVersionTested>6.3.0</OSMaxVersionTested>
+  </Prerequisites>
+  <Resources>
+    <Resource Language="x-generate"/>
+  </Resources>
+  <Applications>
+    <Application Id="App" StartPage="dist/index.html">
+      <m2:VisualElements DisplayName="Weaver (Win8.1)" Description="windows8" BackgroundColor="#EEEEEE" ForegroundText="dark" ToastCapable="false" Square150x150Logo="images\HP-logo-black-270.png" Square30x30Logo="images\SmallLogo.png">
+        <m2:DefaultTile ShortName="Weaver (Win8.1)" Wide310x150Logo="images\WideLogo.png" Square70x70Logo="images\Square70x70Logo.png">
+          <m2:ShowNameOnTiles>
+            <m2:ShowOn Tile="square150x150Logo"/>
+            <m2:ShowOn Tile="wide310x150Logo"/>
+          </m2:ShowNameOnTiles>
+        </m2:DefaultTile>
+        <m2:InitialRotationPreference>
+          <m2:Rotation Preference="landscape"/>
+          <m2:Rotation Preference="landscapeFlipped"/>
+        </m2:InitialRotationPreference>
+        <m2:SplashScreen BackgroundColor="#EEEEEE" Image="images\splashscreen.png"/>
+      </m2:VisualElements>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="sharedUserCertificates"/>
+    <Capability Name="internetClientServer"/>
+    <Capability Name="enterpriseAuthentication"/>
+    <Capability Name="privateNetworkClientServer"/>
+    <Capability Name="internetClient"/>
+    <DeviceCapability Name="location"/>
+  </Capabilities>
+</Package>

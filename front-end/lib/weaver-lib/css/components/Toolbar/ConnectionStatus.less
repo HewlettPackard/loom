@@ -1,0 +1,35 @@
+// Connection indicator
+//
+// Displays the status of Weaver's connection to the Loom server
+//
+// .mas-connectionStatus-ok - Everything is fine
+// .mas-connectionStatus-unstable - Connection is unstable
+// .mas-connectionStatus-down - Weaver cannot contact Loom
+//
+// Markup:
+// <div class="mas-connectionStatus {{modifier_class}}" style="margin-top: 33px; margin-left: 16px;">
+//     <div class="mas-connectionStatus--message">
+//         Weaver has lost the connection to the Loom server.
+//     </div>
+// </div>
+//
+// Styleguide 12.3
+.mas-connectionStatus {
+  position: relative;
+}
+
+.mas-connectionStatus:not(.mas-connectionStatus-down) {
+  .mas-connectionStatus--message {
+    display: none;
+  }
+}
+.mas-connectionStatus--message {
+
+  position: absolute;
+  left: 0px;
+  padding: 0px 10px;
+  transform: translateY(-100%);
+
+  // Ensures message doesn't take more than one line
+  white-space: nowrap;
+}

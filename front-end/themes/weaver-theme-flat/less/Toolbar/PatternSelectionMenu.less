@@ -1,0 +1,28 @@
+.mas-patternSelectionMenu {
+  .mas-menu-expandsUp();
+  .mas-menu-rightAligned();
+
+
+  .mas-menu--toggle {
+    &::before {
+      .fa();
+      content: @fa-var-tasks;
+      margin-right: 10px;
+    }
+  }
+}
+
+.mas-pattern:not(.is-inTapestry)::before {
+}
+
+.mas-pattern.is-inTapestry {
+
+}
+
+.mas-patternSelectionMenu--clear {
+
+  font-size: 13px;
+  font-variant: normal;
+  display: block;
+  width: 100%;
+}

@@ -1,0 +1,46 @@
+{
+  "name": "weaver.map",
+  "version": "2.9.0",
+  "private": true,
+  "dependencies": {
+    "weft": "../../../weft",
+    "weaver": "../../lib",
+    "backbone": "~1.0.0",
+    "lodash": "~2.4.1",
+    "jquery": "~2.0.0",
+    "requirejs": "~2.1.11",
+    "requirejs-text": "~2.0.7",
+    "hammerjs": "~1.0.5",
+    "numeral": "~1.5.2",
+    "handjs": "../../vendor/hand-1.2.2.js",
+    "jgestures": "../../vendor/jgestures.min.js",
+    "q": "~1.0.0",
+    "normalize.css": "~3.0.1",
+    "components-font-awesome": "~4.2.0",
+    "jquery-ui": "~1.11.1",
+    "d3": "../../vendor/d3.js",
+    "cartogram": "../../cartogram",
+    "requirejs-plugins": "~1.0.2",
+    "backbone.stickit": "https://github.com/NYTimes/backbone.stickit.git#8d1ddd7a456b1e85d9b5281ce06775310381d611",
+    "fastdom": "~0.8.4",
+    "mustache": "~1.0.0"
+  },
+  "devDependencies": {
+    "mocha": "~1.12.0",
+    "chai": "~1.7.2",
+    "sinonjs": "~1.7.1",
+    "sinon-chai": "https://github.com/domenic/sinon-chai.git#2.5.0",
+    "chai-jquery": "~1.1.1",
+    "chai-things": "https://github.com/RubenVerborgh/Chai-Things.git#0.2.0",
+    "blanket": "https://github.com/alex-seville/blanket.git#b4fb5019f81dad88344c38beb551adf21754827a",
+    "gremlins.js": "~0.1.0",
+    "animation-frame": "~0.1.7"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

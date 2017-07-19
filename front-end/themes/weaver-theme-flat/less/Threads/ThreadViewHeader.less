@@ -1,0 +1,41 @@
+.mas-threadHeader.has-operationsInPipeline {
+
+  .mas-action-toggleQuery {
+    color: @UIHighlight;
+  }
+}
+
+.mas-threadHeader--title {
+  font-weight: 600;
+}
+
+.mas-threadHeader--info {
+  padding: 7px 50px 7px 14px;
+}
+
+.mas-threadHeader--action {
+
+  line-height: 50px;
+  width: 50px;
+}
+
+.mas-action-toggleQuery {
+  color: @hp-light-grey;
+}
+
+.mas-action-toggleQuery::before {
+  .fa();
+  content: @fa-var-filter;
+}
+
+.mas-action-maximiseThread::before {
+  .fa();
+  content: @fa-var-expand;
+}
+
+.mas-action-maximiseThread {
+  top: 0;
+  max-width: 40px;
+  line-height: 40px;
+  margin-right: 5px;
+}

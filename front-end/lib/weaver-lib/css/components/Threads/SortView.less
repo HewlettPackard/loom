@@ -1,0 +1,45 @@
+.mas-sortView{
+
+  position: relative;
+
+
+
+  &::after {
+    .fa();
+    line-height: inherit;
+  }
+
+  &-ascending::after{
+    .fa-rotate-270();
+    content: @fa-var-sort-amount-asc;
+  }
+
+  &-descending::after {
+    .fa-rotate-270();
+    content: @fa-var-sort-amount-desc;
+  }
+
+  // Hmm... not sure this actually happens...
+  &:not(.is-sorted) {
+    &::after {
+      display: none;
+    }
+  }
+
+  &.mas-propertySelector--property::after {
+    text-align: center;
+    display: inline-block;
+    width: @unit;
+    position: absolute;
+    right: 0;
+  }
+
+  &.mas-threadConfiguration--quicksort::after {
+    text-align: center;
+    display: inline-block;
+    width: @unit;
+    position: absolute;
+    right: 20px;
+  }
+
+}

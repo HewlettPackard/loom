@@ -1,0 +1,32 @@
+.stripes(@background: black;
+         @foreground: transparent;
+         @important: false) when (@important = true){
+
+  // Ideally we"d use repeating linear-gradient like this, but Chrome"s rendering is appaling (as of v. 40.0.2214.94)
+  // Eg:
+  // <div style="height: 32px;
+  //             width: 300px;
+  //             background-image: repeating-linear-gradient(45deg, #001a26 0px, #001a26 6px, #e5e8e8 6px, #e5e8e8 8px);"></div>
+  // Ideal mixin:
+  // background-image+: repeating-linear-gradient(@angle,
+  //                                              @foreground @offset,
+  //                                              @foreground @offset + @foreground-size,
+  //                                              @background @offset + @foreground-size,
+  //                                              @background @offset + @foreground-size + @background-size);
+
+  // Stripe SVG used as base: http://www.svgeneration.com/generate/Diagonal-Stripes
+  // Base 64 encoding: https://gist.github.com/tmpvar/521313
+  @svg: ~'<svg xmlns="http://www.w3.org/2000/svg" width="10" height="20" viewBox="0 0 5 10"><rect width="110%" x="-5%" y="-5%" height="110%" fill="@{background} !important"/><line x1="-2" y1="1" x2="7" y2="10" stroke="@{foreground} !important" stroke-width=".75"/><line x1="-2" y1="6" x2="7" y2="15" stroke="@{foreground} !important" stroke-width=".75"/><line x1="-2" y1="-4" x2="7" y2="5" stroke="@{foreground} !important" stroke-width=".75"/></svg>';
+  @b64svg: ~`(function(str) {return  (new Buffer(str || "", "ascii")).toString("base64");})('@{svg}')`;
+
+  background-image+: ~"url(data:image/svg+xml;base64,@{b64svg})";
+}
+
+.stripes(@background: black;
+         @foreground: transparent;
+         @important: false) when not (@important = true){
+  @svg: ~'<svg xmlns="http://www.w3.org/2000/svg" width="10" height="20" viewBox="0 0 5 10"><rect width="110%" x="-5%" y="-5%" height="110%" fill="@{background}"/><line x1="-2" y1="1" x2="7" y2="10" stroke="@{foreground}" stroke-width=".75"/><line x1="-2" y1="6" x2="7" y2="15" stroke="@{foreground}" stroke-width=".75"/><line x1="-2" y1="-4" x2="7" y2="5" stroke="@{foreground}" stroke-width=".75"/></svg>';
+  @b64svg: ~`(function(str) {return  (new Buffer(str || "", "ascii")).toString("base64");})('@{svg}')`;
+
+  background-image+: ~"url(data:image/svg+xml;base64,@{b64svg})";
+}

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    (c) Copyright 2017 Hewlett Packard Enterprise Development LP Licensed under the Apache License,
+    Version 2.0 (the "License"); you may not use this file except in compliance with the License. You
+    may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
+   
+    Unless required by applicable law or agreed to in writing, software distributed under the License
+    is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+    or implied. See the License for the specific language governing permissions and limitations under
+    the License.
+ -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+        http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+      ">
+
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+			<value>file:src/test/resources/deployment-test.properties</value>
+		</property>
+	</bean>
+
+	<mvc:annotation-driven />
+	<mvc:interceptors>
+		<bean id="webContentInterceptor"
+			class="org.springframework.web.servlet.mvc.WebContentInterceptor">
+			<property name="cacheSeconds" value="0" />
+			<property name="useExpiresHeader" value="true" />
+			<property name="useCacheControlHeader" value="true" />
+			<property name="useCacheControlNoStore" value="true" />
+		</bean>
+	</mvc:interceptors>
+
+	<task:annotation-driven />
+
+	<context:annotation-config />
+	<context:component-scan base-package="com.hp.hpl.loom.api.util" />
+	<context:component-scan base-package="com.hp.hpl.loom.manager">
+	    <context:exclude-filter type="regex"
+			expression="com.hp.hpl.loom.manager.stitcher.simple.*"/>	
+	</context:component-scan>
+	<context:component-scan base-package="com.hp.hpl.loom.relationships" />
+
+	<bean id="adapterLoader" class="com.hp.hpl.loom.manager.adapter.AdapterLoader">
+		<constructor-arg index="0"
+			value="src/test/resources/adapterConfigs" />
+	</bean>
+	<bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+	    <property name="corePoolSize" value="5" />
+	    <property name="maxPoolSize" value="10" />
+	    <property name="queueCapacity" value="25" />
+	</bean>
+	
+	<bean id="actionExecutor" class="com.hp.hpl.loom.manager.action.ActionExecutor">
+	    <constructor-arg ref="taskExecutor" />
+	</bean>	
+</beans>

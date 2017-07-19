@@ -1,0 +1,90 @@
+// Alerts
+//
+// Alerts notify users when something is happening to a fiber
+//
+// Styleguide 3.5
+
+// Alert notifications
+//
+// Minimal notification
+//
+// Markup:
+// <div class="mas-alertNotification" style="margin: 5px;"></div>
+// <div class="mas-alertNotification" style="margin: 5px;">4</div>
+// <div class="mas-alertNotification" style="margin: 5px;">!</div>
+//
+// Styleguide 3.5.1
+.mas-alertNotification-layout(@size: 11px, @borderRadius: 1px) {
+
+  height: @size;
+  width: @size;
+  overflow: hidden;
+
+  text-align: center;
+  font-size: @size - 2px;
+  line-height: @size;
+  border-radius: @borderRadius;
+}
+
+.mas-alertNotification {
+  .mas-alertNotification-layout();
+}
+
+.mas-alertNotification.mas-alertNotification-0 {
+  display: none;
+}
+
+// Alert details
+//
+// More detailed view
+//
+// Markup:
+// <div class="mas-alertDetails" style="margin: 10px">
+//   <span class="mas-alertDetails--count">27</span>
+//   <span class="mas-alertDetails--level">3</span>
+//   <span class="mas-alertDetails--description">Booo, something bad happened :( Could be worse :)</span>
+// </div>
+// <div class="mas-alertDetails" style="margin: 10px;">
+//   <span class="mas-alertDetails--count">27</span>
+//   <span class="mas-alertDetails--level">3</span>
+//   <span class="mas-alertDetails--description">An alert with a really long description,<br/>spanning on several lines.<br/>Several lines.</span>
+// </div>
+//
+// Styleguide 3.5.2
+.mas-alertDetails {
+
+  display: flex;
+  align-items: center;
+
+  position: relative;
+}
+
+.mas-alertDetails--level {
+
+  width: 30px;
+  text-align: center;
+}
+
+.mas-alertDetails--description {
+
+  flex: 1 1 auto;
+  padding: 0 30px 0 1px;
+  line-height: 20px;
+}
+
+.mas-alertDetails--count {
+
+  display: block;
+
+  position: absolute;
+  right: 4px;
+  top: -4px;
+
+  .mas-alertNotification-layout(14px, 2px);
+}
+
+.mas-alertDetails-noCount {
+  .mas-alertDetails--count {
+    display: none;
+  }
+}

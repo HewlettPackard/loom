@@ -1,0 +1,68 @@
+// Layouts
+//
+// Styleguide 2.0
+
+// Centered form layout
+//
+// Markup:
+// <div class="mas-centeredFormLayout">
+//   <div class="mas-centeredFormLayout--title" style="border: dotted 1px;">Title</div>
+//   <div class="mas-centeredFormLayout--form" style="border: dotted 1px;">Form</div>
+//   <p style="border: dotted 1px;">Additional content</p>
+// </div>
+//
+// Styleguide 2.1
+.mas-centeredFormLayout {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.mas-centeredFormLayout--form {
+
+  padding-top: 0;
+
+  width: 25%;
+  min-width: 240px;
+  max-width: 22em;
+
+  padding: 1em;
+
+  position: relative;
+
+  flex-shrink: 0;
+
+  .mas-providerLoginForm--submit {
+    float: right;
+  }
+
+  // Clearfix to contain the submit button
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+
+  }
+
+  &:after {
+      clear: both;
+  }
+}
+
+.mas-centeredFormLayout--title {
+
+  margin-bottom: 10px;
+  margin-top: 0;
+}
+
+.mas-centeredFormLayout--branding {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+
+  .mas-branding--name {
+    display: none;
+  }
+}

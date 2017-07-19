@@ -1,0 +1,40 @@
+@propertySelectorTransparency: 100;
+
+.mas-propertySelector {
+
+  font-size: 14px;
+  line-height: 2px * @unit / 3;
+
+  border-bottom: solid 5px fade(@UIHighlight, @propertySelectorTransparency);
+}
+
+.mas-propertySelector--title {
+  font-size: 1.17em;
+  line-height: @unit * 1.25px;
+  background: fade(@UIHighlight, @propertySelectorTransparency);
+  color: white;
+
+  padding-left: 20px;
+}
+
+.mas-propertySelector--properties {
+
+  background: fade(white, @propertySelectorTransparency);
+  color: @mas-almost-black;
+}
+
+.mas-propertySelector--property {
+
+  text-transform: capitalize;
+
+  border-bottom: solid 1px @hp-light-grey;
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.mas-property-selected {
+  color: @UIHighlight;
+  background: fade(@UISelection, @propertySelectorTransparency);
+  border-bottom-color: fade(@UISelection, @propertySelectorTransparency);
+}

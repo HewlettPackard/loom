@@ -1,0 +1,111 @@
+//////////////////
+/// HPE COLORS ///
+//////////////////
+
+// Primary color
+@hpe-green: #01A982;
+@hpe-black: #333333;
+@hpe-white: #ffffff;
+
+// Neutral colors
+@hpe-slate: #425563;
+@hpe-bronze: #80746E;
+@hpe-darksteel: #5F7A76;
+@hpe-charcoal: #767676;
+@hpe-gray: #cccccc;
+@hpe-darkgray: #e4e4e4;
+@hpe-silver: #f0f0f0;
+@hpe-cloud: #f6f6f6;
+
+// Secondary colors
+@hpe-turquoise: #2ad2c9;
+@hpe-orange: #FD9A69;
+@hpe-purple: #614767;
+@hpe-yellow: #FFD042;
+
+// application status colors (ie. error, warning...)
+@hpe-status-red: #ff454f;
+@hpe-status-yellow: #ffd042;
+
+// Picked from GROMMET.io
+@hpe-status-blue: hsl(197, 70%, 55%);
+
+// Text colors
+@hpe-text-primary: #333333;
+@hpe-text-secondary: #777777;
+@hpe-text-disabled: #cccccc;
+@hpe-dark-background: #333333;
+@hpe-dark-text-primary: #ffffff;
+@hpe-dark-text-secondary: #cccccc;
+@hpe-dark-text-disabled: #555555;
+
+@hpe-green-shade: #008666;
+@hpe-green-tint: #59ceb2;
+@hpe-green-lightTint: tint(@hpe-green, 80);
+@hpe-bronze-lightTint: tint(@hpe-bronze, 80);
+
+//////////////////////////////
+/// WEAVER SPECIFIC COLORS ///
+//////////////////////////////
+
+@mas-lightGrey: #eeeeee;
+@mas-almostWhite: #f8f8f8;
+@mas-mediumGrey: #bbbbbb;
+@mas-turquoiseShade: hsl(189, 86%, 35%);
+@mas-cancel-red: hsl(8, 84%, 62%);
+
+/////////////////////
+/// WEAVER COLORS ///
+/////////////////////
+
+@mas-color-buttonBackground: @hpe-green;
+
+@mas-color-weaver: shade(@hpe-slate, 65);
+@mas-color-weaverBackground: shade(white, 5);
+@mas-color-menuBackground: @hpe-slate;
+@UIHighlight: @hpe-green;
+@UISelection: tint(@hpe-green, 75);
+
+@mas-color-radioOrCheckboxOutline: @hpe-charcoal;
+@mas-color-radioOrCheckboxOutlineCheck: @hpe-green;
+@mas-color-radioOrCheckboxCheck: @hpe-green;
+
+@mas-color-threadBackground: @mas-lightGrey;
+@mas-color-headerBackground: @mas-lightGrey;
+@mas-color-threadPositionControlBackground: @hpe-gray;
+@mas-color-threadPositionControl: @hpe-bronze;
+
+@mas-color-threadSummaryPendingPulseInitial: fade(@hpe-text-secondary, 20);
+@mas-color-threadSummaryPendingPulseFinal: @hpe-text-secondary;
+
+@mas-color-updatingThreadViewPulseInitial: @mas-color-threadBackground;
+@mas-color-updatingThreadViewPulseFinal: tint(@hpe-green, 95);
+
+@mas-color-displayedFiberBackground: @mas-color-threadPositionControlBackground;
+@mas-color-elementDetailsHeader: white;
+@mas-color-elementDetailsBackground: white;
+@mas-color-highlightedElementDetailsHeader: white;
+
+@mas-color-regularFiber: @hpe-text-secondary;
+@mas-color-relatedFiber: @hpe-green;
+@mas-color-highlightedFiber: @hpe-purple;
+@mas-color-furtherRelatedFiber: tint(@hpe-green, 50);
+@mas-color-fiberActiveAction: white;
+@mas-color-barGraphBackground: tint(@hpe-slate, 85);
+@mas-color-barGraphValue: @hpe-slate;
+@mas-color-barGraphAxis: shade(@hpe-slate, 55);
+
+@mas-color-fiberAttributeUpdated: tint(@hpe-status-blue, 80);
+
+@mas-color-toolbarBackground: @hpe-dark-background;
+@mas-color-toolbar: @hpe-text-disabled;
+@mas-color-background-FloatElementDetailsSubView: white;
+
+@mas-color-background-emptyThread: #BBBBBB;
+
+
+// Sidebar
+@mas-main-tabs-bg-color: @hpe-darkgray;
+@mas-main-tabs-bg-color-selected: @hpe-white;
+@mas-main-tabs-text-color: @hpe-charcoal;
+@mas-main-tabs-text-color-selected: @hpe-black;

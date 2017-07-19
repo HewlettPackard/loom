@@ -1,0 +1,27 @@
+.mas-veil {
+  background: @mas-color-threadVeilBackground;
+  text-align: center;
+  color: @mas-color-threadVeil;
+}
+
+.mas-threadView-beingUpdated .mas-thread {
+
+  animation: updatingThreadViewPulse 1s alternate infinite;
+}
+
+.mas-thread--removedElements {
+  color: @hp-light-grey;
+  font-weight: 600;
+}
+
+@mas-color-updatingThreadViewPulseInitial: transparent;
+@mas-color-updatingThreadViewPulseFinal: fade(@hp-blue-15, 50);
+
+@keyframes updatingThreadViewPulse {
+  50% {
+    background: @mas-color-updatingThreadViewPulseInitial;
+  }
+  100% {
+    background: @mas-color-updatingThreadViewPulseFinal;
+  }
+}

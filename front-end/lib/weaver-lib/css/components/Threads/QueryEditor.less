@@ -1,0 +1,335 @@
+// QueryEditor
+//
+// The QueryEditor lets users modify the queries
+//
+// .is-loading - Displayed while loading the operations
+// .is-editing - Displayed when the query is being edited
+//
+// Markup:
+// <div class="mas-queryEditor {{modifier_class}}">
+//   <p class="mas-queryEditor--shownWhenLoading mas-queryEditorLoadingMessage"><i class="fa fa-spin fa-circle-o-notch"></i>Loading operations</p>
+//   <button class="mas-queryEditor--hiddenWhenLoading mas-menu--content mas-queryEditor--cancelButton fa fa-pencil" data-action="cancelEdition"></button>
+//   <ul class="mas-queryEditor--hiddenWhenLoading mas-menu--content mas-queryEditor--operationPipeline">Operation Pipeline</ul>
+//   <div class="mas-queryEditor--hiddenWhenLoading mas-menu--content mas-queryEditor--addOperation mas-menu mas-menu-expandsDown mas-menu-rightAligned is-collapsed">
+//     <button class="mas-menu--toggle fa fa-plus-circle"></button>
+//     <div class="mas-menu--content"></div>
+//   </div>
+//   <button class="mas-queryEditor--hiddenWhenLoading mas-menu--content mas-queryEditor--updateButton fa fa-check" data-action="updateQuery"></button>
+// </div>
+//
+// Styleguide 4.2.4
+.mas-queryEditor {
+
+  display: flex;
+  line-height: 30px;
+
+  position: relative;
+
+  &.is-editing {
+    line-height: 40px;
+  }
+
+  &.is-loading .mas-queryEditor--hiddenWhenLoading {
+    display: none;
+  }
+
+  &:not(.is-loading) .mas-queryEditor--shownWhenLoading {
+    display: none;
+  }
+
+  &:not(.is-editing) {
+
+    .mas-queryEditor--cancelButton,
+    .mas-queryEditor--updateButton {
+      display: none;
+    }
+  }
+
+  &:not(.has-operationThatCanExcludeItems) {
+    .mas-queryEditor--includeExcludedItemsToggle {
+      display: none;
+    }
+  }
+}
+
+// Makes sure that the editors appear on top of the fibers
+.mas-operationEditor,
+.mas-queryEditor--addOperation .mas-menu--content{
+  z-index: 25;
+}
+
+.mas-queryEditor--operationPipeline {
+  flex: 0 1 auto;
+  white-space: nowrap;
+  overflow: auto;
+  overflow-y: hidden;
+}
+
+.mas-queryEditor--updateButton,
+.mas-queryEditor--cancelButton,
+.mas-queryEditor--addOperation {
+
+  flex: 0 0 @unit * 1px;
+}
+
+.mas-queryEditor--addOperation {
+
+  .mas-menu--toggle {
+    display: block;
+    width: @unit * 1px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+  }
+
+  .mas-flexboxContainer {
+
+    overflow-x: hidden;
+  }
+}
+
+// Operation pipleline
+//
+// Part of the Query editor that lists the operations
+// in the Query's pipeline
+//
+// Markup:
+// <ul class="mas-operationPipeline">
+//   <li class="mas-operationPipeline--operation">Operation #1</li>
+//   <li class="mas-operationPipeline--operation">Operation #2</li>
+//   <li class="mas-operationPipeline--operation">Operation #3</li>
+// </ul>
+// <small>Or, if empty:</small>
+// <ul class="mas-operationPipeline">
+//   <li class="mas-operationPipeline--emptyMessage">No operation applied to the data</li>
+// </ul>
+//
+// Styleguide 4.2.4.1
+.mas-operationPipeline {
+  white-space: nowrap;
+}
+
+.mas-operationPipeline--emptyMessage {
+  padding: 0 10px;
+}
+
+.mas-operationPipeline--operation {
+
+  // display:flex makes jQuery UI sortable glitchy
+  // display:table-cell with .mas-operationPipeline set to display:table
+  // causes the pipeline not to spread full width like its flex: 1; property suggests
+  display:inline-block;
+}
+
+// Operations
+//
+// Base structure for operations in the Query editor.
+// They can have two states:
+//
+//  - display: just displays the title of the operation
+//  - edition: when users are editing the operation
+//
+//  Elements marked with the `.mas-operation--display` class will be visible
+//  in the display stated, and those marked with `.mas-operation--edit` will
+//  only be visible in the edition state.
+//
+// Markup:
+// <li class="mas-operation {{modifier_class}}" style="position: relative; margin-bottom: 30px;">
+//   <div class="mas-operation--display mas-operation--title">Operation title</div>
+//   <div class="mas-operation--edit mas-operation--title">Operation title</div>
+//   <div class="mas-operation--edit mas-operation--editor">Operation editor</div>
+// </li>
+//
+// .is-editing - When editing the operation
+//
+// Styleguide 4.2.4.2
+.mas-operation {
+
+  line-height: 40px;
+
+  // IMPORTANT!
+  //
+  // No position relative, because we want the editor to be overflow
+  // out of the query editor by being positioned relative to the first
+  // positionned parent.
+  // http://css-tricks.com/popping-hidden-overflow/
+
+  &:not(.is-editing) {
+    cursor: pointer;
+    .mas-operation--edit, .mas-operationEditor--remove {
+      display: none;
+    }
+  }
+
+  &.is-editing {
+    .mas-operation--display {
+      display: none;
+    }
+  }
+
+  &.is-updatingAutomatically {
+
+    .mas-operationEditor--save {
+      display: none;
+    }
+  }
+
+  &.is-selecting .mas-operation--editor{
+    transform: translateY(100%) scale(0);
+  }
+
+  // Adjusts editor if operation has no parameters
+  // The form is not needed then, only the controls
+  // to reorder or remove the operation
+  &.has-noParameters {
+
+    .mas-operation--form {
+      display: none;
+    }
+  }
+}
+
+// TODO: Make it a component on its own? .mas-operationTitle?
+.mas-operation--editor {
+  position: absolute;
+  bottom: 0;
+  transform: translateY(100%);
+}
+
+// Operation editor
+//
+// Markup:
+// <div class="mas-operationEditor" style="margin-top: 14px;">
+//   <form class="mas-operation--form">
+//     <div style="border: dotted 1px;">Short form control</div>
+//     <button class="mas-operationEditor--save mas-action fa fa-check"></button>
+//   </form>
+//   <div class="mas-operation--controls">
+//     <button class="mas-operationEditor--moveBefore fa fa-arrow-left" data-action="moveBefore"></button>
+//     <button class="mas-operationEditor--remove fa fa-trash" data-action="removeOperation"></button>
+//     <button class="mas-operationEditor--moveAfter fa fa-arrow-right" data-action="moveAfter"></button>
+//   </div>
+// </div>
+// <div class="mas-operationEditor" style="margin-top: 14px;">
+//   <form class="mas-operation--form">
+//     <div style="flex: 1 1 100%; border: dotted 1px;">Full width form control</div>
+//     <button class="mas-operationEditor--save mas-action fa fa-check"></button>
+//   </form>
+//   <div class="mas-operation--controls">
+//     <button class="mas-operationEditor--moveBefore fa fa-arrow-left" data-action="moveBefore"></button>
+//     <button class="mas-operationEditor--remove fa fa-trash" data-action="removeOperation"></button>
+//     <button class="mas-operationEditor--moveAfter fa fa-arrow-right" data-action="moveAfter"></button>
+//   </div>
+// </div>
+// <div class="mas-operationEditor" style="margin-top: 14px;">
+//   <form class="mas-operation--form">
+//     <div style="border: dotted 1px;">Short form control</div>
+//     <div style="border: dotted 1px;">Short form control</div>
+//     <div style="flex: 1 1 100%; border: dotted 1px;">Full width form control</div>
+//     <div style="border: dotted 1px;">Short form control</div>
+//     <button class="mas-operationEditor--save mas-action fa fa-check"></button>
+//   </form>
+//   <div class="mas-operation--controls">
+//     <button class="mas-operationEditor--moveBefore fa fa-arrow-left" data-action="moveBefore"></button>
+//     <button class="mas-operationEditor--remove fa fa-trash" data-action="removeOperation"></button>
+//     <button class="mas-operationEditor--moveAfter fa fa-arrow-right" data-action="moveAfter"></button>
+//   </div>
+// </div>
+//
+//
+//
+// Styleguide 4.2.4.3
+.mas-operation--form {
+
+  padding: 10px;
+
+  display: flex;
+  flex-wrap: wrap;
+
+  // PropertySelector min-width + padding
+  // for some reason, IE will render improperly
+  // if not there :/
+  min-width: 220px;
+
+  // Makes the property selector full width
+  // so the button goes underneath it rather
+  // than next to it
+  .mas-propertySelector {
+    flex: 1 1 100%;
+  }
+
+  position: relative;
+}
+
+.mas-operationEditor--save {
+  flex: 1 1 40px;
+  line-height: @unit * 1px;
+}
+
+// TODO: Document in its own section?
+.mas-operation--controls {
+  display: flex;
+  min-width: @unit * 3px;
+}
+
+.mas-operationEditor--moveBefore {
+  flex: 0 0 @unit * 1px;
+  line-height: @unit * 1px;
+
+}
+
+.mas-operationEditor--remove {
+  flex: 1;
+  line-height: @unit * 1px;
+
+}
+
+.mas-operationEditor--moveAfter {
+  flex: 0 0 @unit * 1px;
+  line-height: @unit * 1px;
+}
+
+.mas-filterRelatedOperation {
+
+  [name=id] {
+    display: none;
+    width: 100%;
+    line-height: @unit * 1px;
+  }
+
+  .mas-operationEditor--save {
+    display: none;
+  }
+}
+
+.mas-filterRelatedOperation--fiberTitle {
+  max-width: 100px;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: top;
+  text-overflow: ellipsis;
+}
+
+.mas-filterRelatedOperation--selectionButton {
+  line-height: @unit * 0.75px;
+
+  .fa {
+    margin-right: 5px;
+  }
+
+  &:first-of-type {
+    margin-right: 20px;
+  }
+}
+
+.mas-includeExcludedItemsToggle--checkbox {
+  display: none;
+
+  &:checked ~ .mas-includeExcludedItemsToggle--hideWhenChecked {
+    display: none;
+  }
+
+  &:not(:checked) ~ .mas-includeExcludedItemsToggle--hideWhenUnchecked {
+    display: none;
+  }
+}

@@ -1,0 +1,1427 @@
+@import "~weaver-theme-flat/less/theme.less";
+
+@import "colors.less";
+@import "typography.less";
+
+@mas-radioOrCheckboxOutlineWidth: 2px;
+
+.mas {
+  font-family: Metric, arial, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  background: white;
+  color: @hpe-text-secondary;
+}
+
+.mas-tapestryScreen {
+  background: @hpe-gray;
+
+  &.is-filtered {
+    background: #aaa;
+  }
+}
+
+// BASE STYLES
+.mas-labeledInput-top,
+.mas-labeledInput-left {
+  background: white;
+  border: solid 1px @hpe-gray;
+  margin-bottom: 0;
+  padding: 10px;
+  padding-left: 5px;
+}
+
+.mas-labeledInput-top:not(:first-child) {
+  margin-top: -1px;
+}
+
+.mas-formLabel {
+  color: #777;
+  font-variant: normal;
+  font-size: 12px;
+  padding-left: 5px;
+}
+
+.mas-input {
+  border-bottom: none;
+  padding: 3px 3px 3px 5px;
+  font-size: 16px;
+  font-weight: 400;
+
+  &:focus {
+    outline: solid 1px white;
+  }
+}
+
+.mas-button {
+  // Border on the buttons too so they
+  // have the same height as the cancel buttons
+  border: solid 2px @mas-color-buttonBackground;
+  background: @mas-color-buttonBackground;
+  font-variant: normal;
+  line-height: 1.5;
+  display: inline-block;
+}
+
+.mas-cancel {
+  border: solid 2px @hpe-green;
+  font-variant: normal;
+  padding: 5px 10px;
+  line-height: 1.5;
+  display: inline-block;
+}
+
+.mas-button::after {
+  display: none;
+}
+
+.mas-dialog {
+  background-color: @mas-lightGrey;
+  color: @hpe-text-primary;
+}
+
+.mas-fancyRadio {
+  color: @hpe-text-secondary;
+  border-bottom: none;
+  padding: 10px 0px;
+}
+
+// THREADS
+
+.mas-thread--contents {
+  background-color: white;
+}
+
+.mas-threadView-main {
+  border-top: solid 1px @mas-color-threadPositionControlBackground;
+  border-bottom: solid 1px @mas-color-threadPositionControlBackground;
+  margin-bottom: 10px;
+
+  &:first-child {
+    border-top: none;
+  }
+}
+
+.mas-threadView-nested {
+  border-top: solid 1px @mas-color-threadPositionControlBackground;
+}
+
+.mas-thread {
+  background: @mas-color-threadBackground;
+  border: none;
+}
+
+.mas-threadPositionControl {
+  background-color: @hpe-silver;
+}
+
+.mas-threadPositionControl::before {
+  display: none;
+}
+
+.mas-threadPositionControl--handle {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: perspective(1px) translateY(-50%);
+  width: 12px;
+  fill: @hpe-charcoal;
+}
+
+
+.mas-elements {
+  background: white;
+}
+
+.mas-thread--header {
+  color: inherit;
+  background-color: white;
+}
+
+.mas-threadHeader {
+  min-height: 90px;
+  max-height: 90px;
+}
+
+.mas-element.is-displayed {
+  &::before {
+    background: white;
+  }
+  &::after {
+    bottom: 8px;
+    font-size: 16px;
+    line-height: 16px;
+    color: @hpe-charcoal;
+  }
+}
+
+.mas-threadHeader--info {
+  padding: 0 0 0 20px;
+  position: relative;
+  top: 50%;
+  transform: perspective(1px) translateY(-50%);
+  min-height: 0;
+}
+
+.mas-fiberOverview--label {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.mas-thread--removedElements {
+  color: @hpe-gray;
+}
+
+.mas-action-toggleQuery::before {
+  content: @fa-var-search;
+}
+
+.mas-threadHeader--title {
+  color: @hpe-text-primary;
+  font-size: 18px;
+  font-weight: 600;
+
+  .mas-thread:not(.mas-thread-minimised) & {
+    margin-top: 0;
+  }
+}
+
+.mas-threadMetrics {
+  text-transform: uppercase;
+  letter-spacing: .2em;
+}
+
+.mas-threadMetrics--metric {
+  border: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 13px;
+}
+
+.mas-fiberOverview {
+  min-height: 55px;
+  max-height: 55px;
+  margin-top: 12px;
+  margin-bottom: 23px;
+}
+
+.mas-action-removeMetric,
+.mas-action-toggleQuery,
+.mas-action-toggleSettings,
+.mas-action-maximiseThread {
+  color: @hpe-bronze;
+}
+
+.mas-threadSummary {
+  font-size: 16px;
+  font-weight: 400;
+  color: @hpe-black;
+}
+
+.mas-pollingFeedback {
+  display: none;
+}
+
+.mas-threadSettingsMenu .mas-menu .mas-menu--content {
+  box-shadow: 1px 3px 2px 1px hsla(200, 10%, 40%, 0.4);
+}
+
+.mas-queryEditor {
+  background: @mas-almostWhite;
+}
+
+.mas-queryEditor--cancelButton {
+  background-color: @mas-cancel-red;
+}
+
+.mas-queryEditor--updateButton {
+  background-color: @hpe-green;
+}
+
+.mas-queryEditor--addOperation {
+  background-color: @hpe-bronze;
+}
+
+.mas-operation.is-suggested:not(.is-editing) {
+  color: @hpe-gray;
+}
+
+.mas-operationEditor--moveBefore,
+.mas-operationEditor--remove,
+.mas-operationEditor--moveAfter {
+
+  &:disabled {
+    opacity: .3;
+  }
+}
+
+.mas-includeExcludedItemsToggle--eye {
+    position: absolute;
+    top: ~"calc(50% - 4px)";
+    left: ~"calc(50% - 2px)";
+    font-size: .8em;
+    line-height: 1;
+    color: @hpe-bronze;
+}
+
+.mas-queryEditor--addOperation {
+  background-color: @mas-mediumGrey;
+}
+
+.mas-includeExcludedItemsToggle {
+    position: relative;
+    line-height: 38px;
+    height: 40px;
+    background: @mas-mediumGrey;
+    color: @mas-lightGrey;
+}
+
+.mas-element-excludedItems {
+    //background: @mas-color-threadBackground;
+    margin-left: 30px;
+    padding: 0 10px;
+    min-width: 50px;
+    max-width: 50px;
+}
+
+.mas-element-excludedItems:before {
+  content: " ";
+  border-left: 2px solid @mas-mediumGrey;
+  top: 30px;
+  left: -13px;
+  width: 2px;
+  height: 30px;
+  position: absolute;
+}
+
+.mas-thread--excludedItemsToggle {
+    text-align: center;
+    line-height: 1.4;
+}
+
+.mas-thread--excludedItemsToggle .fa-exclamation{
+    position: absolute;
+    top: ~"calc(50% - 2px)";
+    right: ~"calc(50% - 5px)";
+    font-size: .8em;
+    line-height: 1;
+    color: #00B48D;
+}
+
+.mas-thread--excludedItemsToggle .fa-filter {
+    color: @hpe-green;
+}
+
+.mas-operation--editor,
+.mas-queryEditor--addOperation .mas-menu--content {
+  box-shadow: 1px 1px 2px fade(@hpe-dark-background, 50%);
+}
+
+.mas-filterRelatedOperation--selectionButton {
+  color: @hpe-green-tint;
+
+  &:disabled {
+    color: @hpe-green-shade;
+  }
+}
+
+.mas-emptyMessage--message {
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 14px;
+}
+
+// FIBERS
+.mas-elementDetails .mas-action {
+  color: @hpe-green-tint;
+}
+
+.is-highlighted {
+  .mas-action {
+    color: tint(@mas-color-highlightedFiber, 20);
+  }
+  .mas-elementDetails--propertyName {
+    color: @mas-color-highlightedFiber;
+    border-top-color: @mas-color-highlightedFiber;
+  }
+
+  .mas-elementDetails--propertyValue {
+    border-bottom-color: @mas-color-highlightedFiber;
+  }
+}
+
+.is-partOfFilter .mas-action--filter,
+.is-displayed .mas-action--view {
+  color: white;
+}
+
+.is-operandOfFilterRelated {
+
+  .mas-fiberOverview--block, .mas-elementDetails {
+    outline: solid 3px @UISelection;
+  }
+
+  .mas-fiberOverview--label {
+    z-index: 2;
+  }
+}
+
+.mas-elementDetails .mas-action[disabled] {
+  color: inherit;
+  opacity: 0.3;
+}
+
+.mas-dialog .mas-button.mas-isHidden,
+.mas-dialog .mas-cancel.mas-isHidden {
+  display: none;
+}
+
+.mas-alertDetails--count,
+.mas-alertNotification,
+.mas-alertNotification-0,
+.mas-alertNotification-1,
+.mas-alertNotification-2,
+.mas-alertNotification-3,
+.mas-alertNotification-4,
+.mas-alertNotification-5 {
+  //background: url(../images/error-octagon.svg);
+  //background-repeat: no-repeat;
+  //background-size: 100%;
+  height:10px;
+  width: 10px;
+  transform: translate(2px, -2px);
+  border-radius: 26px;
+}
+
+.mas-alertNotification-0,
+.mas-alertNotification-1,
+.mas-alertNotification-2,
+.mas-alertNotification-3,
+.mas-alertNotification-4,
+.mas-alertNotification-5
+{
+  background: @hpe-yellow;
+  color: @hpe-yellow;
+}
+
+.mas-alertDetails--count {
+  height: 16px;
+  width: 16px;
+  line-height: 15px;
+  font-weight: 400;
+  color: white;
+}
+
+.mas-sideMenuListItem {
+  padding: 10px 20px;
+  border-top: 0;
+  border-bottom: solid 1px @hpe-gray;
+  line-height: @unit * 1.5px;
+  min-height: @unit * 1.5px;
+  color: @hpe-black;
+
+  &:last-of-type {
+    border-bottom: none;
+  }
+
+  .mas-sideMenuListItemName {
+    line-height: @unit * 0.5px;
+  }
+  .mas-sideMenuListItemValue {
+    line-height: @unit * 0.5px;
+    user-select: auto;
+    width: 230px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+  }
+
+  // ALERT LIST ITEMS
+  .mas-fiberAlertsControllerPanel--message {
+    line-height: 22px;
+  }
+
+  .mas-fiberAlertsControllerPanel--alert-header {
+    flex: 1;
+  }
+
+  &.mas-fiberAlertsControllerPanel--alert-header-warning {
+    background-color: @hpe-status-yellow;
+    color: @hpe-black;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 40px;
+    display: inline-flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: baseline;
+    margin-top: 20px;
+
+    &.hideFlex {
+      display: none;
+    }
+  }
+
+  &.mas-fiberAlertsControllerPanel--alert-header-error {
+    background-color: @hpe-status-red;
+    color: white;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 40px;
+    display: inline-flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: baseline;
+
+    &.hideFlex {
+      display: none;
+    }
+  }
+
+  .mas-fiberAlertIcon {
+    width: 22px;
+    height: 40px;
+    flex-basis: 26px;
+    align-self: flex-end;
+  }
+
+  svg.mas-fiberAlertIcon--error {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+
+    .st0 {
+      fill: white;
+    }
+    .st1, .st2 {
+      stroke: @hpe-status-red;
+      stroke-width: 2px;
+    }
+  }
+
+  svg.mas-fiberAlertIcon--warning {
+    position: relative;
+    top: 48%;
+    transform: translateY(-50%);
+
+    .st0 {
+      fill: white;
+    }
+    .st1, .st2 {
+      fill: @hpe-status-yellow;
+    }
+  }
+}
+
+.mas-sideMenuListItem-updated {
+  background-color: @mas-color-fiberAttributeUpdated;
+}
+
+
+.mas-fiberTabs--alerts {
+  position: relative;
+
+  .mas-alertNotification {
+    position: absolute;
+    top: 4px;
+    right: 12px;
+  }
+}
+
+.mas-sideMenuLayout--menu {
+  .mas-propertySelector {
+    border-bottom: 0;
+  }
+  .mas-propertySelector--title {
+    background-color: white;
+    color: @hpe-black;
+  }
+}
+
+// TOOLBAR
+.mas-toolbarMenus .mas-menu--toggle,
+.mas-filter--label {
+  font-weight: 400;
+  font-size: 16px;
+  text-transform: none;
+  letter-spacing: normal;
+  color: white;
+}
+
+.is-filtered button.mas-action-clearFilterRelated {
+  display: inline-flex;
+}
+
+button.mas-action-clearFilterRelated {
+  display: none;
+  width: 157px;
+  height: 26px;
+  align-items: center;
+
+  .mas-action-clearFilterRelated--description {
+    flex-basis: 120px;
+    color: @hpe-charcoal;
+    margin-right: 0;
+    width: 110px;
+  }
+
+  svg {
+    flex-basis: 18px;
+    width: 18px;
+    height: 18px;
+    margin-top: 0;
+    margin-right: 2px;
+    fill: @hpe-charcoal;
+  }
+}
+
+button.mas-action-clearFilterRelated:hover {
+  .mas-action-clearFilterRelated--description {
+    color: @hpe-silver;
+  }
+  svg {
+    fill: @hpe-silver;
+  }
+}
+
+.mas-loomLogo {
+  fill: @hpe-silver;
+  stroke: @hpe-silver;
+}
+
+.mas-logout {
+  font-size: 16px;
+  font-weight: 400;
+  display: inline-flex;
+  flex-direction: row;
+  flex-basis: 130px;
+
+  //.mas-logout--separator::before, .mas-logout--separator::after {
+  //  background-color: @hpe-black;
+  //  top: 0;
+  //  left: -1px;
+  //  width: 1px;
+  //  height: 12px;
+  //  content: "";
+  //  display: block;
+  //  position: relative;
+  //    }
+  .mas-logout--separator::after {
+    top: -24px;
+  }
+  //
+  //.mas-logout--separator {
+  //  flex-basis: 1px;
+  //  border-left: 1px solid @hpe-charcoal;
+  //  margin-right: 20px;
+  //}
+
+  .mas-logout--description {
+    color: @hpe-charcoal;
+    margin-right: 10px;
+  }
+
+  .mas-logout--icon {
+    flex-basis: 24px;
+    margin-top: 1px;
+    margin-right: 20px;
+
+    svg {
+      width: 24px;
+      height: 24px;
+      fill: @hpe-charcoal;
+    }
+  }
+}
+
+.mas-logout:hover {
+  .mas-logout--description {
+    color: @hpe-silver;
+  }
+  .mas-logout--icon svg {
+    fill: @hpe-silver;
+  }
+}
+
+.mas-logout::before,
+ .mas-toolbarMenus .mas-menu--toggle::before {
+   display: none;
+ }
+
+.mas-logout {
+  max-width: none;
+}
+
+.mas-toolbarMenus:not(.mas-aboutMenu) {
+  color: @hpe-green-tint;
+}
+
+.mas-toolbarMenus:not(.mas-aboutMenu) .mas-menu--toggle::after {
+  .fa();
+  content: @fa-var-angle-up;
+  color: @hpe-bronze;
+}
+
+.mas-branding svg {
+  width: 65px;
+  height: 20px;
+  margin-top: 15px;
+}
+.mas-branding--logo {
+  display: none;
+}
+
+.mas-filter {
+  padding: 12px;
+}
+
+.mas-aboutMenu .mas-branding {
+  margin-left: 0;
+  font-size: 29px;
+  height: @unit * 1.25px;
+}
+
+.mas-connectionStatus {
+  border: solid @mas-connectionStatus-XBorderSize @mas-color-toolbarBackground;
+  border-width: 0 4px 0 0;
+  width: @mas-connectionStatus-width;
+  order: -2;
+  height: @unit * 1.25px;
+}
+
+.mas-aboutMenu {
+  order: -2;
+}
+
+
+.has-notification {
+  .mas-notification {
+    position: relative;
+    min-height: 80px;
+    line-height: 80px;
+    background-color: @hpe-yellow;
+    padding: 0 20px;
+    color: @hpe-black;
+  }
+
+  .mas-notification--message {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+    div:first-of-type {
+      flex-grow: 2;
+    }
+
+    .mas-buttons {
+      align-self: flex-end;
+
+      button {
+        max-width: 120px;
+        width: 120px;
+        margin-left: 9px;
+        &.mas-cancel {
+          border: solid 2px @hpe-charcoal;
+          padding: 5px;
+          font-size: 18px;
+          text-decoration: none;
+          font-weight: 600;
+        }
+      }
+      .mas-action-dismiss {
+        width: 248px;
+        max-width: 248px;
+      }
+    }
+  }
+}
+
+.mas-logout {
+  width: 100%;
+}
+
+.mas-aboutMenu {
+  .mas-menu-rightAligned;
+}
+
+.mas-aboutMenu .mas-menu--content {
+  color: @hpe-text-primary;
+  z-index: 100;
+}
+
+.mas-metricsMenu:not(.is-collapsed)>.mas-menu--toggle,
+.mas-sortingMenu:not(.is-collapsed)>.mas-menu--toggle,
+.mas-displayMenu:not(.is-collapsed)>.mas-menu--toggle,
+.mas-actionsMenu:not(.is-collapsed)>.mas-menu--toggle,
+.mas-toolbar .mas-menu:not(.is-collapsed)>.mas-menu--toggle {
+  color: white;
+}
+
+.mas-clearFilterRelated {
+  border-right: 1px solid @hpe-charcoal;
+}
+
+.mas-filterElement {
+  padding-left: 15px;
+  padding-right: 8px;
+  background-color: @hpe-dark-text-disabled;
+  margin: 0 5px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+
+.mas-filterElement::after {
+  content: '';
+  display: none;
+}
+
+.mas-filter--cancel {
+  color: @hpe-charcoal;
+  float: none;
+  top: 0;
+  padding: 0 6px;
+}
+
+.mas-connectionStatus-ok {
+  background: @hpe-green;
+}
+
+.mas-connectionStatus-unstable {
+  background: @hpe-status-yellow;
+}
+
+.mas-connectionStatus-down {
+  background: @hpe-status-red;
+}
+
+.mas-connectionStatus--message {
+  left: auto;
+  right: @mas-connectionStatus-width/2 - @mas-connectionStatus-messageArrowXOffset - @mas-connectionStatus-messageArrowSize - @mas-connectionStatus-XBorderSize;
+
+  &::after {
+    left: auto;
+    right: @mas-connectionStatus-messageArrowXOffset;
+  }
+}
+
+.mas-action-clearFilterRelated {
+    order: -1;
+    position:relative;
+    width: 40px;
+    text-align:center;
+    text-indent: 2px;
+}
+
+.mas-action-clearFilterRelated .fa-ban {
+    position: absolute;
+    right: 17px;
+    bottom: 8px;
+    font-size: 14px;
+    color: @hpe-bronze;
+    line-height: 1em;
+    text-shadow: -1px 1px #333, -1px -1px #333, 1px 1px #333, 1px -1px #333;
+}
+
+// SIDE MENU
+@mas-sideMenuLayout-menu-background: @hpe-dark-background;
+.mas-sideMenuLayout--menu {
+  flex-basis: 287px;
+  max-width: 287px;
+}
+
+.mas-sideMenuLayout--menu .mas-list {
+  background: transparent;
+  color: inherit;
+  border-bottom: none;
+  padding: 10px 20px;
+}
+
+.mas-sideMenuLayout--menu .mas-listItem {
+
+  border-bottom:none;
+  line-height: 2.22;
+
+  &:hover {
+    //background-color: @hpe-dark-text-disabled;
+  }
+}
+
+.mas-provider.is-loggedIn,
+.mas-pattern.is-inTapestry,
+.mas-sideMenuLayout--menu .mas-list .mas-listItem.is-highlighted {
+  //background: @hpe-green;
+  //color: white;
+}
+
+.mas-sideMenuLayout--menu .mas-relationTypeList--list .mas-listItem.is-highlighted {
+  //background: @mas-color-highlightedFiber;
+}
+
+.mas-provider.is-loggedIn .mas-listItemHeader {
+  color: white;
+}
+
+.mas-providerLoginForm--buttons {
+  padding-top: 14px;
+  display: flex;
+}
+
+.mas-providerLoginForm--buttons .mas-button,
+.mas-providerLoginForm--buttons .mas-cancel {
+  flex: 1 1 0%;
+  margin-left: 2px;
+}
+
+.mas-providerLoginForm--buttons .mas-button:first-child,
+.mas-providerLoginForm--buttons .mas-cancel:first-child {
+  margin-left: 0;
+}
+
+.mas-providerLoginForm--logout {
+  order: -1;
+  text-align: left;
+  color: @hpe-status-red;
+  margin-left: 0;
+  margin-right: 2px;
+  border-color: transparent;
+}
+
+.mas-lockedWarning {
+  color:  @hpe-status-yellow;
+  background-color: @hpe-dark-background;
+  margin-bottom: 4px;
+}
+
+
+.mas-pattern:not(.is-inTapestry)::before {
+  line-height: 48px;
+  padding-left: 5px;
+}
+
+.mas-provider.mas-provider {
+  padding-left: 0;
+}
+
+.mas-provider--legend {
+  position: static;
+  width: auto;
+}
+
+.mas-provider--form {
+  max-width: 247px;
+}
+
+.mas-provider.is-loggedIn .mas-provider--legend::after {
+  content: '.';
+  margin-right: .2em;
+}
+
+.mas-provider:not(.is-loggedIn) .mas-provider--name {
+  padding-left: 0
+}
+
+.mas-providerHighlightToggle {
+  order: -1;
+  flex: 0 0 30px;
+}
+
+.mas-provider.is-loggedIn .mas-button {
+  background: white;
+  border-color: white;
+  color: @hpe-green;
+}
+
+.mas-provider.is-loggedIn .mas-cancel {
+  border-color: white;
+}
+
+.mas-provider.is-loggedIn .mas-providerLoginForm--logout {
+  border: none;
+  color: white;
+}
+
+.mas-provider--name,
+.mas-listItemHeader {
+  line-height: 51px;
+}
+
+.mas-action-signInOrOut {
+  height: auto;
+}
+
+.mas-relationTypeList--depthTitle {
+  padding-left: 20px;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.mas-filterDepthSettings--setting {
+  background: @hpe-dark-text-disabled;
+  border-right: solid 1px hsl(0, 0%, 25%);
+}
+
+input:checked + .mas-filterDepthSettings--setting {
+  background: @mas-color-relatedFiber;
+
+  .mas-filterDepthSettings-highglight & {
+    background: @mas-color-highlightedFiber;
+  }
+}
+
+// DMA PLUGIN
+.mas-dmaFiberAttribute {
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 20px;
+    background-color: @hpe-green-lightTint;
+  }
+
+  &::after {
+    color: @hpe-green;
+    font-size: 12px;
+  }
+
+  &-hasDiscrepancy {
+
+    &::before {
+      background-color: @hpe-bronze-lightTint;
+    }
+
+    &::after,
+    .mas-fiberAttributeName,
+    .mas-fiberAttributeValue {
+      color: @hpe-bronze;
+    }
+  }
+}
+
+.mas-dmaFiberAttributeExpectedValue {
+  color: @hpe-bronze;
+  background-color: @hpe-bronze-lightTint;
+  font-size: 14px;
+  line-height: @unit/2px;
+  padding-left: @unit / 4px;
+}
+
+.mas-groupByDMAStatusToggle {
+
+  transform: rotate(0);
+
+  &::after {
+    .fa();
+    color: @hpe-bronze;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 14px;
+    transform: translate(0px, -10px);
+    text-shadow: -1px 1px #333, -1px -1px #333, 1px 1px #333, 1px -1px #333;
+  }
+
+  &[data-action=addGroupByDMAStatus]::after {
+    content: @fa-var-plus;
+  }
+
+  &[data-action=removeGroupByDMAStatus]::after {
+    content: @fa-var-minus;
+  }
+}
+
+// LOGIN SCREEN
+.mas-centeredFormLayout--form {
+  background: white;
+  border: none;
+  color: @hpe-text-primary;
+}
+
+.mas-centeredFormLayout--title {
+  display: block;
+  text-indent: -9999px;
+  content: '';
+  background: url(../images/loomLoginLogo.svg);
+  background-repeat: no-repeat;
+  width: 150px;
+  height: 60px;
+  background-size: 100%;
+  margin-top: 35px;
+  margin-bottom: 60px;
+}
+
+.mas-loginScreen--hpLabs {
+  display:none;
+}
+
+.mas-connectionScreen::after,
+.mas-loginScreen::after {
+  content: '';
+  background: url(../images/hpe_sec_grn_pos_rgb.svg);
+  background-repeat: no-repeat;
+  width: 210px;
+  height: 90px;
+  background-size: 100%;
+  margin-top: 60px;
+  display: block;
+}
+
+.mas-loginScreen--form {
+  width: 28%;
+  padding: 0;
+
+  input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset;
+  }
+
+  select {
+    padding-left: 0;
+  }
+  .mas-labeledInput-left:first-of-type {
+    margin-bottom: 0;
+  }
+}
+
+.mas-loginScreen--form.mas-loginScreen--form .mas-providerLoginForm--submit {
+  float: none;
+  display: block;
+  width: 100%;
+  line-height: 30px;
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.mas-providerLoginForm.is-loggingIn .mas-providerLoginForm--submit {
+  animation: loginPulse 1s alternate infinite;
+}
+
+@keyframes loginPulse {
+  from {
+    background: @mas-color-buttonBackground;
+  }
+  to {
+    background: shade(@mas-color-buttonBackground, 20);
+  }
+}
+
+.mas-connectionScreen {
+  height: 100%;
+}
+
+.mas-connectionScreen--message {
+  text-align: center;
+}
+
+.mas-connectionScreen--message::after {
+  .fa();
+  .fa-spin();
+  content: @fa-var-circle-o-notch;
+  color: @hpe-green;
+  display: block;
+  font-size: 24px;
+  margin-top: 15px;
+}
+
+// THREAD ACTIONS
+.mas-actionsMenu.is-disabled {
+  opacity: 0.5;
+
+  .mas-menu--toggle {
+    cursor: default;
+  }
+}
+
+.mas-threadAction .mas-dialog {
+  background: transparent;
+  color: inherit;
+}
+
+.mas-threadAction .mas-dialog--title {
+  display: none;
+}
+
+// RELATION PATH
+.mas-relationPathsExplorerLoadingMessage {
+  text-align: center;
+  padding: 10px 20px;
+}
+
+.mas-relationPathsExplorer--loadingSpinner {
+  color: @hpe-green;
+}
+
+
+// RELATION GRAPH
+.mas-relationsGraph--loadingSpinner {
+  position: absolute;
+  top: ~"calc(50% - 24px)";
+  left: 50%;
+  font-size: 24px;
+  color: @hpe-green;
+}
+
+.mas-relationsGraph--loadingMessage {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+  line-height: 1.44em;
+}
+
+.mas-relationsGraph--zoomControls {
+  z-index: 25;
+  position: absolute;
+  // display: flex;
+}
+
+.mas-relationsGraph--fitButton::before {
+
+  content: @fa-var-search;
+  position: relative;
+  top: -2px;
+  left: -2px;
+}
+
+.mas-relationsGraph--zoomInButton::before {
+
+  content: @fa-var-plus;
+}
+
+.mas-relationsGraph--zoomOutButton::before {
+  content: @fa-var-minus;
+}
+
+.mas-relationsGraph--zoomInButton,
+.mas-relationsGraph--zoomOutButton,
+.mas-relationsGraph--fitButton {
+
+  line-height: @unit * 1px;
+  height: @unit * 1px;
+  width: @unit * 1px;
+  overflow: hidden;
+
+  display: inline-block;
+  vertical-align: top;
+
+  background: mix(@hpe-gray, @hpe-dark-background, 20%);
+
+  &::before {
+
+    .fa();
+
+    // Important tha line height is after .fa()
+    // as the mixin resets line-height to 1 :(
+    line-height: @unit * 1px;
+    height: @unit * 1px;
+    width: @unit * 1px;
+    display: block;
+    color: @hpe-bronze;
+  }
+}
+
+// RELATION PATHS
+@mas-relationPathStep-itemType-size: 16px;
+@mas-relationPathStep-pathWidth: 4px;
+.mas-relationPathStep {
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: (@mas-listItem-leftPadding - @mas-relationPathStep-pathWidth)/2;
+    width: @mas-relationPathStep-pathWidth;
+    background-color: #eee;
+  }
+
+  &:first-child::before {
+    top: 50%;
+  }
+
+  &:last-child::before {
+    bottom: 50%;
+  }
+
+  &-itemType::after {
+    content: '';
+    position: absolute;
+    top: ~"calc(50% + 2px)";
+    left: @mas-listItem-leftPadding/2 ;
+    width: @mas-relationPathStep-itemType-size;
+    height: @mas-relationPathStep-itemType-size;
+    background: @hpe-green;
+    border: solid 4px @mas-sideMenuLayout-menu-background;
+    transform: translate(-50%, -50%);
+    border-radius: 100%;
+  }
+
+  &-stichedRelation::before {
+
+    background: linear-gradient(to bottom, #eee 16px, rgba(0, 0, 0, 0) 0);
+    background-size: 4px 22px;
+    background-position: 0px 6px;
+  }
+}
+
+
+
+.mas-relationPathsExplorerToggle {
+
+  .mas-patternSelectionMenu--clear;
+
+  &:disabled {
+    opacity: .5;
+  }
+
+  &::before {
+    .fa();
+    content: @fa-var-hand-o-up;
+    margin-right: 1ch;
+  }
+
+  &-active::before {
+    content: @fa-var-ban;
+  }
+}
+
+.mas-relationPathExplorerTitle {
+  .mas-relationTypeList--depthTitle;
+}
+
+@media only screen and (max-width: 480px) {
+
+    .mas-threadHeader {
+        min-height: 0;
+    }
+
+    .mas-threadSummary {
+        background: white;
+    }
+
+    .mas-thread:not(.mas-thread-minimised) .mas-threadHeader--title {
+      margin-top: 0;
+    }
+
+    .mas-thread--legend {
+      display: none;
+    }
+
+    .mas-threadSummary--numberOfItems {
+        background: @hpe-green;
+        font-weight: 400;
+    }
+
+    .mas-threadHeader--info {
+        padding: 0;
+        padding-left: 10px;
+        padding-right: 110px;
+    }
+
+    .mas-threadHeader--metrics {
+        display: none;
+    }
+
+    .mas-threadHeader {
+
+        // Forced to use important because the padding is set via JS :(
+        padding-bottom: 0 !important;
+    }
+
+    // Restore absolute positioning
+    .mas-sideMenuLayout--menu {
+      position: absolute;
+    }
+
+    .mas-logout {
+        display:none;
+    }
+}
+
+tbody .mas-table-row.is-related {
+  color: white;
+}
+
+// METRICS
+.mas-metricValue--label {
+  background: none;
+  font-size: 12px;
+  border: 0;
+  color: @hpe-black;
+  padding: 0 0 0 3px;
+  line-height: 26px; // center
+}
+
+.mas-graph {
+  background: @hpe-silver;
+}
+
+.mas-graph--value {
+  fill: @hpe-gray;
+}
+
+.is-selected .mas-graph--value {
+  fill: @hpe-charcoal;
+}
+
+.mas-graph--axis {
+  stroke: @hpe-silver;
+}
+
+.mas-threadMetrics--metric .mas-action-removeMetric {
+  display: none;
+}
+.mas-threadMetrics--metric {
+  text-transform: none;
+  letter-spacing: normal;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: left;
+  padding: 0 20px;
+}
+// THIS IS FOR THE METRIC VALUE @todo
+.mas-threadMetrics--value {
+  text-transform: none;
+  letter-spacing: normal;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+
+.mas-threadMetrics--metric {
+  line-height: 60px;
+}
+
+.mas-metricValue,
+.is-selected .mas-metricValue {
+  margin: 17px 0 15px;
+  flex: 0 0 28px;
+}
+
+.mas-fiberOverview--block {
+  top: 18px;
+  bottom: 6px;
+}
+
+.mas-metricValue .mas-graph,
+.is-selected .mas-metricValue .mas-graph {
+  height: 27px;
+}
+
+// OVERRIDE AGGREGATION DIMMING
+.is-aggregation.is-displayed .mas-fiberOverview--block {
+  .mas-aggregationOverviewBlock();
+}
+
+// RELATIONSHIPS
+.is-aggregation.is-related.is-displayed .mas-fiberOverview--block {
+  box-shadow: inset 0 0 0 2px @hpe-green, inset 0 0 0 4px #eee, inset 0 0 0 6px @hpe-green !important;
+}
+

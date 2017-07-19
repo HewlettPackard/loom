@@ -1,0 +1,49 @@
+@import './FibreContextMenu.less';
+
+.mas-table-row:not(.mas-table-header) {
+    cursor: pointer;
+}
+
+.mas-filter-on .mas-table-row {
+    opacity: 0.4;
+}
+
+.mas-filter-on .mas-table-row.is-selected, .mas-filter-on .mas-table-row.is-matchingFilter {
+    opacity: 1;
+}
+
+.mas-table-cell {
+    padding: 5px;
+}
+
+.mas-table-row .mas-fiberState {
+    width: 25px;
+    position: relative;
+}
+
+.mas-table-cell.is-collapsed .nested {
+    display: none;
+}
+
+.mas-table-cell.is-collapsed .nested.mas-collapse-action {
+    display: flex;
+    font-size: 7px;
+    align-items: center;
+}
+
+.mas-table-cell .mas-tooltip {
+    display: none;
+}
+
+.mas-table-cell.is-collapsed:hover .mas-tooltip {
+    display: block;
+}
+
+.mas-sorting-indicator {
+    display: none;
+}
+
+table {
+    border-spacing: 0px;
+    border-color: transparent;
+}

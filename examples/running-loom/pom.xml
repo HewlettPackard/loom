@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>loom-examples</groupId>
+	<artifactId>running-loom</artifactId>
+	<version>1.2</version>
+	<name>Running Loom Example</name>
+	<description>Example of how to start Loom ready for introduction of an Adapter</description>
+  <packaging>pom</packaging>
+	<properties>
+		<loom-version>3.11-SNAPSHOT</loom-version>
+		<weaver-version>3.11-SNAPSHOT</weaver-version>
+		<jetty.port>9099</jetty.port>
+		<jetty.stopPort>9199</jetty.stopPort>
+		<jetty.version>9.3.5.v20151012</jetty.version>
+
+		<maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
+		<maven-jar-plugin.version>2.4</maven-jar-plugin.version>
+		<maven-dependency-plugin.version>2.3</maven-dependency-plugin.version>
+	</properties>
+
+
+	<dependencies>
+		<dependency>
+			<groupId>com.hp.hpl.loom</groupId>
+			<artifactId>weaver</artifactId>
+			<version>${weaver-version}</version>
+			<type>war</type>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.hp.hpl.loom</groupId>
+			<artifactId>loom-server</artifactId>
+			<version>${loom-version}</version>
+			<type>war</type>
+		</dependency>
+		
+		<dependency>
+			<groupId>loom-examples</groupId>
+			<artifactId>example-adapter</artifactId>
+			<version>1.2</version>
+			<type>jar</type>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>weaver-${loom-version}</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven-compiler-plugin.version}</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+		
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>${maven-dependency-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>copy-war-to-lib-folder</id>
+						<phase>process-sources</phase>
+						<goals>
+							<goal>copy</goal>
+						</goals>
+						<configuration>
+							<artifactItems>
+								<artifactItem>
+									<groupId>com.hp.hpl.loom</groupId>
+									<artifactId>loom-server</artifactId>
+									<version>${loom-version}</version>
+									<type>war</type>
+									<overWrite>true</overWrite>
+									<outputDirectory>wars</outputDirectory>
+									<destFileName>loom-server-${loom-version}.war</destFileName>
+								</artifactItem>
+								<artifactItem>
+									<groupId>com.hp.hpl.loom</groupId>
+									<artifactId>weaver</artifactId>
+									<version>${weaver-version}</version>
+									<type>war</type>
+									<overWrite>true</overWrite>
+									<outputDirectory>target</outputDirectory>
+								</artifactItem>								
+								<artifactItem>
+									<groupId>loom-examples</groupId>
+									<artifactId>example-adapter</artifactId>
+									<version>1.2</version>
+									<type>jar</type>
+									<overWrite>true</overWrite>
+									<outputDirectory>adapters</outputDirectory>
+								</artifactItem>
+								
+							</artifactItems>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>${jetty.version}</version>
+				<configuration>
+					<jettyXml>jetty.xml</jettyXml>					
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
