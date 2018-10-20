@@ -41,8 +41,8 @@
 
 		<junit.version>4.11</junit.version>
 		<jacoco.version>0.7.2.201409121644</jacoco.version>
-		<spring.version>4.2.0.RELEASE</spring.version>
-		<spring-test.version>4.2.0.RELEASE</spring-test.version>
+		<spring.version>4.3.18.RELEASE</spring.version>
+		<spring-test.version>4.3.18.RELEASE</spring-test.version>
 		<spring-plugin-core.version>1.0.0.RELEASE</spring-plugin-core.version>
 
 		<skipUnitTests>false</skipUnitTests>
@@ -371,37 +371,37 @@
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-core</artifactId>
-				<version>4.2.0.RELEASE</version>
+				<version>4.3.18.RELEASE</version>
 			</dependency>
 
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-context</artifactId>
-				<version>4.2.0.RELEASE</version>
+				<version>4.3.18.RELEASE</version>
 			</dependency>
 
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-context-support</artifactId>
-				<version>4.2.0.RELEASE</version>
+				<version>4.3.18.RELEASE</version>
 			</dependency>
 
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-web</artifactId>
-				<version>4.2.0.RELEASE</version>
+				<version>4.3.18.RELEASE</version>
 			</dependency>
 
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-webmvc</artifactId>
-				<version>4.2.0.RELEASE</version>
+				<version>4.3.18.RELEASE</version>
 			</dependency>
 
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-test</artifactId>
-				<version>4.2.0.RELEASE</version>
+				<version>4.3.18.RELEASE</version>
 				<scope>test</scope>
 			</dependency>
 
@@ -420,7 +420,7 @@
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-orm</artifactId>
-				<version>4.2.0.RELEASE</version>
+				<version>4.3.18.RELEASE</version>
 			</dependency>
 
 			<dependency>
