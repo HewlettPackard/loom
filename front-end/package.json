@@ -30,7 +30,7 @@
     "backbone.cocktail": "^0.5.13",
     "backbone.stickit": "^0.9.2",
     "cookies-js": "^1.2.1",
-    "cytoscape": "2.4.9",
+    "cytoscape": "2.7.29",
     "cytoscape-cola": "1.2.0",
     "fastdom": "^0.8.6",
     "font-awesome": "~4.5.0",
