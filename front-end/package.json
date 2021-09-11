@@ -39,7 +39,7 @@
     "jquery-ui": "https://github.com/jquery/jquery-ui/archive/1.11.4.tar.gz",
     "lodash": "^4.17.5",
     "lodash-inflection": "^1.4.1",
-    "moment": "2.19.3",
+    "moment": "2.29.1",
     "moment-jdateformatparser": "getfatday/moment-jdateformatparser#88f3580f6f5a281fd678d760e146452bc2f04c97",
     "mustache": "2.2.1",
     "normalize.css": "^3.0.3",
